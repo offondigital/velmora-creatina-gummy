@@ -1,0 +1,60 @@
+[
+  {
+    "slug": "creatina-gummy",
+    "name": "Creatina Gummy",
+    "category": "performance",
+    "brand": "Crea Gummy",
+    "price": "197.00",
+    "image": "/images/creatina-gummy.webp",
+    "description": "Suplemento alimentar em goma com creatina, desenvolvido para praticantes de atividades físicas que buscam praticidade na suplementação.",
+    "buyUrl": "https://pay.hest.com.br/",
+    "relatedProducts": [
+      "creagym",
+      "velmo-black"
+    ]
+  },
+
+  {
+    "slug": "creagym",
+    "name": "CreaGym",
+    "category": "performance",
+    "brand": "CreaGym",
+    "price": "197.00",
+    "image": "/images/creagym.webp",
+    "description": "Suplemento com creatina monohidratada, magnésio bisglicinato e coenzima Q10 para suporte à força, energia e desempenho físico.",
+    "buyUrl": "https://pay.hest.com.br/bb220038-f89c-4611-a0f8-43d5935705ad",
+    "relatedProducts": [
+      "creatina-gummy",
+      "velmo-black"
+    ]
+  },
+
+  {
+    "slug": "velmo-black",
+    "name": "Velmo Black",
+    "category": "energia",
+    "brand": "Velmo",
+    "price": "197.00",
+    "image": "/images/velmo-black.webp",
+    "description": "Linha de suplementos voltada para energia, disposição e rotina diária.",
+    "buyUrl": "https://pay.hest.com.br/d749bf05-25b1-4646-8139-35423bb2fb05",
+    "relatedProducts": [
+      "creatina-gummy",
+      "creagym"
+    ]
+  },
+
+  {
+    "slug": "clarize",
+    "name": "Clarize",
+    "category": "autocuidado",
+    "brand": "Clarize",
+    "price": "209.00",
+    "image": "/images/clarize.webp",
+    "description": "Produto desenvolvido para cuidados pessoais, hidratação e uniformização da pele.",
+    "buyUrl": "https://pay.hest.com.br/8a088d7a-b2b5-46fa-a132-a818b7653a05",
+    "relatedProducts": [
+      "velmo-black"
+    ]
+  }
+]

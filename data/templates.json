@@ -1,0 +1,56 @@
+{
+  "corrida": {
+    "section1Title": "Creatina e Corrida",
+    "section1Content": "A corrida exige resistência, recuperação muscular e consistência nos treinos. A creatina é frequentemente utilizada por corredores que buscam complementar sua estratégia nutricional.",
+
+    "benefits": [
+      "Suporte à recuperação muscular",
+      "Praticidade no consumo",
+      "Auxílio na rotina esportiva"
+    ]
+  },
+
+  "crossfit": {
+    "section1Title": "Creatina e Crossfit",
+    "section1Content": "O Crossfit combina força, potência e alta intensidade. Por isso muitos praticantes utilizam creatina como parte do planejamento nutricional.",
+
+    "benefits": [
+      "Mais praticidade",
+      "Suporte ao desempenho físico",
+      "Recuperação muscular"
+    ]
+  },
+
+  "futebol": {
+    "section1Title": "Creatina e Futebol",
+    "section1Content": "O futebol exige explosão, velocidade e recuperação constante. A creatina é amplamente utilizada por atletas dessa modalidade.",
+
+    "benefits": [
+      "Praticidade diária",
+      "Suporte ao treinamento",
+      "Recuperação muscular"
+    ]
+  },
+
+  "ciclismo": {
+    "section1Title": "Creatina e Ciclismo",
+    "section1Content": "O ciclismo demanda resistência física e recuperação adequada entre sessões de treino. A creatina pode fazer parte da estratégia nutricional.",
+
+    "benefits": [
+      "Consumo prático",
+      "Recuperação muscular",
+      "Suporte à performance"
+    ]
+  },
+
+  "natacao": {
+    "section1Title": "Creatina e Natação",
+    "section1Content": "A natação exige coordenação, resistência e força muscular. Muitos nadadores utilizam creatina como complemento nutricional.",
+
+    "benefits": [
+      "Praticidade",
+      "Rotina simplificada",
+      "Suporte ao desempenho físico"
+    ]
+  }
+}

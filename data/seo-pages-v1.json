@@ -1,0 +1,65 @@
+[
+  {
+    "slug": "creatina-gummy-para-corrida",
+    "cluster": "modalidade",
+    "categoria": "corrida",
+    "keyword": "creatina gummy para corrida",
+
+    "title": "Creatina Gummy para Corrida: Benefícios e Como Utilizar",
+
+    "metaDescription": "Descubra como a Creatina Gummy pode ajudar corredores a melhorar desempenho, recuperação e resistência.",
+
+    "h1": "Creatina Gummy para Corrida",
+
+    "intro": "A Creatina Gummy oferece uma forma prática de consumir creatina para quem corre regularmente.",
+
+    "benefits": [
+      "Maior resistência física",
+      "Melhor recuperação muscular",
+      "Praticidade no consumo"
+    ],
+
+    "faq": [
+      {
+        "question": "Quem corre pode tomar creatina?",
+        "answer": "Sim. A creatina pode auxiliar na recuperação muscular e em treinos de maior intensidade."
+      }
+    ],
+
+    "internalLinks": [
+      "creatina-gummy-para-crossfit"
+    ]
+  },
+
+  {
+    "slug": "creatina-gummy-para-crossfit",
+    "cluster": "modalidade",
+    "categoria": "crossfit",
+    "keyword": "creatina gummy para crossfit",
+
+    "title": "Creatina Gummy para Crossfit: Força e Potência",
+
+    "metaDescription": "Entenda como a Creatina Gummy pode contribuir para treinos intensos de Crossfit.",
+
+    "h1": "Creatina Gummy para Crossfit",
+
+    "intro": "Praticantes de Crossfit podem utilizar Creatina Gummy para aumentar força e potência durante os treinos.",
+
+    "benefits": [
+      "Mais explosão muscular",
+      "Recuperação mais rápida",
+      "Maior desempenho físico"
+    ],
+
+    "faq": [
+      {
+        "question": "Creatina ajuda no Crossfit?",
+        "answer": "Pode ajudar em exercícios de alta intensidade e curta duração."
+      }
+    ],
+
+    "internalLinks": [
+      "creatina-gummy-para-corrida"
+    ]
+  }
+]
