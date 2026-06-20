@@ -24,6 +24,7 @@
     "categoria": "natacao",
     "keyword": "creatina gummy para natacao"
   },
+
   {
     "cluster": "objetivo",
     "categoria": "academia",
@@ -45,8 +46,82 @@
     "keyword": "creatina gummy para treino funcional"
   },
   {
+    "cluster": "objetivo",
+    "categoria": "forca",
+    "keyword": "creatina gummy para força"
+  },
+  {
+    "cluster": "objetivo",
+    "categoria": "performance",
+    "keyword": "creatina gummy para performance"
+  },
+  {
+    "cluster": "objetivo",
+    "categoria": "recuperacao muscular",
+    "keyword": "creatina gummy para recuperação muscular"
+  },
+  {
+    "cluster": "objetivo",
+    "categoria": "resistencia",
+    "keyword": "creatina gummy para resistência"
+  },
+
+  {
     "cluster": "publico",
     "categoria": "mulheres",
     "keyword": "creatina gummy para mulheres"
+  },
+  {
+    "cluster": "publico",
+    "categoria": "iniciantes",
+    "keyword": "creatina gummy para iniciantes"
+  },
+  {
+    "cluster": "publico",
+    "categoria": "atletas",
+    "keyword": "creatina gummy para atletas"
+  },
+
+  {
+    "cluster": "comercial",
+    "categoria": "onde comprar",
+    "keyword": "onde comprar creatina gummy"
+  },
+  {
+    "cluster": "comercial",
+    "categoria": "preco",
+    "keyword": "creatina gummy preço"
+  },
+  {
+    "cluster": "comercial",
+    "categoria": "vale a pena",
+    "keyword": "creatina gummy vale a pena"
+  },
+
+  {
+    "cluster": "comparacao",
+    "categoria": "creatina em po",
+    "keyword": "creatina gummy ou creatina em pó"
+  },
+  {
+    "cluster": "comparacao",
+    "categoria": "capsula",
+    "keyword": "creatina gummy ou cápsula"
+  },
+
+  {
+    "cluster": "informacao",
+    "categoria": "como tomar",
+    "keyword": "como tomar creatina gummy"
+  },
+  {
+    "cluster": "informacao",
+    "categoria": "horario",
+    "keyword": "melhor horário para tomar creatina gummy"
+  },
+  {
+    "cluster": "informacao",
+    "categoria": "funciona",
+    "keyword": "creatina gummy funciona"
   }
 ]
