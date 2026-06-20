@@ -9,22 +9,22 @@ const templates = {
 corrida: {
 
 section1:
-"A corrida exige resistência, recuperação muscular e consistência nos treinos. A creatina é um dos suplementos mais estudados para pessoas que praticam atividades físicas e buscam melhorar sua estratégia nutricional.",
+"A corrida exige resistência, recuperação muscular e consistência nos treinos. A creatina é um dos suplementos mais estudados para praticantes de atividades físicas.",
 
 section2:
-"A Creatina Gummy facilita a rotina de suplementação por estar em formato de goma, ajudando praticantes de corrida a manterem uma rotina simples e prática.",
+"A Creatina Gummy facilita a rotina de suplementação por estar em formato de goma, ajudando praticantes de corrida a manterem consistência.",
 
 experience:
-"Corredores costumam buscar soluções que encaixem facilmente antes ou depois dos treinos, principalmente quando possuem uma rotina esportiva intensa.",
+"Praticantes de corrida normalmente buscam soluções simples que se encaixem antes ou depois dos treinos.",
 
-comparison:
-"A Creatina Gummy oferece praticidade em comparação ao formato tradicional em pó, sendo uma alternativa para quem prefere facilidade de consumo.",
+scientificBasis:
+"A creatina possui diversos estudos científicos relacionados ao desempenho físico e metabolismo energético.",
 
-usage:
-"A creatina pode fazer parte da rotina diária de suplementação conforme orientação adequada e objetivos individuais.",
+authority:
+"A creatina é utilizada por atletas profissionais, amadores e praticantes recreativos de diferentes modalidades.",
 
-science:
-"A creatina é um dos compostos mais pesquisados na área de nutrição esportiva.",
+trust:
+"Informações baseadas em conhecimento científico sobre suplementação esportiva.",
 
 benefits:[
 "Praticidade no consumo",
@@ -38,22 +38,22 @@ benefits:[
 crossfit: {
 
 section1:
-"O Crossfit combina força, potência e exercícios de alta intensidade. Muitos praticantes utilizam creatina como parte da estratégia nutricional esportiva.",
+"O Crossfit combina força, potência e alta intensidade. Muitos praticantes utilizam creatina dentro da estratégia nutricional esportiva.",
 
 section2:
-"A Creatina Gummy oferece uma forma prática de consumir creatina durante uma rotina intensa de treinos.",
+"A Creatina Gummy oferece uma maneira prática de consumir creatina durante uma rotina intensa de treinos.",
 
 experience:
-"Atletas de modalidades intensas geralmente valorizam suplementos fáceis de consumir e manter diariamente.",
+"Atletas de alta intensidade valorizam suplementos fáceis de manter no dia a dia.",
 
-comparison:
-"A versão em goma atende pessoas que preferem praticidade em relação ao preparo tradicional da creatina em pó.",
+scientificBasis:
+"A creatina está entre os suplementos esportivos mais pesquisados atualmente.",
 
-usage:
-"A consistência no consumo é um dos pontos mais importantes dentro de uma rotina de suplementação.",
+authority:
+"Presente na rotina de diversos praticantes de treinamento de força e performance.",
 
-science:
-"A creatina possui amplo histórico de estudos relacionados ao desempenho físico.",
+trust:
+"Conteúdo educativo baseado em pesquisas de nutrição esportiva.",
 
 benefits:[
 "Suporte ao desempenho físico",
@@ -67,22 +67,22 @@ benefits:[
 futebol: {
 
 section1:
-"O futebol exige velocidade, explosão e recuperação entre treinos e partidas. A creatina é utilizada por praticantes de esportes que envolvem esforço intenso.",
+"O futebol exige velocidade, explosão e recuperação constante entre treinos e partidas.",
 
 section2:
-"A Creatina Gummy facilita o consumo de creatina para jogadores que possuem rotina esportiva movimentada.",
+"A Creatina Gummy facilita o consumo diário para jogadores e praticantes de futebol.",
 
 experience:
-"Jogadores costumam buscar praticidade para manter hábitos de suplementação durante períodos de treino.",
+"Jogadores procuram estratégias práticas para manter hábitos consistentes.",
 
-comparison:
-"O formato gummy elimina etapas de preparo e pode facilitar a adesão ao consumo.",
+scientificBasis:
+"A creatina apresenta ampla literatura científica na área esportiva.",
 
-usage:
-"A creatina costuma ser utilizada de forma regular dentro de uma estratégia nutricional.",
+authority:
+"Utilizada por praticantes de esportes que exigem força e potência.",
 
-science:
-"A creatina está entre os suplementos esportivos mais investigados cientificamente.",
+trust:
+"Informações organizadas com base em estudos de suplementação.",
 
 benefits:[
 "Suporte ao treinamento",
@@ -139,13 +139,14 @@ categoria:item.categoria,
 keyword:item.keyword,
 
 
+
 title:
 `Creatina Gummy para ${categoriaCapitalizada}: Benefícios, Uso e Performance`,
 
 
 
 metaDescription:
-`Entenda como a Creatina Gummy pode fazer parte da rotina de praticantes de ${item.categoria} com 
+`Conheça como a Creatina Gummy pode fazer parte da rotina de praticantes de ${item.categoria} com 
 praticidade e suplementação inteligente.`,
 
 
@@ -156,19 +157,41 @@ h1:
 
 
 intro:
-`A Creatina Gummy é uma alternativa prática para quem pratica ${item.categoria} e busca incluir 
-creatina na rotina esportiva.`,
+`A Creatina Gummy é uma forma prática de consumir creatina para pessoas que praticam 
+${item.categoria}.`,
 
 
 
-answerBox:
-`A Creatina Gummy é uma forma prática de consumir creatina diariamente, oferecendo conveniência para 
-praticantes de ${item.categoria}.`,
+quickAnswer:
+`Creatina Gummy para ${item.categoria} é uma alternativa prática para consumir creatina diariamente 
+dentro de uma rotina esportiva.`,
+
+
+
+expertNote:
+`A creatina é um dos suplementos mais estudados na nutrição esportiva e é utilizada por praticantes 
+de diferentes modalidades.`,
+
+
+
+author:
+"Equipe Creatina Gummy",
+
+
+
+reviewedBy:
+"Especialistas em conteúdo esportivo",
+
+
+
+updatedAt:
+"2026-06-19",
 
 
 
 section1Title:
 `Creatina e ${categoriaCapitalizada}`,
+
 
 section1Content:
 template.section1,
@@ -177,6 +200,7 @@ template.section1,
 
 section2Title:
 "Como a Creatina Gummy pode ajudar",
+
 
 section2Content:
 template.section2,
@@ -187,26 +211,26 @@ experience:
 template.experience,
 
 
-comparison:
-template.comparison,
+scientificBasis:
+template.scientificBasis,
 
 
-usageGuide:
-template.usage,
+authority:
+template.authority,
 
 
-science:
-template.science,
+trust:
+template.trust,
 
 
 
 whoIsItFor:
-`Indicada para pessoas que praticam ${item.categoria} e procuram praticidade na rotina de 
-suplementação.`,
+`Indicada para praticantes de ${item.categoria} que buscam praticidade na suplementação.`,
+
 
 
 whoIsNotFor:
-"Não substitui alimentação equilibrada ou acompanhamento profissional quando necessário.",
+"Não substitui alimentação equilibrada ou orientação profissional quando necessária.",
 
 
 
@@ -222,7 +246,7 @@ question:
 `Quem pratica ${item.categoria} pode tomar creatina?`,
 
 answer:
-"A creatina é um suplemento amplamente utilizado por praticantes de atividades físicas."
+"A creatina é amplamente utilizada por praticantes de atividades físicas."
 },
 
 
@@ -231,18 +255,17 @@ question:
 "Creatina Gummy funciona?",
 
 answer:
-"A Creatina Gummy fornece creatina em um formato prático para consumo diário."
+"A Creatina Gummy fornece creatina em formato prático para consumo."
 },
 
 
 {
 question:
-"Qual melhor horário para consumir creatina?",
+"Creatina precisa ser tomada todos os dias?",
 
 answer:
-"A regularidade do consumo costuma ser mais importante do que um horário específico."
+"A consistência é um dos principais fatores dentro da suplementação com creatina."
 }
-
 
 ],
 
@@ -282,5 +305,5 @@ JSON.stringify(pages,null,2)
 
 
 console.log(
-`${pages.length} páginas SEO E-E-A-T geradas.`
+`${pages.length} páginas AEO GEO E-E-A-T geradas.`
 );
