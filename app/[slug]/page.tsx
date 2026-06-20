@@ -2,25 +2,16 @@ import Link from "next/link";
 import products from "@/data/products.json";
 import seoPages from "@/data/seo-pages.json";
 
-import {
-  createProductSchema,
-  createFAQSchema,
-  createBreadcrumbSchema,
-  createOrganizationSchema
-} from "@/lib/schema";
-
-
 
 export function generateStaticParams(){
 
-  return seoPages.map((page)=>({
+return seoPages.map((page:any)=>({
 
-    slug: page.slug
+slug:page.slug
 
-  }));
+}));
 
 }
-
 
 
 
@@ -38,7 +29,7 @@ params:{slug:string}
 
 const page:any = seoPages.find(
 
-(item)=>item.slug === params.slug
+(item:any)=>item.slug === params.slug
 
 );
 
@@ -55,10 +46,10 @@ return {};
 return {
 
 
-title: page.title,
+title:page.title,
 
 
-description: page.metaDescription,
+description:page.metaDescription,
 
 
 keywords:[
@@ -69,9 +60,7 @@ page.keyword,
 
 "creatina em goma",
 
-"suplemento de creatina",
-
-"performance"
+"suplemento de creatina"
 
 ],
 
@@ -82,38 +71,6 @@ alternates:{
 canonical:
 
 `https://creatinagummy.com.br/${page.slug}`
-
-
-},
-
-
-
-openGraph:{
-
-
-title:page.title,
-
-
-description:page.metaDescription,
-
-
-type:"article"
-
-
-},
-
-
-
-twitter:{
-
-
-card:"summary_large_image",
-
-
-title:page.title,
-
-
-description:page.metaDescription
 
 
 }
@@ -143,7 +100,7 @@ params:{slug:string}
 
 const page:any = seoPages.find(
 
-(item)=>item.slug === params.slug
+(item:any)=>item.slug === params.slug
 
 );
 
@@ -157,28 +114,11 @@ return null;
 
 
 
+const product:any = products.find(
 
-
-const product = products.find(
-
-(item)=>item.slug==="creatina-gummy"
+(item:any)=>item.slug==="creatina-gummy"
 
 );
-
-
-
-
-
-const productSchema = createProductSchema(page);
-
-const faqSchema = createFAQSchema(page);
-
-const breadcrumbSchema = createBreadcrumbSchema(page);
-
-const organizationSchema = createOrganizationSchema();
-
-
-
 
 
 
@@ -186,61 +126,7 @@ const organizationSchema = createOrganizationSchema();
 return (
 
 
-<>
-
-
-<script
-type="application/ld+json"
-dangerouslySetInnerHTML={{
-
-__html: JSON.stringify(productSchema)
-
-}}
-
-/>
-
-
-
-<script
-type="application/ld+json"
-dangerouslySetInnerHTML={{
-
-__html: JSON.stringify(faqSchema)
-
-}}
-
-/>
-
-
-
-<script
-type="application/ld+json"
-dangerouslySetInnerHTML={{
-
-__html: JSON.stringify(breadcrumbSchema)
-
-}}
-
-/>
-
-
-
-<script
-type="application/ld+json"
-dangerouslySetInnerHTML={{
-
-__html: JSON.stringify(organizationSchema)
-
-}}
-
-/>
-
-
-
-
-
 <main className="max-w-5xl mx-auto px-8 py-16">
-
 
 
 <h1 className="text-5xl font-bold">
@@ -251,13 +137,110 @@ __html: JSON.stringify(organizationSchema)
 
 
 
+<section className="mt-8 bg-purple-50 rounded-3xl p-8">
 
-<p className="mt-8 text-xl text-gray-600">
+
+<h2 className="text-2xl font-bold">
+
+Resposta rápida
+
+</h2>
+
+
+<p className="mt-4">
+
+{page.quickAnswer}
+
+</p>
+
+
+</section>
+
+
+
+
+
+<p className="mt-10 text-xl text-gray-700">
 
 {page.intro}
 
 </p>
 
+
+
+
+
+<section className="mt-14">
+
+
+<h2 className="text-3xl font-bold">
+
+Experiência prática
+
+</h2>
+
+
+<p className="mt-4">
+
+{page.experience}
+
+</p>
+
+
+</section>
+
+
+
+
+
+<section className="mt-14">
+
+
+<h2 className="text-3xl font-bold">
+
+Base científica
+
+</h2>
+
+
+<p className="mt-4">
+
+{page.scientificBasis}
+
+</p>
+
+
+</section>
+
+
+
+
+
+<section className="mt-14">
+
+
+<h2 className="text-3xl font-bold">
+
+Autoridade e confiança
+
+</h2>
+
+
+<p className="mt-4">
+
+{page.authority}
+
+</p>
+
+
+<p className="mt-4">
+
+{page.trust}
+
+</p>
+
+
+</section>
 
 
 
@@ -286,8 +269,6 @@ __html: JSON.stringify(organizationSchema)
 
 
 
-
-
 <section className="mt-14">
 
 
@@ -306,59 +287,6 @@ __html: JSON.stringify(organizationSchema)
 
 
 </section>
-
-
-
-
-
-
-
-<section className="mt-14">
-
-
-<h2 className="text-3xl font-bold">
-
-{page.section3Title}
-
-</h2>
-
-
-<p className="mt-5">
-
-{page.section3Content}
-
-</p>
-
-
-</section>
-
-
-
-
-
-
-
-<section className="mt-14">
-
-
-<h2 className="text-3xl font-bold">
-
-{page.section4Title}
-
-</h2>
-
-
-<p className="mt-5">
-
-{page.section4Content}
-
-</p>
-
-
-</section>
-
-
-
 
 
 
@@ -400,9 +328,6 @@ Benefícios da Creatina Gummy
 
 
 
-
-
-
 <section className="mt-14">
 
 
@@ -411,8 +336,6 @@ Benefícios da Creatina Gummy
 Perguntas frequentes
 
 </h2>
-
-
 
 
 
@@ -439,14 +362,47 @@ Perguntas frequentes
 </div>
 
 
-
 ))}
-
 
 
 </section>
 
 
+
+
+
+<section className="mt-14 bg-gray-100 rounded-3xl p-8">
+
+
+<h2 className="text-3xl font-bold">
+
+Conteúdo revisado
+
+</h2>
+
+
+<p className="mt-4">
+
+Autor: {page.author}
+
+</p>
+
+
+<p>
+
+Revisado por: {page.reviewedBy}
+
+</p>
+
+
+<p>
+
+Atualizado em: {page.updatedAt}
+
+</p>
+
+
+</section>
 
 
 
@@ -463,6 +419,7 @@ Conheça a Creatina Gummy
 </h2>
 
 
+
 <p className="mt-4">
 
 {page.cta}
@@ -474,18 +431,14 @@ Conheça a Creatina Gummy
 
 <Link
 
-
 href={`/produto/${product?.slug}`}
 
-
 className="inline-block mt-8 bg-purple-600 text-white px-8 py-4 rounded-xl font-bold"
-
 
 >
 
 
 Ver Creatina Gummy
-
 
 </Link>
 
@@ -496,12 +449,7 @@ Ver Creatina Gummy
 
 
 
-
 </main>
-
-
-
-</>
 
 
 );
