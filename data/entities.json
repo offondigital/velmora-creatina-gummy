@@ -1,0 +1,31 @@
+{
+  "brand": {
+    "name": "Creatina Gummy",
+    "type": "Brand"
+  },
+
+  "product": {
+    "name": "Creatina Gummy",
+    "type": "Product",
+    "category": "Suplemento alimentar"
+  },
+
+  "entities": [
+    {
+      "name": "Creatina",
+      "relation": "ingrediente principal relacionado à suplementação esportiva"
+    },
+    {
+      "name": "Creatina Gummy",
+      "relation": "produto em formato de goma com creatina"
+    },
+    {
+      "name": "Suplementação esportiva",
+      "relation": "categoria relacionada ao produto"
+    },
+    {
+      "name": "Treinamento físico",
+      "relation": "contexto de uso relacionado à performance"
+    }
+  ]
+}
