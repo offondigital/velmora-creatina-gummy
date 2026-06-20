@@ -1,0 +1,32 @@
+{
+  "modalidade": {
+    "title": "Creatina Gummy para diferentes modalidades esportivas",
+    "description": "Conteúdos sobre Creatina Gummy aplicada a diferentes esportes e rotinas de treino.",
+    "pages": [
+      "creatina-gummy-para-corrida",
+      "creatina-gummy-para-crossfit",
+      "creatina-gummy-para-futebol",
+      "creatina-gummy-para-ciclismo",
+      "creatina-gummy-para-natacao"
+    ]
+  },
+
+  "objetivo": {
+    "title": "Creatina Gummy para diferentes objetivos",
+    "description": "Informações sobre creatina em goma para diferentes metas de treinamento.",
+    "pages": [
+      "creatina-gummy-para-academia",
+      "creatina-gummy-para-musculacao",
+      "creatina-gummy-para-hipertrofia",
+      "creatina-gummy-para-treino-funcional"
+    ]
+  },
+
+  "publico": {
+    "title": "Creatina Gummy para diferentes públicos",
+    "description": "Conteúdos adaptados para diferentes perfis de usuários.",
+    "pages": [
+      "creatina-gummy-para-mulheres"
+    ]
+  }
+}
