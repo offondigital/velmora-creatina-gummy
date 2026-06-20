@@ -1,20 +1,25 @@
 import Link from "next/link";
 
-import products from "@/data/products.json";
+import AnswerBox from "@/app/components/AnswerBox";
+
 import seoPages from "@/data/seo-pages.json";
 
+import products from "@/data/products.json";
 
-export function generateStaticParams(){
+
+export async function generateStaticParams(){
+
 
 return seoPages.map((page:any)=>({
 
+
 slug:page.slug
+
 
 }));
 
+
 }
-
-
 
 
 
@@ -40,48 +45,19 @@ const page:any = seoPages.find(
 
 
 
-if(!page){
-
-return {};
-
-}
-
-
-
 return {
 
-title:page.title,
 
-description:page.metaDescription,
-
-keywords:[
-
-page.keyword,
-
-"creatina gummy",
-
-"creatina em goma",
-
-"suplemento de creatina"
-
-],
+title:page?.title,
 
 
-alternates:{
-
-canonical:
-
-`https://creatinagummy.com.br/${page.slug}`
-
-}
+description:page?.metaDescription
 
 
 };
 
 
 }
-
-
 
 
 
@@ -112,146 +88,22 @@ const page:any = seoPages.find(
 
 if(!page){
 
-return null;
+
+return <div>Página não encontrada</div>
+
 
 }
-
 
 
 
 
 const product:any = products.find(
 
-(item:any)=>item.slug==="creatina-gummy"
+(item:any)=>
+
+item.slug==="creatina-gummy"
 
 );
-
-
-
-
-
-
-
-const schemas=[
-
-
-
-{
-
-
-"@context":"https://schema.org",
-
-"@type":"Product",
-
-"name":"Creatina Gummy",
-
-"description":page.metaDescription,
-
-
-"brand":{
-
-"@type":"Brand",
-
-"name":"Creatina Gummy"
-
-}
-
-
-},
-
-
-
-
-
-{
-
-
-"@context":"https://schema.org",
-
-"@type":"FAQPage",
-
-
-"mainEntity":
-
-page.faq.map((item:any)=>({
-
-
-"@type":"Question",
-
-"name":item.question,
-
-
-"acceptedAnswer":{
-
-"@type":"Answer",
-
-"text":item.answer
-
-}
-
-
-}))
-
-
-},
-
-
-
-
-
-
-{
-
-
-"@context":"https://schema.org",
-
-"@type":"BreadcrumbList",
-
-
-"itemListElement":[
-
-
-
-{
-
-"@type":"ListItem",
-
-"position":1,
-
-"name":"Creatina Gummy",
-
-"item":"https://creatinagummy.com.br"
-
-},
-
-
-
-{
-
-"@type":"ListItem",
-
-"position":2,
-
-"name":page.h1,
-
-"item":
-
-`https://creatinagummy.com.br/${page.slug}`
-
-}
-
-
-
-]
-
-
-}
-
-
-
-];
-
-
 
 
 
@@ -260,35 +112,8 @@ page.faq.map((item:any)=>({
 return (
 
 
+
 <main className="max-w-5xl mx-auto px-8 py-16">
-
-
-
-
-
-{schemas.map((schema,index)=>(
-
-
-<script
-
-key={index}
-
-type="application/ld+json"
-
-dangerouslySetInnerHTML={{
-
-__html:JSON.stringify(schema)
-
-}}
-
-/>
-
-
-))}
-
-
-
-
 
 
 
@@ -304,41 +129,16 @@ __html:JSON.stringify(schema)
 
 
 
-
-<section className="mt-8 bg-purple-50 rounded-3xl p-8">
-
-
-<h2 className="text-2xl font-bold">
-
-Resposta rápida
-
-</h2>
+<AnswerBox
 
 
-
-<p className="mt-4">
-
-{page.quickAnswer}
-
-</p>
+title={`Resposta direta: ${page.h1}`}
 
 
-</section>
+answer={page.quickAnswer}
 
 
-
-
-
-
-
-
-<p className="mt-10 text-xl text-gray-700">
-
-{page.intro}
-
-</p>
-
-
+/>
 
 
 
@@ -352,7 +152,6 @@ Resposta rápida
 Experiência prática
 
 </h2>
-
 
 
 <p className="mt-4">
@@ -370,8 +169,6 @@ Experiência prática
 
 
 
-
-
 <section className="mt-14">
 
 
@@ -380,7 +177,6 @@ Experiência prática
 Base científica
 
 </h2>
-
 
 
 <p className="mt-4">
@@ -398,8 +194,6 @@ Base científica
 
 
 
-
-
 <section className="mt-14">
 
 
@@ -410,13 +204,11 @@ Autoridade e confiança
 </h2>
 
 
-
 <p className="mt-4">
 
 {page.authority}
 
 </p>
-
 
 
 <p className="mt-4">
@@ -427,8 +219,6 @@ Autoridade e confiança
 
 
 </section>
-
-
 
 
 
@@ -454,37 +244,8 @@ Autoridade e confiança
 </p>
 
 
-</section>
-
-
-
-
-
-
-
-
-
-<section className="mt-14">
-
-
-<h2 className="text-3xl font-bold">
-
-Como a Creatina Gummy pode ajudar
-
-</h2>
-
-
-
-<p className="mt-5">
-
-{page.section2Content}
-
-</p>
-
 
 </section>
-
-
 
 
 
@@ -503,7 +264,7 @@ Benefícios da Creatina Gummy
 
 
 
-<ul className="mt-5 space-y-3">
+<ul className="mt-6 space-y-3">
 
 
 {page.benefits.map((item:string)=>(
@@ -531,7 +292,6 @@ Benefícios da Creatina Gummy
 
 
 
-
 <section className="mt-14">
 
 
@@ -546,7 +306,14 @@ Perguntas frequentes
 {page.faq.map((item:any)=>(
 
 
-<div key={item.question} className="mt-6">
+<div
+
+key={item.question}
+
+className="mt-6"
+
+
+>
 
 
 <h3 className="font-bold">
@@ -556,11 +323,13 @@ Perguntas frequentes
 </h3>
 
 
+
 <p>
 
 {item.answer}
 
 </p>
+
 
 
 </div>
@@ -571,8 +340,6 @@ Perguntas frequentes
 
 
 </section>
-
-
 
 
 
@@ -598,11 +365,13 @@ Autor: {page.author}
 </p>
 
 
+
 <p>
 
 Revisado por: {page.reviewedBy}
 
 </p>
+
 
 
 <p>
@@ -612,8 +381,8 @@ Atualizado em: {page.updatedAt}
 </p>
 
 
-</section>
 
+</section>
 
 
 
@@ -635,10 +404,9 @@ Conheça a Creatina Gummy
 
 <p className="mt-4">
 
-{page.cta}
+Descubra uma forma prática de incluir creatina na sua rotina.
 
 </p>
-
 
 
 
@@ -657,7 +425,9 @@ className="inline-block mt-8 bg-purple-600 text-white px-8 py-4 rounded-xl font-
 
 Ver Creatina Gummy
 
+
 </Link>
+
 
 
 
@@ -668,7 +438,9 @@ Ver Creatina Gummy
 
 
 
+
 </main>
+
 
 
 );
