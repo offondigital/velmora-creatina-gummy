@@ -1,30 +1,60 @@
 import type { MetadataRoute } from "next";
 
+
 import products from "@/data/products.json";
+
 import seoPages from "@/data/seo-pages.json";
+
+import clusters from "@/data/clusters.json";
+
+
+
 
 
 export default function sitemap(): MetadataRoute.Sitemap {
 
 
+
 const baseUrl =
+
 "https://creatinagummy.com.br";
 
 
 
-const productUrls = products.map((product)=>({
+const now = new Date();
+
+
+
+
+
+
+
+const productUrls = products.map((product:any)=>({
+
+
 
 url:
+
 `${baseUrl}/produto/${product.slug}`,
 
+
+
 lastModified:
-new Date(),
+
+now,
+
+
 
 changeFrequency:
+
 "weekly" as const,
 
+
+
 priority:
-0.8
+
+0.9
+
 
 
 }));
@@ -32,42 +62,180 @@ priority:
 
 
 
-const seoUrls = seoPages.map((page)=>({
+
+
+
+
+const seoUrls = seoPages.map((page:any)=>({
+
+
 
 url:
+
 `${baseUrl}/${page.slug}`,
 
+
+
 lastModified:
-new Date(),
+
+now,
+
+
 
 changeFrequency:
-"weekly" as const,
+
+"monthly" as const,
+
+
 
 priority:
+
+0.8
+
+
+
+}));
+
+
+
+
+
+
+
+
+
+const benefitUrls = seoPages.map((page:any)=>({
+
+
+
+url:
+
+`${baseUrl}/beneficios/${page.slug}`,
+
+
+
+lastModified:
+
+now,
+
+
+
+changeFrequency:
+
+"monthly" as const,
+
+
+
+priority:
+
+0.8
+
+
+
+}));
+
+
+
+
+
+
+
+
+
+const clusterUrls = Object.keys(clusters).map((slug)=>({
+
+
+
+url:
+
+`${baseUrl}/clusters/${slug}`,
+
+
+
+lastModified:
+
+now,
+
+
+
+changeFrequency:
+
+"monthly" as const,
+
+
+
+priority:
+
 0.7
 
 
+
 }));
 
 
 
 
-const benefitUrls = seoPages.map((page)=>({
+
+
+
+
+
+const institutionalUrls = [
+
+
+
+"sobre-creatina-gummy",
+
+
+"quem-somos",
+
+
+"metodologia",
+
+
+"revisao-cientifica"
+
+
+
+].map((slug)=>(
+
+
+
+{
+
 
 url:
-`${baseUrl}/beneficios/${page.slug}`,
+
+`${baseUrl}/institucional/${slug}`,
+
+
 
 lastModified:
-new Date(),
+
+now,
+
+
 
 changeFrequency:
-"weekly" as const,
+
+"yearly" as const,
+
+
 
 priority:
-0.8
+
+0.6
 
 
-}));
+
+}
+
+
+
+));
+
+
+
 
 
 
@@ -77,22 +245,71 @@ priority:
 return [
 
 
+
 {
 
+
 url:
+
 baseUrl,
 
+
+
 lastModified:
-new Date(),
+
+now,
+
+
 
 changeFrequency:
-"daily",
+
+"daily" as const,
+
+
 
 priority:
+
 1
 
 
+
 },
+
+
+
+
+
+
+{
+
+
+url:
+
+`${baseUrl}/creatina-gummy`,
+
+
+
+lastModified:
+
+now,
+
+
+
+changeFrequency:
+
+"weekly" as const,
+
+
+
+priority:
+
+1
+
+
+
+},
+
+
 
 
 ...productUrls,
@@ -101,11 +318,18 @@ priority:
 ...seoUrls,
 
 
-...benefitUrls
+...benefitUrls,
+
+
+...clusterUrls,
+
+
+...institutionalUrls
+
 
 
 ];
 
 
-}
 
+}
