@@ -17,6 +17,8 @@ import EntityContext from "@/app/components/EntityContext";
 
 import TopicAuthority from "@/app/components/TopicAuthority";
 
+import EntityGraph from "@/app/components/EntityGraph";
+
 const pages = require("../../data/seo-pages.json");
 
 const products = require("../../data/products.json");
@@ -528,6 +530,8 @@ Atualizado em: {page.updatedAt}
 
 
 <TopicAuthority />
+
+<EntityGraph />
 
 <section className="mt-16 bg-purple-100 rounded-3xl p-10">
 
