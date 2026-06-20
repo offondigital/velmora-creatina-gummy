@@ -15,7 +15,7 @@ import AeoSchema from "@/app/components/AeoSchema";
 
 import EntityContext from "@/app/components/EntityContext";
 
-
+import TopicAuthority from "@/app/components/TopicAuthority";
 
 const pages = require("../../data/seo-pages.json");
 
@@ -527,6 +527,7 @@ Atualizado em: {page.updatedAt}
 
 
 
+<TopicAuthority />
 
 <section className="mt-16 bg-purple-100 rounded-3xl p-10">
 
