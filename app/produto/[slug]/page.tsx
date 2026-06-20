@@ -1,17 +1,32 @@
-import products from "@/data/products.json";
 import Link from "next/link";
 
 
-export function generateStaticParams(){
+import ProductSchema from "@/app/components/ProductSchema";
+
+import ImageSchema from "@/app/components/ImageSchema";
 
 
-return products.map((product)=>({
 
+const products = require("../../../data/products.json");
+
+
+
+
+
+export async function generateStaticParams(){
+
+
+return products.map((product:any)=>(
+
+
+{
 
 slug:product.slug
 
+}
 
-}));
+
+));
 
 
 }
@@ -19,23 +34,31 @@ slug:product.slug
 
 
 
-export default function ProductPage({
 
-params,
+export default async function ProductPage({
+
+params
 
 }:{
 
-params:{slug:string}
+params:Promise<{slug:string}>
 
 }){
 
 
 
+const {slug}=await params;
+
+
+
+
 const product = products.find(
 
-(item)=>item.slug===params.slug
+(p:any)=>p.slug===slug
 
 );
+
+
 
 
 
@@ -47,208 +70,196 @@ return null;
 
 
 
+
+
+
 return (
 
 
-<main className="max-w-6xl mx-auto px-8 py-16">
+
+<>
 
 
 
-<section className="grid md:grid-cols-2 gap-12 items-center">
-
-
-<div>
+<ProductSchema product={product}/>
 
 
 
-<h1 className="text-5xl font-bold leading-tight">
+<ImageSchema/>
 
-{product.name}
+
+
+
+
+<main className="max-w-5xl mx-auto px-6 py-16">
+
+
+
+
+
+
+<h1 className="text-5xl font-bold">
+
+
+{product.title || product.name}
+
 
 </h1>
 
 
 
 
-<p className="mt-6 text-xl text-gray-600">
+
+
+
+<p className="mt-6 text-xl">
+
 
 {product.description}
 
+
 </p>
 
+
+
+
+
+
+
+<section className="mt-14">
+
+
+<h2 className="text-3xl font-bold">
+
+Sobre o produto
+
+</h2>
+
+
+
+<p className="mt-5">
+
+
+A Creatina Gummy combina praticidade e suplementação em um formato de goma desenvolvido para 
+acompanhar diferentes rotinas de treino.
+
+
+</p>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<section className="mt-14">
+
+
+<h2 className="text-3xl font-bold">
+
+Benefícios
+
+</h2>
+
+
+
+
+<ul className="list-disc pl-6 mt-5">
+
+
+<li>
+
+Praticidade no consumo
+
+</li>
+
+
+<li>
+
+Formato gummy fácil de incluir na rotina
+
+</li>
+
+
+<li>
+
+Suporte para treinos e performance
+
+</li>
+
+
+</ul>
+
+
+
+</section>
+
+
+
+
+
+
+
+<section className="mt-14 bg-gray-100 rounded-3xl p-8">
+
+
+<h2 className="text-3xl font-bold">
+
+
+Creatina Gummy
+
+
+</h2>
+
+
+
+<p className="mt-4">
+
+
+Creatina em goma para quem busca uma experiência diferente de suplementação.
+
+
+</p>
 
 
 
 <Link
 
-href="#comprar"
+href="/creatina-gummy"
 
-className="inline-block mt-8 bg-purple-600 text-white px-8 py-4 rounded-xl font-bold"
+className="inline-block mt-6 bg-purple-600 text-white px-8 py-4 rounded-xl font-bold"
+
 
 >
 
-Comprar agora
+
+Conheça a Creatina Gummy
+
 
 </Link>
 
 
-</div>
-
-
-
-
-
-
-<div className="bg-purple-100 rounded-3xl p-12">
-
-
-<h2 className="text-3xl font-bold">
-
-Performance na sua rotina
-
-</h2>
-
-
-<p className="mt-4">
-
-Uma nova experiência em suplementação.
-
-</p>
-
-
-</div>
-
 
 
 </section>
 
 
-
-
-
-
-
-
-<section className="py-20">
-
-
-<h2 className="text-3xl font-bold">
-
-Benefícios do {product.name}
-
-</h2>
-
-
-
-<div className="grid md:grid-cols-3 gap-6 mt-10">
-
-
-<div className="border rounded-2xl p-6">
-
-<h3 className="font-bold text-xl">
-
-Praticidade
-
-</h3>
-
-<p>
-
-Formato em goma fácil de consumir.
-
-</p>
-
-</div>
-
-
-
-
-<div className="border rounded-2xl p-6">
-
-<h3 className="font-bold text-xl">
-
-Performance
-
-</h3>
-
-<p>
-
-Para acompanhar seus objetivos.
-
-</p>
-
-</div>
-
-
-
-
-
-<div className="border rounded-2xl p-6">
-
-
-<h3 className="font-bold text-xl">
-
-Sabor
-
-</h3>
-
-
-<p>
-
-Uma forma diferente de consumir creatina.
-
-</p>
-
-
-</div>
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-<section
-
-id="comprar"
-
-className="bg-black text-white rounded-3xl p-12 text-center"
-
->
-
-
-<h2 className="text-4xl font-bold">
-
-Experimente {product.name}
-
-</h2>
-
-
-
-<button
-
-className="mt-8 bg-purple-600 px-10 py-4 rounded-xl font-bold"
-
->
-
-Comprar
-
-</button>
-
-
-</section>
 
 
 
 
 </main>
+
+
+
+</>
+
 
 
 );

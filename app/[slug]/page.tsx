@@ -1,8 +1,15 @@
 import Link from "next/link";
 
+
 import Breadcrumb from "@/app/components/Breadcrumb";
 
 import ArticleSchema from "@/app/components/ArticleSchema";
+
+import WebPageSchema from "@/app/components/WebPageSchema";
+
+import FaqSchema from "@/app/components/FaqSchema";
+
+import BreadcrumbSchema from "@/app/components/BreadcrumbSchema";
 
 import AeoSchema from "@/app/components/AeoSchema";
 
@@ -12,8 +19,8 @@ import EntityContext from "@/app/components/EntityContext";
 
 const pages = require("../../data/seo-pages.json");
 
-
 const products = require("../../data/products.json");
+
 
 
 
@@ -39,6 +46,8 @@ slug:page.slug
 
 
 
+
+
 export default async function Page({
 
 params
@@ -50,7 +59,10 @@ params:Promise<{slug:string}>
 }){
 
 
+
 const {slug}=await params;
+
+
 
 
 
@@ -65,11 +77,14 @@ const page = pages.find(
 
 
 
+
 if(!page){
 
 return null;
 
 }
+
+
 
 
 
@@ -85,11 +100,51 @@ const product = products.find(
 
 
 
+const breadcrumbItems=[
+
+
+
+{
+
+name:"Creatina Gummy",
+
+url:"https://creatinagummy.com.br/creatina-gummy"
+
+},
+
+
+
+{
+
+name:page.h1 || page.title,
+
+url:
+
+`https://creatinagummy.com.br/${page.slug}`
+
+}
+
+
+
+];
+
+
+
+
+
+
+
 return (
+
 
 
 <main className="max-w-5xl mx-auto px-6 py-16">
 
+
+
+
+
+<WebPageSchema page={page}/>
 
 
 
@@ -99,10 +154,33 @@ return (
 
 
 
+
+<FaqSchema faq={page.faq}/>
+
+
+
+
+
+<BreadcrumbSchema items={breadcrumbItems}/>
+
+
+
+
+
+
+<AeoSchema page={page}/>
+
+
+
+
+
+
+
 <Breadcrumb
 
 
 items={[
+
 
 
 {
@@ -117,9 +195,13 @@ url:"/creatina-gummy"
 
 {
 
-name:page.h1,
+name:
 
-url:`/${page.slug}`
+page.h1 || page.title,
+
+url:
+
+`/${page.slug}`
 
 }
 
@@ -134,8 +216,6 @@ url:`/${page.slug}`
 
 
 
-<AeoSchema page={page}/>
-
 
 
 
@@ -143,10 +223,13 @@ url:`/${page.slug}`
 <EntityContext
 
 
-entity={page.keyword}
+
+entity={page.keyword || "Creatina Gummy"}
 
 
-category={page.categoria}
+
+category={page.category || "Suplementação esportiva"}
+
 
 
 related={page.relatedProducts || []}
@@ -154,6 +237,7 @@ related={page.relatedProducts || []}
 
 
 />
+
 
 
 
@@ -174,6 +258,9 @@ related={page.relatedProducts || []}
 
 
 
+
+
+
 <p className="mt-6 text-xl">
 
 
@@ -181,6 +268,8 @@ related={page.relatedProducts || []}
 
 
 </p>
+
+
 
 
 
@@ -241,6 +330,7 @@ Experiência prática
 
 
 
+
 <section className="mt-14">
 
 
@@ -267,6 +357,7 @@ Base científica
 
 
 
+
 <section className="mt-14">
 
 
@@ -277,11 +368,13 @@ Autoridade e confiança
 </h2>
 
 
+
 <p className="mt-5">
 
 {page.authority}
 
 </p>
+
 
 
 <p className="mt-5">
@@ -300,6 +393,7 @@ Autoridade e confiança
 
 
 
+
 <section className="mt-14">
 
 
@@ -308,6 +402,7 @@ Autoridade e confiança
 {page.section1Title}
 
 </h2>
+
 
 
 <p className="mt-5">
@@ -332,48 +427,6 @@ Autoridade e confiança
 
 <h2 className="text-3xl font-bold">
 
-Benefícios
-
-</h2>
-
-
-
-
-<ul className="list-disc pl-6 mt-5">
-
-
-{page.benefits.map((item:string)=>(
-
-
-<li key={item}>
-
-{item}
-
-</li>
-
-
-))}
-
-
-
-</ul>
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<section className="mt-14">
-
-
-<h2 className="text-3xl font-bold">
-
 Perguntas frequentes
 
 </h2>
@@ -381,7 +434,7 @@ Perguntas frequentes
 
 
 
-{page.faq.map((item:any)=>(
+{page.faq?.map((item:any)=>(
 
 
 <div
@@ -401,6 +454,7 @@ className="mt-6"
 </h3>
 
 
+
 <p>
 
 {item.answer}
@@ -408,10 +462,12 @@ className="mt-6"
 </p>
 
 
+
 </div>
 
 
 ))}
+
 
 
 
@@ -436,6 +492,7 @@ Conteúdo revisado
 
 
 
+
 <p>
 
 Autor: {page.author}
@@ -452,11 +509,13 @@ Revisado por: {page.reviewedBy}
 
 
 
+
 <p>
 
-Atualizado: {page.updatedAt}
+Atualizado em: {page.updatedAt}
 
 </p>
+
 
 
 </section>
@@ -480,20 +539,27 @@ Conheça a Creatina Gummy
 
 
 
+
 <p className="mt-5">
 
-Creatina em goma para uma experiência prática de suplementação.
+{page.cta || "Creatina em goma para uma rotina prática de suplementação."}
 
 </p>
 
 
 
 
+
+
 <Link
+
 
 href={`/produto/${product?.slug}`}
 
+
 className="inline-block mt-8 bg-purple-600 text-white px-8 py-4 rounded-xl font-bold"
+
+
 
 >
 
@@ -504,6 +570,9 @@ Ver Creatina Gummy
 </Link>
 
 
+
+
+
 </section>
 
 
@@ -512,7 +581,9 @@ Ver Creatina Gummy
 
 
 
+
 </main>
+
 
 
 );
