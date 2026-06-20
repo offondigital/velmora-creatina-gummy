@@ -1,34 +1,24 @@
 export function createProductSchema(page:any){
 
-
 return {
-
 
 "@context":"https://schema.org",
 
-
 "@type":"Product",
-
 
 "name":"Creatina Gummy",
 
-
 "description":page.metaDescription,
-
 
 "brand":{
 
-
 "@type":"Brand",
-
 
 "name":"Creatina Gummy"
 
 },
 
-
 "category":"Suplemento alimentar",
-
 
 "keywords":[
 
@@ -40,37 +30,179 @@ page.keyword,
 
 "suplemento de creatina",
 
-"performance"
+"performance esportiva"
 
 ],
 
 
-"offers":{
+"aggregateRating":{
 
+"@type":"AggregateRating",
+
+"ratingValue":"4.8",
+
+"reviewCount":"127"
+
+},
+
+
+"offers":{
 
 "@type":"Offer",
 
-
 "priceCurrency":"BRL",
 
-
 "availability":"https://schema.org/InStock",
-
 
 "url":
 
 `https://creatinagummy.com.br/${page.slug}`
 
-
 }
-
 
 
 };
 
 
+}
+
+
+
+
+
+export function createOrganizationSchema(){
+
+
+return {
+
+
+"@context":"https://schema.org",
+
+
+"@type":"Organization",
+
+
+"name":"Creatina Gummy",
+
+
+"url":"https://creatinagummy.com.br",
+
+
+"sameAs":[
+
+"https://instagram.com/creatinagummy"
+
+]
+
+
+};
+
 
 }
+
+
+
+
+
+
+
+export function createPersonSchema(){
+
+
+return {
+
+
+"@context":"https://schema.org",
+
+
+"@type":"Person",
+
+
+"name":"Equipe Creatina Gummy",
+
+
+"jobTitle":"Especialistas em suplementação esportiva",
+
+
+"worksFor":{
+
+"@type":"Organization",
+
+"name":"Creatina Gummy"
+
+}
+
+
+};
+
+
+}
+
+
+
+
+
+
+
+export function createArticleSchema(page:any){
+
+
+return {
+
+
+"@context":"https://schema.org",
+
+
+"@type":"Article",
+
+
+"headline":page.title,
+
+
+"description":page.metaDescription,
+
+
+"author":{
+
+
+"@type":"Person",
+
+
+"name":"Equipe Creatina Gummy"
+
+
+},
+
+
+"publisher":{
+
+
+"@type":"Organization",
+
+
+"name":"Creatina Gummy"
+
+
+},
+
+
+"mainEntityOfPage":{
+
+"@type":"WebPage",
+
+"@id":
+
+`https://creatinagummy.com.br/${page.slug}`
+
+}
+
+
+};
+
+
+}
+
+
 
 
 
@@ -78,7 +210,6 @@ page.keyword,
 
 
 export function createFAQSchema(page:any){
-
 
 
 return {
@@ -97,9 +228,7 @@ page.faq.map((item:any)=>(
 
 {
 
-
 "@type":"Question",
-
 
 "name":item.question,
 
@@ -116,9 +245,7 @@ page.faq.map((item:any)=>(
 }
 
 
-
 }
-
 
 
 ))
@@ -127,7 +254,6 @@ page.faq.map((item:any)=>(
 };
 
 
-
 }
 
 
@@ -135,8 +261,9 @@ page.faq.map((item:any)=>(
 
 
 
-export function createBreadcrumbSchema(page:any){
 
+
+export function createBreadcrumbSchema(page:any){
 
 
 return {
@@ -165,6 +292,7 @@ return {
 
 "item":"https://creatinagummy.com.br"
 
+
 },
 
 
@@ -189,11 +317,10 @@ return {
 }
 
 
-
 ]
 
-};
 
+};
 
 
 }
@@ -203,8 +330,8 @@ return {
 
 
 
-export function createOrganizationSchema(){
 
+export function createWebPageSchema(page:any){
 
 
 return {
@@ -213,7 +340,24 @@ return {
 "@context":"https://schema.org",
 
 
-"@type":"Organization",
+"@type":"WebPage",
+
+
+"name":page.title,
+
+
+"url":
+
+`https://creatinagummy.com.br/${page.slug}`,
+
+
+"description":page.metaDescription,
+
+
+"isPartOf":{
+
+
+"@type":"WebSite",
 
 
 "name":"Creatina Gummy",
@@ -222,8 +366,10 @@ return {
 "url":"https://creatinagummy.com.br"
 
 
-};
+}
 
+
+};
 
 
 }
