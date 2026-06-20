@@ -16,20 +16,24 @@ slug:page.slug
 
 
 
+
 export async function generateMetadata({
 
 params
 
 }:{
 
-params:{slug:string}
+params:Promise<{slug:string}>
 
 }){
 
 
+const {slug}=await params;
+
+
 const page:any = seoPages.find(
 
-(item:any)=>item.slug === params.slug
+(item:any)=>item.slug===slug
 
 );
 
@@ -65,6 +69,7 @@ page.keyword,
 ],
 
 
+
 alternates:{
 
 
@@ -79,28 +84,30 @@ canonical:
 };
 
 
-
 }
 
 
 
 
 
-
-export default function IntentPage({
+export default async function IntentPage({
 
 params
 
 }:{
 
-params:{slug:string}
+params:Promise<{slug:string}>
 
 }){
 
 
+const {slug}=await params;
+
+
+
 const page:any = seoPages.find(
 
-(item:any)=>item.slug === params.slug
+(item:any)=>item.slug===slug
 
 );
 
@@ -111,6 +118,7 @@ if(!page){
 return null;
 
 }
+
 
 
 
@@ -381,7 +389,7 @@ Conteúdo revisado
 </h2>
 
 
-<p className="mt-4">
+<p>
 
 Autor: {page.author}
 
@@ -403,7 +411,6 @@ Atualizado em: {page.updatedAt}
 
 
 </section>
-
 
 
 
@@ -433,7 +440,8 @@ Conheça a Creatina Gummy
 
 href={`/produto/${product?.slug}`}
 
-className="inline-block mt-8 bg-purple-600 text-white px-8 py-4 rounded-xl font-bold"
+className="inline-block mt-8 bg-purple-600 text-white px-8 py-4 rounded-xl 
+font-bold"
 
 >
 
@@ -443,10 +451,7 @@ Ver Creatina Gummy
 </Link>
 
 
-
 </section>
-
-
 
 
 </main>
