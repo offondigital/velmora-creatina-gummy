@@ -2,17 +2,25 @@ import Link from "next/link";
 import products from "@/data/products.json";
 import seoPages from "@/data/seo-pages.json";
 
+import {
+  createProductSchema,
+  createFAQSchema,
+  createBreadcrumbSchema,
+  createOrganizationSchema
+} from "@/lib/schema";
+
 
 
 export function generateStaticParams(){
 
-return seoPages.map((page)=>({
+  return seoPages.map((page)=>({
 
-slug: page.slug
+    slug: page.slug
 
-}));
+  }));
 
 }
+
 
 
 
@@ -149,6 +157,8 @@ return null;
 
 
 
+
+
 const product = products.find(
 
 (item)=>item.slug==="creatina-gummy"
@@ -158,7 +168,75 @@ const product = products.find(
 
 
 
+
+const productSchema = createProductSchema(page);
+
+const faqSchema = createFAQSchema(page);
+
+const breadcrumbSchema = createBreadcrumbSchema(page);
+
+const organizationSchema = createOrganizationSchema();
+
+
+
+
+
+
+
 return (
+
+
+<>
+
+
+<script
+type="application/ld+json"
+dangerouslySetInnerHTML={{
+
+__html: JSON.stringify(productSchema)
+
+}}
+
+/>
+
+
+
+<script
+type="application/ld+json"
+dangerouslySetInnerHTML={{
+
+__html: JSON.stringify(faqSchema)
+
+}}
+
+/>
+
+
+
+<script
+type="application/ld+json"
+dangerouslySetInnerHTML={{
+
+__html: JSON.stringify(breadcrumbSchema)
+
+}}
+
+/>
+
+
+
+<script
+type="application/ld+json"
+dangerouslySetInnerHTML={{
+
+__html: JSON.stringify(organizationSchema)
+
+}}
+
+/>
+
+
+
 
 
 <main className="max-w-5xl mx-auto px-8 py-16">
@@ -173,11 +251,13 @@ return (
 
 
 
+
 <p className="mt-8 text-xl text-gray-600">
 
 {page.intro}
 
 </p>
+
 
 
 
@@ -201,6 +281,7 @@ return (
 
 
 </section>
+
 
 
 
@@ -231,6 +312,7 @@ return (
 
 
 
+
 <section className="mt-14">
 
 
@@ -255,6 +337,7 @@ return (
 
 
 
+
 <section className="mt-14">
 
 
@@ -273,6 +356,7 @@ return (
 
 
 </section>
+
 
 
 
@@ -318,6 +402,7 @@ Benefícios da Creatina Gummy
 
 
 
+
 <section className="mt-14">
 
 
@@ -326,6 +411,7 @@ Benefícios da Creatina Gummy
 Perguntas frequentes
 
 </h2>
+
 
 
 
@@ -359,6 +445,7 @@ Perguntas frequentes
 
 
 </section>
+
 
 
 
@@ -411,6 +498,10 @@ Ver Creatina Gummy
 
 
 </main>
+
+
+
+</>
 
 
 );
