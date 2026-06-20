@@ -39,7 +39,7 @@ metadataBase:new URL(
 title:{
 
 
-default:"Creatina Gummy | Suplementação em goma",
+default:"Creatina Gummy | Creatina em goma",
 
 template:"%s | Creatina Gummy"
 
@@ -51,7 +51,7 @@ template:"%s | Creatina Gummy"
 description:
 
 
-"Creatina Gummy: suplemento em goma desenvolvido para praticidade, performance e rotina de treinos.",
+"Creatina Gummy: creatina em goma para quem busca praticidade, performance e uma nova experiência de suplementação.",
 
 
 
@@ -62,6 +62,8 @@ keywords:[
 "creatina gummy",
 
 "creatina em goma",
+
+"creatina gummy essential",
 
 "suplemento de creatina",
 
@@ -75,6 +77,137 @@ keywords:[
 
 
 };
+
+
+
+
+const entitySchema = {
+
+
+"@context":"https://schema.org",
+
+
+"@graph":[
+
+
+{
+
+
+"@type":"Organization",
+
+
+"@id":"https://creatinagummy.com.br/#organization",
+
+
+"name":"Creatina Gummy",
+
+
+"url":"https://creatinagummy.com.br",
+
+
+"description":
+
+"Marca de suplementação esportiva especializada em creatina em formato gummy.",
+
+
+
+"brand":{
+
+
+"@id":"https://creatinagummy.com.br/#brand"
+
+
+}
+
+
+
+},
+
+
+
+
+{
+
+
+"@type":"Brand",
+
+
+"@id":"https://creatinagummy.com.br/#brand",
+
+
+"name":"Creatina Gummy",
+
+
+"url":"https://creatinagummy.com.br"
+
+
+},
+
+
+
+
+{
+
+
+"@type":"WebSite",
+
+
+"@id":"https://creatinagummy.com.br/#website",
+
+
+"url":"https://creatinagummy.com.br",
+
+
+"name":"Creatina Gummy",
+
+
+"publisher":{
+
+
+"@id":"https://creatinagummy.com.br/#organization"
+
+
+},
+
+
+"potentialAction":{
+
+
+"@type":"SearchAction",
+
+
+"target":{
+
+
+"@type":"EntryPoint",
+
+
+"urlTemplate":
+
+"https://creatinagummy.com.br/?s={search_term_string}"
+
+
+},
+
+
+"query-input":
+
+"required name=search_term_string"
+
+
+}
+
+
+
+}
+
+
+
+]
+
+
+};
+
 
 
 
@@ -101,6 +234,20 @@ return (
 className={`${geistSans.variable} ${geistMono.variable}`}
 
 >
+
+
+<script
+
+type="application/ld+json"
+
+dangerouslySetInnerHTML={{
+
+__html:JSON.stringify(entitySchema)
+
+}}
+
+/>
+
 
 
 <Header />
