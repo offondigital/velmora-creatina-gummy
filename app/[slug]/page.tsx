@@ -1,16 +1,22 @@
 import Link from "next/link";
 
-import AnswerBox from "@/app/components/AnswerBox";
+import AeoSchema from "@/app/components/AeoSchema";
+import EntityContext from "@/app/components/EntityContext";
 
-import seoPages from "@/data/seo-pages.json";
 
-import products from "@/data/products.json";
+
+const pages = require("../../data/seo-pages.json");
+
+const products = require("../../data/products.json");
+
+
+
 
 
 export async function generateStaticParams(){
 
 
-return seoPages.map((page:any)=>({
+return pages.map((page:any)=>({
 
 
 slug:page.slug
@@ -23,73 +29,38 @@ slug:page.slug
 
 
 
-export async function generateMetadata({
-
-params
-
-}:{
-
-params:Promise<{slug:string}>
-
-}){
 
 
-const {slug}=await params;
+export default async function Page({
 
-
-const page:any = seoPages.find(
-
-(item:any)=>item.slug===slug
-
-);
-
-
-
-return {
-
-
-title:page?.title,
-
-
-description:page?.metaDescription
-
-
-};
-
-
-}
-
-
-
-
-
-export default async function IntentPage({
-
-params
+params,
 
 }:{
 
-params:Promise<{slug:string}>
+params:Promise<{slug:string}>;
 
 }){
+
 
 
 const {slug}=await params;
 
 
 
-const page:any = seoPages.find(
+const page = pages.find(
 
-(item:any)=>item.slug===slug
+(p:any)=>p.slug===slug
 
 );
+
+
 
 
 
 if(!page){
 
 
-return <div>Página não encontrada</div>
+return null;
 
 
 }
@@ -97,13 +68,16 @@ return <div>Página não encontrada</div>
 
 
 
-const product:any = products.find(
 
-(item:any)=>
 
-item.slug==="creatina-gummy"
+
+const product = products.find(
+
+(p:any)=>p.slug==="creatina-gummy"
 
 );
+
+
 
 
 
@@ -113,32 +87,84 @@ return (
 
 
 
-<main className="max-w-5xl mx-auto px-8 py-16">
+<main className="max-w-5xl mx-auto px-6 py-16">
 
+
+
+
+
+<AeoSchema page={page}/>
+
+
+
+<EntityContext
+
+entity={page.keyword}
+
+category={page.categoria}
+
+related={page.relatedProducts || []}
+
+/>
+
+
+
+
+
+
+<section>
 
 
 <h1 className="text-5xl font-bold">
 
-
 {page.h1}
-
 
 </h1>
 
 
 
 
+<p className="mt-6 text-xl">
 
-<AnswerBox
+{page.quickAnswer}
 
-
-title={`Resposta direta: ${page.h1}`}
-
-
-answer={page.quickAnswer}
+</p>
 
 
-/>
+</section>
+
+
+
+
+
+
+
+
+<section className="mt-14">
+
+
+<h2 className="text-3xl font-bold">
+
+Introdução
+
+</h2>
+
+
+
+<p className="mt-5">
+
+{page.intro}
+
+</p>
+
+
+
+</section>
+
+
+
+
+
 
 
 
@@ -154,14 +180,19 @@ Experiência prática
 </h2>
 
 
-<p className="mt-4">
+
+<p className="mt-5">
 
 {page.experience}
 
 </p>
 
 
+
 </section>
+
+
+
 
 
 
@@ -179,14 +210,19 @@ Base científica
 </h2>
 
 
-<p className="mt-4">
+
+<p className="mt-5">
 
 {page.scientificBasis}
 
 </p>
 
 
+
 </section>
+
+
+
 
 
 
@@ -204,21 +240,27 @@ Autoridade e confiança
 </h2>
 
 
-<p className="mt-4">
+
+<p className="mt-5">
 
 {page.authority}
 
 </p>
 
 
-<p className="mt-4">
+
+
+<p className="mt-5">
 
 {page.trust}
 
 </p>
 
 
+
 </section>
+
+
 
 
 
@@ -253,6 +295,9 @@ Autoridade e confiança
 
 
 
+
+
+
 <section className="mt-14">
 
 
@@ -264,7 +309,8 @@ Benefícios da Creatina Gummy
 
 
 
-<ul className="mt-6 space-y-3">
+
+<ul className="mt-5 list-disc pl-6">
 
 
 {page.benefits.map((item:string)=>(
@@ -272,7 +318,7 @@ Benefícios da Creatina Gummy
 
 <li key={item}>
 
-✓ {item}
+{item}
 
 </li>
 
@@ -280,10 +326,12 @@ Benefícios da Creatina Gummy
 ))}
 
 
+
 </ul>
 
 
 </section>
+
 
 
 
@@ -303,7 +351,9 @@ Perguntas frequentes
 
 
 
+
 {page.faq.map((item:any)=>(
+
 
 
 <div
@@ -316,7 +366,8 @@ className="mt-6"
 >
 
 
-<h3 className="font-bold">
+
+<h3 className="font-bold text-xl">
 
 {item.question}
 
@@ -324,7 +375,7 @@ className="mt-6"
 
 
 
-<p>
+<p className="mt-2">
 
 {item.answer}
 
@@ -332,7 +383,9 @@ className="mt-6"
 
 
 
+
 </div>
+
 
 
 ))}
@@ -340,6 +393,8 @@ className="mt-6"
 
 
 </section>
+
+
 
 
 
@@ -358,7 +413,8 @@ Conteúdo revisado
 
 
 
-<p>
+
+<p className="mt-3">
 
 Autor: {page.author}
 
@@ -391,7 +447,66 @@ Atualizado em: {page.updatedAt}
 
 
 
+
+<section className="mt-14">
+
+
+<h2 className="text-3xl font-bold">
+
+Conteúdos relacionados
+
+</h2>
+
+
+
+
+
+<div className="mt-6 grid gap-4">
+
+
+
+{page.internalLinks.map((link:any)=>(
+
+
+<Link
+
+key={link.slug}
+
+href={`/${link.slug}`}
+
+className="underline"
+
+>
+
+
+{link.title}
+
+
+</Link>
+
+
+
+))}
+
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
 <section className="mt-16 bg-purple-100 rounded-3xl p-10">
+
 
 
 <h2 className="text-3xl font-bold">
@@ -402,23 +517,22 @@ Conheça a Creatina Gummy
 
 
 
+
 <p className="mt-4">
 
-Descubra uma forma prática de incluir creatina na sua rotina.
+Suplementação em goma para quem busca praticidade, performance e uma nova experiência.
 
 </p>
 
 
 
 
-<Link
 
+<Link
 
 href={`/produto/${product?.slug}`}
 
-
 className="inline-block mt-8 bg-purple-600 text-white px-8 py-4 rounded-xl font-bold"
-
 
 >
 
@@ -432,8 +546,6 @@ Ver Creatina Gummy
 
 
 </section>
-
-
 
 
 
