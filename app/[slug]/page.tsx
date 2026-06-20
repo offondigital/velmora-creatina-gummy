@@ -1,14 +1,19 @@
 import Link from "next/link";
 
+import Breadcrumb from "@/app/components/Breadcrumb";
+
+import ArticleSchema from "@/app/components/ArticleSchema";
+
 import AeoSchema from "@/app/components/AeoSchema";
+
 import EntityContext from "@/app/components/EntityContext";
 
 
 
 const pages = require("../../data/seo-pages.json");
 
-const products = require("../../data/products.json");
 
+const products = require("../../data/products.json");
 
 
 
@@ -16,13 +21,17 @@ const products = require("../../data/products.json");
 export async function generateStaticParams(){
 
 
-return pages.map((page:any)=>({
+return pages.map((page:any)=>(
 
+
+{
 
 slug:page.slug
 
+}
 
-}));
+
+));
 
 
 }
@@ -30,20 +39,19 @@ slug:page.slug
 
 
 
-
 export default async function Page({
 
-params,
+params
 
 }:{
 
-params:Promise<{slug:string}>;
+params:Promise<{slug:string}>
 
 }){
 
 
-
 const {slug}=await params;
+
 
 
 
@@ -59,14 +67,9 @@ const page = pages.find(
 
 if(!page){
 
-
 return null;
 
-
 }
-
-
-
 
 
 
@@ -82,12 +85,50 @@ const product = products.find(
 
 
 
-
 return (
 
 
-
 <main className="max-w-5xl mx-auto px-6 py-16">
+
+
+
+
+
+<ArticleSchema page={page}/>
+
+
+
+
+<Breadcrumb
+
+
+items={[
+
+
+{
+
+name:"Creatina Gummy",
+
+url:"/creatina-gummy"
+
+},
+
+
+
+{
+
+name:page.h1,
+
+url:`/${page.slug}`
+
+}
+
+
+
+]}
+
+
+/>
 
 
 
@@ -97,13 +138,20 @@ return (
 
 
 
+
+
 <EntityContext
+
 
 entity={page.keyword}
 
+
 category={page.categoria}
 
+
 related={page.relatedProducts || []}
+
+
 
 />
 
@@ -112,12 +160,14 @@ related={page.relatedProducts || []}
 
 
 
-<section>
+
 
 
 <h1 className="text-5xl font-bold">
 
+
 {page.h1}
+
 
 </h1>
 
@@ -126,13 +176,11 @@ related={page.relatedProducts || []}
 
 <p className="mt-6 text-xl">
 
+
 {page.quickAnswer}
 
+
 </p>
-
-
-</section>
-
 
 
 
@@ -150,7 +198,6 @@ Introdução
 </h2>
 
 
-
 <p className="mt-5">
 
 {page.intro}
@@ -158,9 +205,7 @@ Introdução
 </p>
 
 
-
 </section>
-
 
 
 
@@ -180,7 +225,6 @@ Experiência prática
 </h2>
 
 
-
 <p className="mt-5">
 
 {page.experience}
@@ -188,10 +232,7 @@ Experiência prática
 </p>
 
 
-
 </section>
-
-
 
 
 
@@ -210,7 +251,6 @@ Base científica
 </h2>
 
 
-
 <p className="mt-5">
 
 {page.scientificBasis}
@@ -218,10 +258,7 @@ Base científica
 </p>
 
 
-
 </section>
-
-
 
 
 
@@ -240,14 +277,11 @@ Autoridade e confiança
 </h2>
 
 
-
 <p className="mt-5">
 
 {page.authority}
 
 </p>
-
-
 
 
 <p className="mt-5">
@@ -257,9 +291,7 @@ Autoridade e confiança
 </p>
 
 
-
 </section>
-
 
 
 
@@ -278,7 +310,6 @@ Autoridade e confiança
 </h2>
 
 
-
 <p className="mt-5">
 
 {page.section1Content}
@@ -286,9 +317,7 @@ Autoridade e confiança
 </p>
 
 
-
 </section>
-
 
 
 
@@ -303,14 +332,14 @@ Autoridade e confiança
 
 <h2 className="text-3xl font-bold">
 
-Benefícios da Creatina Gummy
+Benefícios
 
 </h2>
 
 
 
 
-<ul className="mt-5 list-disc pl-6">
+<ul className="list-disc pl-6 mt-5">
 
 
 {page.benefits.map((item:string)=>(
@@ -355,7 +384,6 @@ Perguntas frequentes
 {page.faq.map((item:any)=>(
 
 
-
 <div
 
 key={item.question}
@@ -366,26 +394,21 @@ className="mt-6"
 >
 
 
-
-<h3 className="font-bold text-xl">
+<h3 className="font-bold">
 
 {item.question}
 
 </h3>
 
 
-
-<p className="mt-2">
+<p>
 
 {item.answer}
 
 </p>
 
 
-
-
 </div>
-
 
 
 ))}
@@ -413,8 +436,7 @@ Conteúdo revisado
 
 
 
-
-<p className="mt-3">
+<p>
 
 Autor: {page.author}
 
@@ -432,67 +454,9 @@ Revisado por: {page.reviewedBy}
 
 <p>
 
-Atualizado em: {page.updatedAt}
+Atualizado: {page.updatedAt}
 
 </p>
-
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<section className="mt-14">
-
-
-<h2 className="text-3xl font-bold">
-
-Conteúdos relacionados
-
-</h2>
-
-
-
-
-
-<div className="mt-6 grid gap-4">
-
-
-
-{page.internalLinks.map((link:any)=>(
-
-
-<Link
-
-key={link.slug}
-
-href={`/${link.slug}`}
-
-className="underline"
-
->
-
-
-{link.title}
-
-
-</Link>
-
-
-
-))}
-
-
-
-
-</div>
-
 
 
 </section>
@@ -508,7 +472,6 @@ className="underline"
 <section className="mt-16 bg-purple-100 rounded-3xl p-10">
 
 
-
 <h2 className="text-3xl font-bold">
 
 Conheça a Creatina Gummy
@@ -517,13 +480,11 @@ Conheça a Creatina Gummy
 
 
 
+<p className="mt-5">
 
-<p className="mt-4">
-
-Suplementação em goma para quem busca praticidade, performance e uma nova experiência.
+Creatina em goma para uma experiência prática de suplementação.
 
 </p>
-
 
 
 
@@ -543,16 +504,15 @@ Ver Creatina Gummy
 </Link>
 
 
-
-
 </section>
 
 
 
 
 
-</main>
 
+
+</main>
 
 
 );
