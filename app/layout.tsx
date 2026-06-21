@@ -4,7 +4,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 
 import "./globals.css";
 
-
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
@@ -12,7 +11,7 @@ import OrganizationSchema from "./components/OrganizationSchema";
 
 import TopicAuthoritySchema from "./components/TopicAuthoritySchema";
 
-
+import GlobalEntityGraph from "./components/GlobalEntityGraph";
 
 
 const geistSans = Geist({
@@ -336,7 +335,7 @@ className={`${geistSans.variable} ${geistMono.variable}`}
 
 <OrganizationSchema />
 
-
+<GlobalEntityGraph />
 
 <TopicAuthoritySchema />
 

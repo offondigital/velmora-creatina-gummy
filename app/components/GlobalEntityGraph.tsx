@@ -1,272 +1,148 @@
-import organization from "@/data/organization.json";
-import authors from "@/data/authors.json";
-import reviewers from "@/data/reviewers.json";
-
-
 export default function GlobalEntityGraph(){
-
-
 
 const schema = {
 
-
-
 "@context":"https://schema.org",
-
-
-
 
 "@graph":[
 
-
-
-
-
 {
-
 
 "@type":"Organization",
 
+"@id":"https://creatinagummy.com.br/#organization",
 
-"@id":
+"name":"Creatina Gummy",
 
-"https://creatinagummy.com.br/#organization",
+"url":"https://creatinagummy.com.br",
 
+"description":"Marca especializada em creatina em goma, suplementação esportiva e conteúdos educativos sobre performance.",
 
-"name":
+"sameAs":[
+"https://creatinagummy.com.br"
+],
 
-organization.name,
-
-
-"url":
-
-organization.url,
-
-
-"description":
-
-organization.description,
-
-
-"sameAs":
-
-organization.sameAs,
-
-
-"knowsAbout":
-
-organization.knowsAbout
-
-
+"knowsAbout":[
+"Creatina",
+"Creatina em goma",
+"Suplementação esportiva",
+"Performance física",
+"Treinamento esportivo"
+]
 
 },
 
 
-
-
-
-
 {
-
 
 "@type":"Brand",
 
+"@id":"https://creatinagummy.com.br/#brand",
 
-"@id":
+"name":"Creatina Gummy",
 
-"https://creatinagummy.com.br/#brand",
-
-
-"name":
-
-"Creatina Gummy",
-
-
-"parentOrganization":{
-
-
-"@id":
-
-"https://creatinagummy.com.br/#organization"
-
-
-}
-
-
+"url":"https://creatinagummy.com.br"
 
 },
 
 
-
-
-
-
-
-
 {
-
-
-"@type":"Person",
-
-
-"@id":
-
-"https://creatinagummy.com.br/#author",
-
-
-"name":
-
-authors[0].name,
-
-
-"jobTitle":
-
-authors[0].jobTitle,
-
-
-"knowsAbout":
-
-authors[0].knowsAbout,
-
-
-"worksFor":{
-
-
-"@id":
-
-"https://creatinagummy.com.br/#organization"
-
-
-}
-
-
-
-},
-
-
-
-
-
-
-
-
-{
-
-
-"@type":"Person",
-
-
-"@id":
-
-"https://creatinagummy.com.br/#reviewer",
-
-
-"name":
-
-reviewers[0].name,
-
-
-"jobTitle":
-
-reviewers[0].jobTitle,
-
-
-"knowsAbout":
-
-reviewers[0].knowsAbout,
-
-
-"affiliation":{
-
-
-"@id":
-
-"https://creatinagummy.com.br/#organization"
-
-
-}
-
-
-
-},
-
-
-
-
-
-
-
-{
-
 
 "@type":"Product",
 
+"@id":"https://creatinagummy.com.br/produto/creatina-gummy#product",
 
-"@id":
-
-"https://creatinagummy.com.br/produto/creatina-gummy#product",
-
-
-"name":
-
-"Creatina Gummy",
-
+"name":"Creatina Gummy",
 
 "brand":{
 
+"@id":"https://creatinagummy.com.br/#brand"
 
-"@id":
+},
 
-"https://creatinagummy.com.br/#brand"
+"category":"Suplemento alimentar esportivo",
 
+"description":"Creatina em goma desenvolvida para praticidade, performance e rotina de treinos."
+
+},
+
+
+{
+
+"@type":"WebSite",
+
+"@id":"https://creatinagummy.com.br/#website",
+
+"url":"https://creatinagummy.com.br",
+
+"name":"Creatina Gummy",
+
+"publisher":{
+
+"@id":"https://creatinagummy.com.br/#organization"
 
 }
 
+},
 
+
+{
+
+"@type":"CollectionPage",
+
+"@id":"https://creatinagummy.com.br/#topics",
+
+"name":"Universo Creatina Gummy",
+
+"about":[
+
+{
+
+"@type":"Thing",
+
+"name":"Creatina"
+
+},
+
+{
+
+"@type":"Thing",
+
+"name":"Suplementação esportiva"
+
+},
+
+{
+
+"@type":"Thing",
+
+"name":"Performance física"
 
 }
-
-
-
-
-
 
 ]
 
+}
 
+]
 
 };
 
 
-
-
-
-
 return (
-
 
 <script
 
-
 type="application/ld+json"
-
 
 dangerouslySetInnerHTML={{
 
-
-__html:
-
-JSON.stringify(schema)
-
-
+__html:JSON.stringify(schema)
 
 }}
 
-
 />
 
-
 );
-
 
 }
