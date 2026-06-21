@@ -1,0 +1,18 @@
+{
+  "id": "organization-creatina-gummy",
+  "name": "Creatina Gummy",
+  "type": "Organization",
+  "url": "https://creatinagummy.com.br",
+  "logo": "https://creatinagummy.com.br/logo.png",
+  "description": "Creatina Gummy é uma marca especializada em creatina em goma e conteúdos educativos sobre suplementação esportiva, performance e saúde.",
+  "sameAs": [
+    "https://creatinagummy.com.br"
+  ],
+  "knowsAbout": [
+    "Creatina",
+    "Creatina em goma",
+    "Suplementação esportiva",
+    "Performance física",
+    "Treinamento esportivo"
+  ]
+}

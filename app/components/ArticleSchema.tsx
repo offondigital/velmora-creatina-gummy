@@ -40,28 +40,38 @@ page.metaDescription,
 "author":{
 
 
-"@type":"Organization",
+"@type":"Person",
+
+"@id":
+
+"https://creatinagummy.com.br/#author-creatina-gummy",
 
 "name":
 
-page.author
+page.author || "Equipe Creatina Gummy"
 
 
 },
+
 
 
 
 "reviewedBy":{
 
 
-"@type":"Organization",
+"@type":"Person",
+
+"@id":
+
+"https://creatinagummy.com.br/#reviewer-creatina-gummy",
 
 "name":
 
-page.reviewedBy
+page.reviewedBy || "Equipe Creatina Gummy"
 
 
 },
+
 
 
 
@@ -71,12 +81,17 @@ page.reviewedBy
 
 "@type":"Organization",
 
+"@id":
+
+"https://creatinagummy.com.br/#organization",
+
 "name":
 
 "Creatina Gummy"
 
 
 },
+
 
 
 

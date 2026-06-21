@@ -4,7 +4,7 @@ import "./globals.css";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-
+import OrganizationSchema from "./components/OrganizationSchema";
 
 const geistSans = Geist({
 
@@ -235,6 +235,7 @@ className={`${geistSans.variable} ${geistMono.variable}`}
 
 >
 
+<OrganizationSchema />
 
 <script
 
