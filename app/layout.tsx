@@ -10,12 +10,12 @@ import Footer from "./components/Footer";
 
 
 import OrganizationSchema from "./components/OrganizationSchema";
-
 import GlobalEntityGraph from "./components/GlobalEntityGraph";
-
 import TopicAuthoritySchema from "./components/TopicAuthoritySchema";
-
+import KnowledgeGraphSchema from "./components/KnowledgeGraphSchema";
+import SEOHealthCheck from "./components/SEOHealthCheck";
 import SchemaValidator from "./components/SchemaValidator";
+
 
 
 
@@ -27,6 +27,7 @@ variable:"--font-geist-sans",
 subsets:["latin"],
 
 });
+
 
 
 
@@ -52,10 +53,9 @@ export const metadata: Metadata = {
 metadataBase:
 
 new URL(
-
 "https://creatinagummy.com.br"
-
 ),
+
 
 
 
@@ -80,7 +80,9 @@ template:
 
 description:
 
-"Creatina Gummy: creatina em goma para praticidade, performance esportiva e uma nova experiência de suplementação.",
+
+"Creatina Gummy: creatina em goma para praticidade, performance esportiva e suplementação.",
+
 
 
 
@@ -93,15 +95,14 @@ keywords:[
 
 "creatina em goma",
 
-"creatina gummy essential",
-
-"suplemento de creatina",
-
 "creatina para treino",
 
 "creatina para corrida",
 
-"creatina para crossfit"
+"creatina para crossfit",
+
+"suplemento de creatina"
+
 
 
 ],
@@ -110,12 +111,30 @@ keywords:[
 
 
 
+robots:{
+
+
+index:true,
+
+follow:true
+
+
+},
+
+
+
+
+
 openGraph:{
 
 
-title:
+type:"website",
 
-"Creatina Gummy | Creatina em goma",
+
+url:"https://creatinagummy.com.br",
+
+
+title:"Creatina Gummy | Creatina em goma",
 
 
 description:
@@ -123,24 +142,9 @@ description:
 "Creatina em goma para performance esportiva e rotina de suplementação.",
 
 
-url:
-
-"https://creatinagummy.com.br",
-
-
 siteName:
 
-"Creatina Gummy",
-
-
-locale:
-
-"pt_BR",
-
-
-type:
-
-"website"
+"Creatina Gummy"
 
 
 
@@ -150,26 +154,22 @@ type:
 
 
 
+
 twitter:{
 
 
-card:
-
-"summary_large_image",
+card:"summary_large_image",
 
 
-title:
-
-"Creatina Gummy | Creatina em goma",
+title:"Creatina Gummy | Creatina em goma",
 
 
 description:
 
-"Creatina em goma para praticidade e performance."
-
-
+"Creatina gummy para praticidade e performance."
 
 }
+
 
 
 
@@ -183,8 +183,7 @@ description:
 
 
 
-const entitySchema = {
-
+const globalSchema = {
 
 
 "@context":
@@ -194,94 +193,6 @@ const entitySchema = {
 
 
 "@graph":[
-
-
-
-{
-
-
-"@type":
-
-"Organization",
-
-
-
-"@id":
-
-"https://creatinagummy.com.br/#organization",
-
-
-
-"name":
-
-"Creatina Gummy",
-
-
-
-"url":
-
-"https://creatinagummy.com.br",
-
-
-
-"description":
-
-"Marca especializada em creatina em goma, suplementação esportiva, performance física e conteúdos educativos.",
-
-
-
-"brand":{
-
-
-"@id":
-
-"https://creatinagummy.com.br/#brand"
-
-
-
-}
-
-
-
-},
-
-
-
-
-
-
-
-{
-
-
-"@type":
-
-"Brand",
-
-
-
-"@id":
-
-"https://creatinagummy.com.br/#brand",
-
-
-
-"name":
-
-"Creatina Gummy",
-
-
-
-"url":
-
-"https://creatinagummy.com.br"
-
-
-
-},
-
-
-
 
 
 
@@ -320,6 +231,8 @@ const entitySchema = {
 
 "https://creatinagummy.com.br/#organization"
 
+}
+
 
 
 },
@@ -328,51 +241,47 @@ const entitySchema = {
 
 
 
-"potentialAction":{
+{
 
 
 "@type":
 
-"SearchAction",
+"Organization",
 
 
 
-"target":{
+"@id":
 
-
-"@type":
-
-"EntryPoint",
+"https://creatinagummy.com.br/#organization",
 
 
 
-"urlTemplate":
+"name":
 
-"https://creatinagummy.com.br/?s={search_term_string}"
-
-
-
-},
+"Creatina Gummy",
 
 
 
-"query-input":
+"url":
 
-"required name=search_term_string"
+"https://creatinagummy.com.br",
+
+
+
+
+"description":
+
+"Marca especializada em creatina em goma e conteúdos educativos sobre suplementação esportiva."
 
 
 
 }
 
 
-
-}
 
 
 
 ]
-
-
 
 };
 
@@ -392,11 +301,12 @@ children,
 
 children:React.ReactNode;
 
-}>) {
+}>){
 
 
 
 return (
+
 
 
 
@@ -407,15 +317,12 @@ return (
 <body
 
 
+
 className={`${geistSans.variable} ${geistMono.variable}`}
 
 
 
 >
-
-
-
-<SchemaValidator />
 
 
 
@@ -428,6 +335,10 @@ className={`${geistSans.variable} ${geistMono.variable}`}
 
 
 <TopicAuthoritySchema />
+
+
+
+<KnowledgeGraphSchema />
 
 
 
@@ -444,11 +355,22 @@ dangerouslySetInnerHTML={{
 
 __html:
 
-JSON.stringify(entitySchema)
+JSON.stringify(globalSchema)
 
 
 }}
 
+
+
+/>
+
+
+
+
+
+<SchemaValidator
+
+schema={globalSchema}
 
 />
 
@@ -468,8 +390,13 @@ JSON.stringify(entitySchema)
 
 
 
-<Footer />
+<SEOHealthCheck />
 
+
+
+
+
+<Footer />
 
 
 
@@ -478,12 +405,12 @@ JSON.stringify(entitySchema)
 
 
 
+
 </html>
 
 
 
 );
-
 
 
 }
