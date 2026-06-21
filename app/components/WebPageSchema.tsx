@@ -69,15 +69,11 @@ page.metaDescription || page.description,
 
 "@id":
 
-"https://creatinagummy.com.br/#website",
-
-
-"name":
-
-"Creatina Gummy"
+"https://creatinagummy.com.br/#website"
 
 
 },
+
 
 
 
@@ -98,7 +94,7 @@ page.keyword || "Creatina Gummy",
 
 "description":
 
-"Conteúdos educativos sobre creatina em goma, suplementação esportiva e performance."
+"Creatina em goma, suplementação esportiva, performance e treinamento físico."
 
 },
 
@@ -117,6 +113,68 @@ page.keyword || "Creatina Gummy",
 
 `https://creatinagummy.com.br/${page.slug}#article`
 
+
+},
+
+
+
+
+
+
+
+
+"author":{
+
+
+"@type":"Organization",
+
+"@id":
+
+"https://creatinagummy.com.br/#organization",
+
+
+"name":
+
+"Creatina Gummy"
+
+
+
+},
+
+
+
+
+
+
+
+
+"reviewedBy":{
+
+
+"@type":"Person",
+
+"@id":
+
+"https://creatinagummy.com.br/#reviewer"
+
+
+
+},
+
+
+
+
+
+
+
+"publisher":{
+
+
+"@type":"Organization",
+
+"@id":
+
+"https://creatinagummy.com.br/#organization"
 
 
 },
@@ -137,17 +195,19 @@ page.keyword || "Creatina Gummy",
 "@type":"Product",
 
 
+"@id":
+
+"https://creatinagummy.com.br/produto/creatina-gummy#product",
+
+
 "name":
 
-"Creatina Gummy",
-
-
-"url":
-
-"https://creatinagummy.com.br/produto/creatina-gummy"
+"Creatina Gummy"
 
 
 },
+
+
 
 
 
@@ -166,6 +226,8 @@ page.keyword || "Creatina Gummy",
 
 
 
+
+
 {
 
 
@@ -174,7 +236,24 @@ page.keyword || "Creatina Gummy",
 
 "name":
 
-"Creatina gummy"
+"Suplementação esportiva"
+
+
+},
+
+
+
+
+
+{
+
+
+"@type":"Thing",
+
+
+"name":
+
+"Performance física"
 
 
 }
@@ -186,7 +265,9 @@ page.keyword || "Creatina Gummy",
 
 
 
+
 };
+
 
 
 
@@ -205,7 +286,6 @@ type="application/ld+json"
 dangerouslySetInnerHTML={{
 
 
-
 __html:
 
 JSON.stringify(schema)
@@ -215,9 +295,7 @@ JSON.stringify(schema)
 }}
 
 
-
 />
-
 
 
 );
