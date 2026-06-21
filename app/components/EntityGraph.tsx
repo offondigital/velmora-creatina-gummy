@@ -3,30 +3,53 @@ import Link from "next/link";
 import entities from "@/data/entities.json";
 
 
-
 const relations = [
 
 {
 title:"Creatina",
 href:"/beneficios/creatina-gummy-beneficios",
 description:
-"Ingrediente principal relacionado à suplementação esportiva."
+"Ingrediente principal relacionado à suplementação esportiva, força e performance física."
 },
 
 
 {
-title:"Suplementação esportiva",
+title:"Creatina em goma",
+href:"/creatina-gummy",
+description:
+"Formato inovador de suplementação com creatina em pastilhas de goma."
+},
+
+
+{
+title:"Performance física",
 href:"/clusters/objetivo",
 description:
-"Categoria relacionada ao uso do produto."
+"Conceito relacionado ao uso da creatina para suporte à rotina esportiva."
 },
 
 
 {
-title:"Treinamento físico",
+title:"Treinamento esportivo",
 href:"/clusters/modalidade",
 description:
-"Contexto relacionado à performance esportiva."
+"Contexto relacionado a exercícios, treinos e desempenho físico."
+},
+
+
+{
+title:"Corrida",
+href:"/creatina-gummy-para-corrida",
+description:
+"Aplicação da creatina em goma para praticantes de corrida."
+},
+
+
+{
+title:"Crossfit",
+href:"/creatina-gummy-para-crossfit",
+description:
+"Uso relacionado a treinos intensos e alta demanda física."
 }
 
 
@@ -47,7 +70,7 @@ return (
 
 <h2 className="text-3xl font-bold">
 
-Entidades relacionadas
+Grafo de entidades relacionadas
 
 </h2>
 
@@ -55,8 +78,7 @@ Entidades relacionadas
 
 <p className="mt-4">
 
-A Creatina Gummy está conectada a conceitos de suplementação,
-performance e treinamento físico.
+A Creatina Gummy está conectada a entidades de creatina, suplementação esportiva, performance física e modalidades esportivas.
 
 </p>
 
@@ -64,7 +86,7 @@ performance e treinamento físico.
 
 
 
-<div className="grid gap-6 mt-8">
+<div className="grid gap-6 mt-8 md:grid-cols-2">
 
 
 

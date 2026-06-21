@@ -81,8 +81,7 @@ const schema = {
 
 "reviewBody":
 
-"Creatina Gummy é uma opção prática de creatina em goma, com sabor agradável e facilidade para 
-incluir na rotina de suplementação."
+"Creatina Gummy é uma opção prática de creatina em goma, com sabor agradável e facilidade para incluir na rotina de suplementação."
 
 
 
