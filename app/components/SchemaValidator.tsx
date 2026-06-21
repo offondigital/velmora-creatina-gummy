@@ -1,6 +1,6 @@
 interface SchemaValidatorProps {
 
-schema:any;
+  schema?: any;
 
 }
 
@@ -8,85 +8,76 @@ schema:any;
 
 export default function SchemaValidator({
 
-schema
+  schema
 
-}:SchemaValidatorProps){
-
-
-
-if(!schema){
-
-return null;
-
-}
+}: SchemaValidatorProps) {
 
 
 
+  const defaultSchema = {
 
 
-const cleanSchema = JSON.parse(
+    "@context":
 
-JSON.stringify(
-
-schema,
-
-(_,value)=>{
+    "https://schema.org",
 
 
-if(value === undefined){
 
-return undefined;
+    "@type":
 
-}
-
-
-if(value === null){
-
-return undefined;
-
-}
+    "WebSite",
 
 
-return value;
+
+    "name":
+
+    "Creatina Gummy",
 
 
-}
 
-)
+    "url":
 
-);
+    "https://creatinagummy.com.br"
+
+
+
+  };
 
 
 
 
 
-return (
-
-
-<script
-
-
-type="application/ld+json"
-
-
-dangerouslySetInnerHTML={{
-
-
-__html:
-
-JSON.stringify(cleanSchema)
+  const finalSchema = schema || defaultSchema;
 
 
 
-}}
+
+
+  return (
+
+
+    <script
+
+
+      type="application/ld+json"
+
+
+      dangerouslySetInnerHTML={{
+
+
+        __html:
+
+        JSON.stringify(finalSchema)
 
 
 
-/>
+      }}
 
 
-);
+    />
 
+
+  );
 
 
 }

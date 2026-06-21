@@ -1,13 +1,19 @@
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
 
 
-export default function robots():MetadataRoute.Robots{
+export default function robots(): MetadataRoute.Robots {
+
 
 
 return {
 
 
-rules:{
+
+rules:[
+
+
+
+{
 
 
 userAgent:"*",
@@ -16,16 +22,28 @@ userAgent:"*",
 allow:"/"
 
 
-},
+
+}
+
+
+
+],
+
+
 
 
 
 sitemap:
 
+
 "https://creatinagummy.com.br/sitemap.xml"
 
 
+
+
+
 };
+
 
 
 }

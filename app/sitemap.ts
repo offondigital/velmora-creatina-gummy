@@ -1,13 +1,9 @@
 import type { MetadataRoute } from "next";
 
 
-import products from "@/data/products.json";
+const pages = require("@/data/pages.json");
 
-import seoPages from "@/data/seo-pages.json";
-
-import clusters from "@/data/clusters.json";
-
-
+const products = require("@/data/products.json");
 
 
 
@@ -21,7 +17,33 @@ const baseUrl =
 
 
 
-const now = new Date();
+
+
+const contentPages = pages.map((page:any)=>({
+
+
+url:
+
+`${baseUrl}/${page.slug}`,
+
+
+lastModified:
+
+new Date(),
+
+
+changeFrequency:
+
+"weekly" as const,
+
+
+priority:
+
+0.8
+
+
+
+}));
 
 
 
@@ -29,8 +51,11 @@ const now = new Date();
 
 
 
-const productUrls = products.map((product:any)=>({
+const productPages = products.map((product:any)=>(
 
+
+
+{
 
 
 url:
@@ -41,191 +66,19 @@ url:
 
 lastModified:
 
-now,
+new Date(),
 
 
 
 changeFrequency:
 
-"weekly" as const,
+"monthly" as const,
 
 
 
 priority:
 
 0.9
-
-
-
-}));
-
-
-
-
-
-
-
-
-const seoUrls = seoPages.map((page:any)=>({
-
-
-
-url:
-
-`${baseUrl}/${page.slug}`,
-
-
-
-lastModified:
-
-now,
-
-
-
-changeFrequency:
-
-"monthly" as const,
-
-
-
-priority:
-
-0.8
-
-
-
-}));
-
-
-
-
-
-
-
-
-
-const benefitUrls = seoPages.map((page:any)=>({
-
-
-
-url:
-
-`${baseUrl}/beneficios/${page.slug}`,
-
-
-
-lastModified:
-
-now,
-
-
-
-changeFrequency:
-
-"monthly" as const,
-
-
-
-priority:
-
-0.8
-
-
-
-}));
-
-
-
-
-
-
-
-
-
-const clusterUrls = Object.keys(clusters).map((slug)=>({
-
-
-
-url:
-
-`${baseUrl}/clusters/${slug}`,
-
-
-
-lastModified:
-
-now,
-
-
-
-changeFrequency:
-
-"monthly" as const,
-
-
-
-priority:
-
-0.7
-
-
-
-}));
-
-
-
-
-
-
-
-
-
-const institutionalUrls = [
-
-
-
-"sobre-creatina-gummy",
-
-
-"quem-somos",
-
-
-"metodologia",
-
-
-"revisao-cientifica"
-
-
-
-].map((slug)=>(
-
-
-
-{
-
-
-url:
-
-`${baseUrl}/institucional/${slug}`,
-
-
-
-lastModified:
-
-now,
-
-
-
-changeFrequency:
-
-"yearly" as const,
-
-
-
-priority:
-
-0.6
-
 
 
 }
@@ -246,30 +99,20 @@ return [
 
 
 
+
 {
 
 
-url:
-
-baseUrl,
+url:baseUrl,
 
 
-
-lastModified:
-
-now,
+lastModified:new Date(),
 
 
-
-changeFrequency:
-
-"daily" as const,
+changeFrequency:"weekly",
 
 
-
-priority:
-
-1
+priority:1
 
 
 
@@ -280,30 +123,20 @@ priority:
 
 
 
+
 {
 
 
-url:
-
-`${baseUrl}/creatina-gummy`,
+url:`${baseUrl}/creatina-gummy`,
 
 
-
-lastModified:
-
-now,
+lastModified:new Date(),
 
 
-
-changeFrequency:
-
-"weekly" as const,
+changeFrequency:"weekly",
 
 
-
-priority:
-
-1
+priority:1
 
 
 
@@ -312,19 +145,12 @@ priority:
 
 
 
-...productUrls,
 
 
-...seoUrls,
 
+...contentPages,
 
-...benefitUrls,
-
-
-...clusterUrls,
-
-
-...institutionalUrls
+...productPages
 
 
 

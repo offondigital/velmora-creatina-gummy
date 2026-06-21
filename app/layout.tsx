@@ -4,24 +4,27 @@ import { Geist, Geist_Mono } from "next/font/google";
 
 import "./globals.css";
 
+
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
+
 import OrganizationSchema from "./components/OrganizationSchema";
 
-import KnowledgeGraphSchema from "./components/KnowledgeGraphSchema";
+import GlobalEntityGraph from "./components/GlobalEntityGraph";
 
 import TopicAuthoritySchema from "./components/TopicAuthoritySchema";
 
-import GlobalEntityGraph from "./components/GlobalEntityGraph";
+import SchemaValidator from "./components/SchemaValidator";
+
 
 
 
 const geistSans = Geist({
 
-  variable:"--font-geist-sans",
+variable:"--font-geist-sans",
 
-  subsets:["latin"],
+subsets:["latin"],
 
 });
 
@@ -30,11 +33,12 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
 
-  variable:"--font-geist-mono",
+variable:"--font-geist-mono",
 
-  subsets:["latin"],
+subsets:["latin"],
 
 });
+
 
 
 
@@ -45,7 +49,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
 
 
-metadataBase:new URL(
+metadataBase:
+
+new URL(
 
 "https://creatinagummy.com.br"
 
@@ -71,8 +77,8 @@ template:
 
 
 
-description:
 
+description:
 
 "Creatina Gummy: creatina em goma para praticidade, performance esportiva e uma nova experiência de suplementação.",
 
@@ -98,11 +104,278 @@ keywords:[
 "creatina para crossfit"
 
 
+],
+
+
+
+
+
+openGraph:{
+
+
+title:
+
+"Creatina Gummy | Creatina em goma",
+
+
+description:
+
+"Creatina em goma para performance esportiva e rotina de suplementação.",
+
+
+url:
+
+"https://creatinagummy.com.br",
+
+
+siteName:
+
+"Creatina Gummy",
+
+
+locale:
+
+"pt_BR",
+
+
+type:
+
+"website"
+
+
+
+},
+
+
+
+
+
+twitter:{
+
+
+card:
+
+"summary_large_image",
+
+
+title:
+
+"Creatina Gummy | Creatina em goma",
+
+
+description:
+
+"Creatina em goma para praticidade e performance."
+
+
+
+}
+
+
+
+};
+
+
+
+
+
+
+
+
+
+const entitySchema = {
+
+
+
+"@context":
+
+"https://schema.org",
+
+
+
+"@graph":[
+
+
+
+{
+
+
+"@type":
+
+"Organization",
+
+
+
+"@id":
+
+"https://creatinagummy.com.br/#organization",
+
+
+
+"name":
+
+"Creatina Gummy",
+
+
+
+"url":
+
+"https://creatinagummy.com.br",
+
+
+
+"description":
+
+"Marca especializada em creatina em goma, suplementação esportiva, performance física e conteúdos educativos.",
+
+
+
+"brand":{
+
+
+"@id":
+
+"https://creatinagummy.com.br/#brand"
+
+
+
+}
+
+
+
+},
+
+
+
+
+
+
+
+{
+
+
+"@type":
+
+"Brand",
+
+
+
+"@id":
+
+"https://creatinagummy.com.br/#brand",
+
+
+
+"name":
+
+"Creatina Gummy",
+
+
+
+"url":
+
+"https://creatinagummy.com.br"
+
+
+
+},
+
+
+
+
+
+
+
+{
+
+
+"@type":
+
+"WebSite",
+
+
+
+"@id":
+
+"https://creatinagummy.com.br/#website",
+
+
+
+"url":
+
+"https://creatinagummy.com.br",
+
+
+
+"name":
+
+"Creatina Gummy",
+
+
+
+"publisher":{
+
+
+"@id":
+
+"https://creatinagummy.com.br/#organization"
+
+
+
+},
+
+
+
+
+
+"potentialAction":{
+
+
+"@type":
+
+"SearchAction",
+
+
+
+"target":{
+
+
+"@type":
+
+"EntryPoint",
+
+
+
+"urlTemplate":
+
+"https://creatinagummy.com.br/?s={search_term_string}"
+
+
+
+},
+
+
+
+"query-input":
+
+"required name=search_term_string"
+
+
+
+}
+
+
+
+}
+
+
+
 ]
 
 
 
 };
+
 
 
 
@@ -119,14 +392,11 @@ children,
 
 children:React.ReactNode;
 
-}>){
-
-
+}>) {
 
 
 
 return (
-
 
 
 
@@ -137,7 +407,6 @@ return (
 <body
 
 
-
 className={`${geistSans.variable} ${geistMono.variable}`}
 
 
@@ -146,13 +415,11 @@ className={`${geistSans.variable} ${geistMono.variable}`}
 
 
 
+<SchemaValidator />
+
 
 
 <OrganizationSchema />
-
-
-
-<KnowledgeGraphSchema />
 
 
 
@@ -166,11 +433,38 @@ className={`${geistSans.variable} ${geistMono.variable}`}
 
 
 
+<script
+
+
+type="application/ld+json"
+
+
+dangerouslySetInnerHTML={{
+
+
+__html:
+
+JSON.stringify(entitySchema)
+
+
+}}
+
+
+/>
+
+
+
+
+
 <Header />
 
 
 
+
+
 {children}
+
+
 
 
 
@@ -185,8 +479,6 @@ className={`${geistSans.variable} ${geistMono.variable}`}
 
 
 </html>
-
-
 
 
 
