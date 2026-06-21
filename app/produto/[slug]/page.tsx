@@ -1,5 +1,6 @@
 import Link from "next/link";
-
+import {createMetadata} from "@/app/lib/metadata";
+import type {Metadata} from "next";
 
 import ProductSchema from "@/app/components/ProductSchema";
 
@@ -9,7 +10,70 @@ import ImageSchema from "@/app/components/ImageSchema";
 
 const products = require("../../../data/products.json");
 
+export async function generateMetadata({
 
+params
+
+}:{
+
+params:Promise<{slug:string}>
+
+}):Promise<Metadata>{
+
+
+
+const {slug}=await params;
+
+
+
+const product = products.find(
+
+(p:any)=>p.slug===slug
+
+);
+
+
+
+
+
+return createMetadata({
+
+
+title:
+
+product?.name || "Creatina Gummy",
+
+
+
+description:
+
+product?.description || "",
+
+
+
+slug:
+
+`produto/${slug}`,
+
+
+
+image:
+
+product?.image,
+
+
+
+type:
+
+"product"
+
+
+
+});
+
+
+
+}
 
 
 

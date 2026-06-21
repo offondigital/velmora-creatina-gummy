@@ -1,27 +1,20 @@
+import type { Metadata } from "next";
+
 import Link from "next/link";
 
-
-import Breadcrumb from "@/app/components/Breadcrumb";
+import { createMetadata } from "@/app/lib/metadata";
 
 import ArticleSchema from "@/app/components/ArticleSchema";
-
-import WebPageSchema from "@/app/components/WebPageSchema";
-
-import FaqSchema from "@/app/components/FaqSchema";
-
 import BreadcrumbSchema from "@/app/components/BreadcrumbSchema";
-
+import FaqSchema from "@/app/components/FaqSchema";
 import AeoSchema from "@/app/components/AeoSchema";
-
+import InternalLinks from "@/app/components/InternalLinks";
 import EntityContext from "@/app/components/EntityContext";
-
 import TopicAuthority from "@/app/components/TopicAuthority";
 
-import EntityGraph from "@/app/components/EntityGraph";
 
-const pages = require("../../data/seo-pages.json");
 
-const products = require("../../data/products.json");
+const pages = require("../../data/pages.json");
 
 
 
@@ -50,6 +43,92 @@ slug:page.slug
 
 
 
+
+
+export async function generateMetadata({
+
+params
+
+}:{
+
+params:Promise<{slug:string}>
+
+}):Promise<Metadata>{
+
+
+
+const {slug}=await params;
+
+
+
+const page = pages.find(
+
+(p:any)=>p.slug===slug
+
+);
+
+
+
+
+
+return createMetadata({
+
+
+
+title:
+
+page?.title || "Creatina Gummy",
+
+
+
+
+
+description:
+
+page?.metaDescription ||
+
+page?.description ||
+
+"Conteúdos sobre creatina em goma, suplementação esportiva e performance.",
+
+
+
+
+
+slug,
+
+
+
+
+
+image:
+
+page?.image,
+
+
+
+
+
+type:
+
+"article"
+
+
+
+});
+
+
+
+}
+
+
+
+
+
+
+
+
+
 export default async function Page({
 
 params
@@ -62,8 +141,9 @@ params:Promise<{slug:string}>
 
 
 
-const {slug}=await params;
 
+
+const {slug}=await params;
 
 
 
@@ -74,7 +154,6 @@ const page = pages.find(
 (p:any)=>p.slug===slug
 
 );
-
 
 
 
@@ -91,26 +170,19 @@ return null;
 
 
 
-const product = products.find(
-
-(p:any)=>p.slug==="creatina-gummy"
-
-);
 
 
 
-
-
-
-const breadcrumbItems=[
+const breadcrumb = [
 
 
 
 {
 
-name:"Creatina Gummy",
+name:"Início",
 
-url:"https://creatinagummy.com.br/creatina-gummy"
+
+url:"https://creatinagummy.com.br"
 
 },
 
@@ -118,11 +190,14 @@ url:"https://creatinagummy.com.br/creatina-gummy"
 
 {
 
-name:page.h1 || page.title,
+name:
+
+page.title,
+
 
 url:
 
-`https://creatinagummy.com.br/${page.slug}`
+`https://creatinagummy.com.br/${slug}`
 
 }
 
@@ -136,7 +211,33 @@ url:
 
 
 
+
+
 return (
+
+
+
+<>
+
+
+
+<ArticleSchema page={page}/>
+
+
+
+<AeoSchema page={page}/>
+
+
+
+<FaqSchema faq={page.faq}/>
+
+
+
+<BreadcrumbSchema items={breadcrumb}/>
+
+
+
+
 
 
 
@@ -146,114 +247,11 @@ return (
 
 
 
-<WebPageSchema page={page}/>
-
-
-
-
-<ArticleSchema page={page}/>
-
-
-
-
-
-<FaqSchema faq={page.faq}/>
-
-
-
-
-
-<BreadcrumbSchema items={breadcrumbItems}/>
-
-
-
-
-
-
-<AeoSchema page={page}/>
-
-
-
-
-
-
-
-<Breadcrumb
-
-
-items={[
-
-
-
-{
-
-name:"Creatina Gummy",
-
-url:"/creatina-gummy"
-
-},
-
-
-
-{
-
-name:
-
-page.h1 || page.title,
-
-url:
-
-`/${page.slug}`
-
-}
-
-
-
-]}
-
-
-/>
-
-
-
-
-
-
-
-
-
-<EntityContext
-
-
-
-entity={page.keyword || "Creatina Gummy"}
-
-
-
-category={page.category || "Suplementação esportiva"}
-
-
-
-related={page.relatedProducts || []}
-
-
-
-/>
-
-
-
-
-
-
-
-
 
 
 <h1 className="text-5xl font-bold">
 
-
-{page.h1}
-
+{page.title}
 
 </h1>
 
@@ -265,9 +263,7 @@ related={page.relatedProducts || []}
 
 <p className="mt-6 text-xl">
 
-
-{page.quickAnswer}
-
+{page.description}
 
 </p>
 
@@ -284,16 +280,18 @@ related={page.relatedProducts || []}
 
 <h2 className="text-3xl font-bold">
 
-Introdução
+Sobre este conteúdo
 
 </h2>
 
 
+
 <p className="mt-5">
 
-{page.intro}
+{page.content}
 
 </p>
+
 
 
 </section>
@@ -306,121 +304,7 @@ Introdução
 
 
 
-<section className="mt-14">
-
-
-<h2 className="text-3xl font-bold">
-
-Experiência prática
-
-</h2>
-
-
-<p className="mt-5">
-
-{page.experience}
-
-</p>
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<section className="mt-14">
-
-
-<h2 className="text-3xl font-bold">
-
-Base científica
-
-</h2>
-
-
-<p className="mt-5">
-
-{page.scientificBasis}
-
-</p>
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<section className="mt-14">
-
-
-<h2 className="text-3xl font-bold">
-
-Autoridade e confiança
-
-</h2>
-
-
-
-<p className="mt-5">
-
-{page.authority}
-
-</p>
-
-
-
-<p className="mt-5">
-
-{page.trust}
-
-</p>
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<section className="mt-14">
-
-
-<h2 className="text-3xl font-bold">
-
-{page.section1Title}
-
-</h2>
-
-
-
-<p className="mt-5">
-
-{page.section1Content}
-
-</p>
-
-
-</section>
-
-
-
-
-
-
+{page.faq && page.faq.length > 0 && (
 
 
 
@@ -436,20 +320,24 @@ Perguntas frequentes
 
 
 
-{page.faq?.map((item:any)=>(
+
+<div className="mt-6 space-y-6">
 
 
-<div
+{page.faq.map((item:any)=>(
+
+
+
+<article
 
 key={item.question}
 
-className="mt-6"
-
+className="border rounded-xl p-6"
 
 >
 
 
-<h3 className="font-bold">
+<h3 className="font-bold text-xl">
 
 {item.question}
 
@@ -457,7 +345,7 @@ className="mt-6"
 
 
 
-<p>
+<p className="mt-3">
 
 {item.answer}
 
@@ -465,62 +353,47 @@ className="mt-6"
 
 
 
-</div>
+</article>
+
 
 
 ))}
 
 
+</div>
+
+
+
 
 
 </section>
 
 
 
+)}
 
 
 
 
 
 
-<section className="mt-14 bg-gray-100 rounded-3xl p-8">
-
-
-<h2 className="text-3xl font-bold">
-
-Conteúdo revisado
-
-</h2>
 
 
 
-
-<p>
-
-Autor: {page.author}
-
-</p>
+<EntityContext
 
 
-
-<p>
-
-Revisado por: {page.reviewedBy}
-
-</p>
+entity={page.entity || "Creatina Gummy"}
 
 
+category={page.category || "Suplementação esportiva"}
 
 
-<p>
-
-Atualizado em: {page.updatedAt}
-
-</p>
+related={page.related || []}
 
 
+/>
 
-</section>
 
 
 
@@ -531,9 +404,25 @@ Atualizado em: {page.updatedAt}
 
 <TopicAuthority />
 
-<EntityGraph />
 
-<section className="mt-16 bg-purple-100 rounded-3xl p-10">
+
+
+
+
+
+
+
+<InternalLinks currentSlug={slug}/>
+
+
+
+
+
+
+
+
+
+<section className="mt-16 bg-gray-100 rounded-3xl p-8">
 
 
 <h2 className="text-3xl font-bold">
@@ -545,12 +434,12 @@ Conheça a Creatina Gummy
 
 
 
-<p className="mt-5">
+<p className="mt-4">
 
-{page.cta || "Creatina em goma para uma rotina prática de suplementação."}
+Creatina em goma desenvolvida para praticidade,
+performance e rotina de suplementação.
 
 </p>
-
 
 
 
@@ -559,17 +448,16 @@ Conheça a Creatina Gummy
 <Link
 
 
-href={`/produto/${product?.slug}`}
+href="/produto/creatina-gummy"
 
 
-className="inline-block mt-8 bg-purple-600 text-white px-8 py-4 rounded-xl font-bold"
-
+className="inline-block mt-6 bg-purple-600 text-white px-8 py-4 rounded-xl font-bold"
 
 
 >
 
 
-Ver Creatina Gummy
+Ver produto
 
 
 </Link>
@@ -586,12 +474,16 @@ Ver Creatina Gummy
 
 
 
-
 </main>
 
 
 
+</>
+
+
+
 );
+
 
 
 }

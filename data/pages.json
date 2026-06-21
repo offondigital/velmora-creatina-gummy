@@ -1,0 +1,98 @@
+[
+  {
+    "slug": "creatina-gummy-beneficios",
+    "title": "Benefícios da Creatina Gummy",
+    "metaDescription": "Conheça os benefícios da Creatina Gummy, creatina em goma para praticidade, 
+desempenho esportivo e rotina de suplementação.",
+    "entity": "Creatina Gummy",
+    "category": "Suplementação esportiva",
+    "faq": [
+      {
+        "question": "O que é Creatina Gummy?",
+        "answer": "Creatina Gummy é um suplemento em formato de goma desenvolvido para oferecer 
+praticidade no consumo de creatina."
+      },
+      {
+        "question": "Creatina Gummy ajuda nos treinos?",
+        "answer": "A creatina é um composto estudado por seu papel no suporte à força, potência e 
+desempenho físico."
+      },
+      {
+        "question": "Como consumir Creatina Gummy?",
+        "answer": "O consumo deve seguir as orientações do fabricante presentes no produto."
+      }
+    ],
+    "relatedEntities": [
+      "Creatina",
+      "Performance esportiva",
+      "Treinamento físico"
+    ]
+  },
+
+  {
+    "slug": "creatina-gummy-para-corrida",
+    "title": "Creatina Gummy para Corrida",
+    "metaDescription": "Veja como a Creatina Gummy se relaciona com rotina de corredores e 
+suplementação esportiva.",
+    "entity": "Creatina Gummy",
+    "category": "Corrida",
+    "faq": [
+      {
+        "question": "Creatina é usada por corredores?",
+        "answer": "A creatina é utilizada por praticantes de diferentes modalidades esportivas, 
+incluindo treinos de corrida."
+      },
+      {
+        "question": "Creatina Gummy é prática?",
+        "answer": "O formato gummy oferece uma alternativa prática para incluir suplementação na 
+rotina."
+      }
+    ],
+    "relatedEntities": [
+      "Corrida",
+      "Resistência física",
+      "Performance esportiva"
+    ]
+  },
+
+  {
+    "slug": "creatina-gummy-para-crossfit",
+    "title": "Creatina Gummy para Crossfit",
+    "metaDescription": "Conteúdo sobre Creatina Gummy aplicada ao contexto de treinos intensos como 
+crossfit.",
+    "entity": "Creatina Gummy",
+    "category": "Crossfit",
+    "faq": [
+      {
+        "question": "Creatina é utilizada no crossfit?",
+        "answer": "A creatina é um dos suplementos mais estudados relacionados à performance 
+esportiva."
+      }
+    ],
+    "relatedEntities": [
+      "Crossfit",
+      "Força",
+      "Potência muscular"
+    ]
+  },
+
+  {
+    "slug": "creatina-gummy-para-futebol",
+    "title": "Creatina Gummy para Futebol",
+    "metaDescription": "Informações sobre creatina em goma e sua relação com atletas de futebol.",
+    "entity": "Creatina Gummy",
+    "category": "Futebol",
+    "faq": [
+      {
+        "question": "Jogadores de futebol usam creatina?",
+        "answer": "A creatina é estudada em contextos esportivos envolvendo força e desempenho 
+físico."
+      }
+    ],
+    "relatedEntities": [
+      "Futebol",
+      "Atletas",
+      "Performance"
+    ]
+  }
+]
