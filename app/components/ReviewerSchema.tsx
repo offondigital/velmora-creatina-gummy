@@ -19,10 +19,10 @@ const schema = {
 
 
 
+
 "@id":
 
 "https://creatinagummy.com.br/#reviewer",
-
 
 
 
@@ -35,7 +35,6 @@ data.name,
 
 
 
-
 "jobTitle":
 
 data.jobTitle,
@@ -43,14 +42,9 @@ data.jobTitle,
 
 
 
-
-
 "description":
 
 data.description,
-
-
-
 
 
 
@@ -76,9 +70,6 @@ data.description,
 
 
 
-
-
-
 "knowsAbout":[
 
 
@@ -92,31 +83,35 @@ data.description,
 
 "Treinamento esportivo"
 
+],
+
+
+
+
+"hasCredential":[
+
+
+"Revisão de conteúdo esportivo",
+
+"Conhecimento em suplementação"
 
 ],
 
 
 
 
+"reviewer":{
 
 
+"@type":"Thing",
 
 
-"expertise":[
+"name":
+
+"Conteúdos revisados pela Creatina Gummy"
 
 
-"Revisão de conteúdos sobre suplementação",
-
-"Educação esportiva",
-
-"Performance e treinamento"
-
-
-
-],
-
-
-
+},
 
 
 
@@ -127,18 +122,12 @@ data.sameAs
 
 
 
-
-
 };
 
 
 
 
-
-
-
 return (
-
 
 
 <script
@@ -150,11 +139,9 @@ type="application/ld+json"
 dangerouslySetInnerHTML={{
 
 
-
 __html:
 
 JSON.stringify(schema)
-
 
 
 }}

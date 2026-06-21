@@ -1,15 +1,20 @@
 export default function ImageSchema(){
 
 
-
 const schema = {
 
 
 "@context":"https://schema.org",
 
 
-
 "@type":"ImageObject",
+
+
+
+"@id":
+
+"https://creatinagummy.com.br/images/creatina-gummy.webp#image",
+
 
 
 
@@ -19,9 +24,11 @@ const schema = {
 
 
 
+
 "url":
 
 "https://creatinagummy.com.br/images/creatina-gummy.webp",
+
 
 
 
@@ -31,9 +38,42 @@ const schema = {
 
 
 
+
 "description":
 
-"Imagem oficial da Creatina Gummy, suplemento em formato gummy.",
+"Imagem oficial do produto Creatina Gummy, suplemento esportivo em formato gummy.",
+
+
+
+
+"encodingFormat":
+
+"image/webp",
+
+
+
+
+"representativeOfPage":true,
+
+
+
+
+"about":{
+
+
+"@type":"Product",
+
+
+"name":"Creatina Gummy",
+
+
+"url":
+
+"https://creatinagummy.com.br/produto/creatina-gummy"
+
+
+},
+
 
 
 
@@ -41,6 +81,11 @@ const schema = {
 
 
 "@type":"Organization",
+
+
+"@id":
+
+"https://creatinagummy.com.br/#organization",
 
 
 "name":
@@ -52,18 +97,10 @@ const schema = {
 
 
 
-"copyrightHolder":{
 
-
-"@type":"Organization",
-
-
-"name":
+"creditText":
 
 "Creatina Gummy"
-
-
-}
 
 
 
@@ -71,9 +108,7 @@ const schema = {
 
 
 
-
 return (
-
 
 
 <script
@@ -85,22 +120,19 @@ type="application/ld+json"
 dangerouslySetInnerHTML={{
 
 
-
 __html:
 
 JSON.stringify(schema)
 
 
-
 }}
 
 
-
 />
-
 
 
 );
 
 
 }
+

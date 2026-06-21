@@ -15,13 +15,16 @@ const schema = {
 
 
 
+
 "@type":"Person",
+
 
 
 
 "@id":
 
 "https://creatinagummy.com.br/#author",
+
 
 
 
@@ -33,9 +36,11 @@ data.name,
 
 
 
+
 "jobTitle":
 
 data.jobTitle,
+
 
 
 
@@ -50,7 +55,7 @@ data.description,
 
 
 
-"worksFor":{
+"memberOf":{
 
 
 "@type":"Organization",
@@ -72,19 +77,28 @@ data.description,
 
 
 
-
-"knowsAbout":
-
-data.knowsAbout,
+"authorOf":{
 
 
+"@type":"Article",
+
+
+"name":
+
+"Conteúdos educativos sobre creatina e suplementação"
+
+
+},
 
 
 
 
 
-"expertise":[
 
+"knowsAbout":[
+
+
+"Creatina",
 
 "Creatina em goma",
 
@@ -92,12 +106,27 @@ data.knowsAbout,
 
 "Performance física",
 
-"Treinamento esportivo"
+"Treinamento esportivo",
 
+"AEO",
+
+"GEO"
 
 ],
 
 
+
+
+"expertise":[
+
+
+"Educação esportiva",
+
+"Conteúdo científico",
+
+"Performance física"
+
+],
 
 
 
@@ -108,9 +137,8 @@ data.sameAs
 
 
 
-
-
 };
+
 
 
 
