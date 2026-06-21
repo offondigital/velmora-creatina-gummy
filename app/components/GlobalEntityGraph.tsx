@@ -1,9 +1,6 @@
 import organization from "@/data/organization.json";
-
 import authors from "@/data/authors.json";
-
 import reviewers from "@/data/reviewers.json";
-
 
 
 export default function GlobalEntityGraph(){
@@ -13,10 +10,15 @@ export default function GlobalEntityGraph(){
 const schema = {
 
 
+
 "@context":"https://schema.org",
 
 
+
+
 "@graph":[
+
+
 
 
 
@@ -62,6 +64,8 @@ organization.knowsAbout
 
 
 
+
+
 {
 
 
@@ -76,11 +80,6 @@ organization.knowsAbout
 "name":
 
 "Creatina Gummy",
-
-
-"url":
-
-"https://creatinagummy.com.br",
 
 
 "parentOrganization":{
@@ -98,77 +97,6 @@ organization.knowsAbout
 },
 
 
-
-
-
-
-{
-
-
-"@type":"Product",
-
-
-"@id":
-
-"https://creatinagummy.com.br/produto/creatina-gummy#product",
-
-
-"name":
-
-"Creatina Gummy",
-
-
-"category":
-
-"Suplemento alimentar esportivo",
-
-
-"brand":{
-
-
-"@id":
-
-"https://creatinagummy.com.br/#brand"
-
-
-},
-
-
-"about":[
-
-
-{
-
-"@type":"Thing",
-
-"name":"Creatina"
-
-},
-
-
-{
-
-"@type":"Thing",
-
-"name":"Creatina em goma"
-
-},
-
-
-{
-
-"@type":"Thing",
-
-"name":"Suplementação esportiva"
-
-}
-
-
-]
-
-
-
-},
 
 
 
@@ -196,18 +124,25 @@ authors[0].name,
 authors[0].jobTitle,
 
 
-"description":
-
-authors[0].description,
-
-
 "knowsAbout":
 
-authors[0].knowsAbout
+authors[0].knowsAbout,
+
+
+"worksFor":{
+
+
+"@id":
+
+"https://creatinagummy.com.br/#organization"
+
+
+}
 
 
 
 },
+
 
 
 
@@ -236,19 +171,24 @@ reviewers[0].name,
 reviewers[0].jobTitle,
 
 
-"description":
-
-reviewers[0].description,
-
-
 "knowsAbout":
 
-reviewers[0].knowsAbout
+reviewers[0].knowsAbout,
+
+
+"affiliation":{
+
+
+"@id":
+
+"https://creatinagummy.com.br/#organization"
+
+
+}
 
 
 
 },
-
 
 
 
@@ -259,17 +199,12 @@ reviewers[0].knowsAbout
 {
 
 
-"@type":"WebSite",
+"@type":"Product",
 
 
 "@id":
 
-"https://creatinagummy.com.br/#website",
-
-
-"url":
-
-"https://creatinagummy.com.br",
+"https://creatinagummy.com.br/produto/creatina-gummy#product",
 
 
 "name":
@@ -277,18 +212,7 @@ reviewers[0].knowsAbout
 "Creatina Gummy",
 
 
-"publisher":{
-
-
-"@id":
-
-"https://creatinagummy.com.br/#organization"
-
-
-},
-
-
-"about":{
+"brand":{
 
 
 "@id":
@@ -304,7 +228,11 @@ reviewers[0].knowsAbout
 
 
 
+
+
+
 ]
+
 
 
 };
@@ -329,6 +257,7 @@ dangerouslySetInnerHTML={{
 __html:
 
 JSON.stringify(schema)
+
 
 
 }}
