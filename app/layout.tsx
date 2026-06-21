@@ -9,16 +9,19 @@ import Footer from "./components/Footer";
 
 import OrganizationSchema from "./components/OrganizationSchema";
 
+import KnowledgeGraphSchema from "./components/KnowledgeGraphSchema";
+
 import TopicAuthoritySchema from "./components/TopicAuthoritySchema";
 
 import GlobalEntityGraph from "./components/GlobalEntityGraph";
 
 
+
 const geistSans = Geist({
 
-variable:"--font-geist-sans",
+  variable:"--font-geist-sans",
 
-subsets:["latin"],
+  subsets:["latin"],
 
 });
 
@@ -27,9 +30,9 @@ subsets:["latin"],
 
 const geistMono = Geist_Mono({
 
-variable:"--font-geist-mono",
+  variable:"--font-geist-mono",
 
-subsets:["latin"],
+  subsets:["latin"],
 
 });
 
@@ -108,194 +111,6 @@ keywords:[
 
 
 
-const entitySchema = {
-
-
-
-"@context":"https://schema.org",
-
-
-
-"@graph":[
-
-
-
-
-{
-
-
-"@type":"Organization",
-
-
-"@id":
-
-"https://creatinagummy.com.br/#organization",
-
-
-
-"name":
-
-"Creatina Gummy",
-
-
-
-"url":
-
-"https://creatinagummy.com.br",
-
-
-
-"description":
-
-"Marca especializada em creatina em goma e conteúdos educativos sobre suplementação esportiva, performance e treinamento físico.",
-
-
-
-
-"brand":{
-
-
-"@id":
-
-"https://creatinagummy.com.br/#brand"
-
-
-}
-
-
-
-},
-
-
-
-
-
-
-{
-
-
-"@type":"Brand",
-
-
-
-"@id":
-
-"https://creatinagummy.com.br/#brand",
-
-
-
-"name":
-
-"Creatina Gummy",
-
-
-
-"url":
-
-"https://creatinagummy.com.br"
-
-
-
-},
-
-
-
-
-
-
-{
-
-
-"@type":"WebSite",
-
-
-
-"@id":
-
-"https://creatinagummy.com.br/#website",
-
-
-
-"url":
-
-"https://creatinagummy.com.br",
-
-
-
-"name":
-
-"Creatina Gummy",
-
-
-
-
-"publisher":{
-
-
-"@id":
-
-"https://creatinagummy.com.br/#organization"
-
-
-},
-
-
-
-
-
-"potentialAction":{
-
-
-"@type":"SearchAction",
-
-
-
-"target":{
-
-
-"@type":"EntryPoint",
-
-
-
-"urlTemplate":
-
-"https://creatinagummy.com.br/?s={search_term_string}"
-
-
-},
-
-
-
-"query-input":
-
-"required name=search_term_string"
-
-
-}
-
-
-
-}
-
-
-
-
-
-
-
-]
-
-
-
-};
-
-
-
-
-
-
-
-
 export default function RootLayout({
 
 children,
@@ -335,37 +150,17 @@ className={`${geistSans.variable} ${geistMono.variable}`}
 
 <OrganizationSchema />
 
+
+
+<KnowledgeGraphSchema />
+
+
+
 <GlobalEntityGraph />
 
+
+
 <TopicAuthoritySchema />
-
-
-
-
-
-<script
-
-
-
-type="application/ld+json"
-
-
-
-dangerouslySetInnerHTML={{
-
-
-
-__html:
-
-JSON.stringify(entitySchema)
-
-
-
-}}
-
-
-
-/>
 
 
 
