@@ -1,0 +1,19 @@
+[
+  {
+    "id": "reviewer-creatina-gummy",
+    "name": "Equipe de Revisão Creatina Gummy",
+    "type": "Person",
+    "jobTitle": "Revisor de conteúdo sobre suplementação esportiva",
+    "description": "Equipe responsável pela revisão de conteúdos relacionados à creatina, suplementação esportiva, performance e educação nutricional.",
+    "knowsAbout": [
+      "Creatina",
+      "Creatina em goma",
+      "Suplementação esportiva",
+      "Performance física",
+      "Educação nutricional"
+    ],
+    "sameAs": [
+      "https://creatinagummy.com.br"
+    ]
+  }
+]

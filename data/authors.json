@@ -1,0 +1,19 @@
+[
+  {
+    "id": "author-creatina-gummy",
+    "name": "Equipe Creatina Gummy",
+    "type": "Person",
+    "jobTitle": "Especialista em suplementação esportiva",
+    "description": "Equipe responsável pela criação de conteúdos educativos sobre creatina, suplementação esportiva e performance física.",
+    "knowsAbout": [
+      "Creatina",
+      "Creatina em goma",
+      "Suplementação esportiva",
+      "Performance física",
+      "Treinamento esportivo"
+    ],
+    "sameAs": [
+      "https://creatinagummy.com.br"
+    ]
+  }
+]
