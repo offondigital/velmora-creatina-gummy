@@ -6,33 +6,35 @@ import "./globals.css";
 
 
 import Header from "./components/Header";
-
 import Footer from "./components/Footer";
 
 import OrganizationSchema from "./components/OrganizationSchema";
 
-import GlobalEntityGraph from "./components/GlobalEntityGraph";
+import TopicAuthoritySchema from "./components/TopicAuthoritySchema";
 
 
 
 
 const geistSans = Geist({
 
-  variable:"--font-geist-sans",
+variable:"--font-geist-sans",
 
-  subsets:["latin"],
+subsets:["latin"],
 
 });
+
 
 
 
 const geistMono = Geist_Mono({
 
-  variable:"--font-geist-mono",
+variable:"--font-geist-mono",
 
-  subsets:["latin"],
+subsets:["latin"],
 
 });
+
+
 
 
 
@@ -41,82 +43,62 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
 
 
-  metadataBase:new URL(
+metadataBase:new URL(
 
-    "https://creatinagummy.com.br"
+"https://creatinagummy.com.br"
 
-  ),
-
-
-
-  title:{
-
-
-    default:
-
-    "Creatina Gummy | Creatina em goma",
-
-
-    template:
-
-    "%s | Creatina Gummy"
-
-
-  },
+),
 
 
 
-  description:
+title:{
 
 
-  "Creatina Gummy: creatina em goma para praticidade, performance esportiva e uma nova experiência de suplementação.",
+default:
+
+"Creatina Gummy | Creatina em goma",
+
+
+template:
+
+"%s | Creatina Gummy"
+
+
+},
 
 
 
 
-  keywords:[
+description:
 
 
-    "creatina gummy",
-
-    "creatina em goma",
-
-    "creatina gummy essential",
-
-    "creatina para treino",
-
-    "suplementação esportiva",
-
-    "creatina para corrida"
-
-
-  ],
+"Creatina Gummy: creatina em goma para praticidade, performance esportiva e uma nova experiência de suplementação.",
 
 
 
-  authors:[
-
-    {
-
-      name:
-
-      "Equipe Creatina Gummy"
-
-    }
-
-  ],
 
 
-
-  creator:
-
-  "Creatina Gummy",
+keywords:[
 
 
+"creatina gummy",
 
-  publisher:
+"creatina em goma",
 
-  "Creatina Gummy"
+"creatina gummy essential",
+
+"suplemento de creatina",
+
+"creatina para treino",
+
+"creatina para corrida",
+
+"creatina para crossfit"
+
+
+]
+
+
 
 };
 
@@ -126,13 +108,12 @@ export const metadata: Metadata = {
 
 
 
-const websiteSchema = {
+
+const entitySchema = {
 
 
 
-"@context":
-
-"https://schema.org",
+"@context":"https://schema.org",
 
 
 
@@ -140,24 +121,16 @@ const websiteSchema = {
 
 
 
+
 {
 
 
-"@type":
-
-"WebSite",
-
+"@type":"Organization",
 
 
 "@id":
 
-"https://creatinagummy.com.br/#website",
-
-
-
-"url":
-
-"https://creatinagummy.com.br",
+"https://creatinagummy.com.br/#organization",
 
 
 
@@ -167,54 +140,25 @@ const websiteSchema = {
 
 
 
+"url":
+
+"https://creatinagummy.com.br",
+
+
+
 "description":
 
-"Marca especializada em creatina em goma e suplementação esportiva.",
+"Marca especializada em creatina em goma e conteúdos educativos sobre suplementação esportiva, performance e treinamento físico.",
 
 
 
-"publisher":{
+
+"brand":{
 
 
 "@id":
 
-"https://creatinagummy.com.br/#organization"
-
-
-},
-
-
-
-"potentialAction":{
-
-
-"@type":
-
-"SearchAction",
-
-
-
-"target":{
-
-
-"@type":
-
-"EntryPoint",
-
-
-
-"urlTemplate":
-
-"https://creatinagummy.com.br/?s={search_term_string}"
-
-
-},
-
-
-
-"query-input":
-
-"required name=search_term_string"
+"https://creatinagummy.com.br/#brand"
 
 
 }
@@ -226,12 +170,12 @@ const websiteSchema = {
 
 
 
+
+
 {
 
 
-"@type":
-
-"Brand",
+"@type":"Brand",
 
 
 
@@ -253,7 +197,89 @@ const websiteSchema = {
 
 
 
+},
+
+
+
+
+
+
+{
+
+
+"@type":"WebSite",
+
+
+
+"@id":
+
+"https://creatinagummy.com.br/#website",
+
+
+
+"url":
+
+"https://creatinagummy.com.br",
+
+
+
+"name":
+
+"Creatina Gummy",
+
+
+
+
+"publisher":{
+
+
+"@id":
+
+"https://creatinagummy.com.br/#organization"
+
+
+},
+
+
+
+
+
+"potentialAction":{
+
+
+"@type":"SearchAction",
+
+
+
+"target":{
+
+
+"@type":"EntryPoint",
+
+
+
+"urlTemplate":
+
+"https://creatinagummy.com.br/?s={search_term_string}"
+
+
+},
+
+
+
+"query-input":
+
+"required name=search_term_string"
+
+
 }
+
+
+
+}
+
+
+
 
 
 
@@ -271,29 +297,22 @@ const websiteSchema = {
 
 
 
-
-
 export default function RootLayout({
 
-
-
-children
-
-
+children,
 
 }:Readonly<{
 
-
-
 children:React.ReactNode;
 
+}>){
 
 
-}>) {
 
 
 
 return (
+
 
 
 
@@ -313,18 +332,24 @@ className={`${geistSans.variable} ${geistMono.variable}`}
 
 
 
+
+
 <OrganizationSchema />
 
 
 
-<GlobalEntityGraph />
+<TopicAuthoritySchema />
+
+
 
 
 
 <script
 
 
+
 type="application/ld+json"
+
 
 
 dangerouslySetInnerHTML={{
@@ -333,11 +358,12 @@ dangerouslySetInnerHTML={{
 
 __html:
 
-JSON.stringify(websiteSchema)
+JSON.stringify(entitySchema)
 
 
 
 }}
+
 
 
 />
@@ -350,13 +376,12 @@ JSON.stringify(websiteSchema)
 
 
 
-
 {children}
 
 
 
-
 <Footer />
+
 
 
 
@@ -366,6 +391,8 @@ JSON.stringify(websiteSchema)
 
 
 </html>
+
+
 
 
 

@@ -6,65 +6,72 @@ const topics = [
 {
 title:"Creatina Gummy",
 href:"/creatina-gummy",
-entity:"Produto principal",
+
+entity:"Product",
+
 description:
-"Página central sobre creatina em goma, formato gummy, praticidade e suplementação esportiva."
+"Guia principal sobre creatina em goma, benefícios, uso e características da suplementação gummy."
 },
 
 
 {
-title:"Creatina",
+title:"Benefícios da Creatina",
+
 href:"/beneficios/creatina-gummy-beneficios",
-entity:"Ingrediente principal",
+
+entity:"Topic",
+
 description:
-"Conteúdo educativo sobre creatina, seus benefícios e relação com performance física."
+"Conteúdo educativo sobre creatina, força, performance física e adaptação aos treinos."
 },
 
 
 {
-title:"Creatina em goma",
-href:"/produto/creatina-gummy",
-entity:"Formato do produto",
+title:"Creatina para Corrida",
+
+href:"/creatina-gummy-para-corrida",
+
+entity:"Sport Application",
+
 description:
-"Informações sobre creatina gummy como alternativa prática de consumo."
+"Informações sobre creatina em goma aplicada à rotina de corredores e esportistas."
 },
 
 
 {
-title:"Suplementação esportiva",
-href:"/clusters/objetivo",
-entity:"Categoria temática",
+title:"Creatina para Crossfit",
+
+href:"/creatina-gummy-para-crossfit",
+
+entity:"Sport Application",
+
 description:
-"Conteúdos relacionados a suplementos, objetivos esportivos e rotina de treino."
+"Conteúdos sobre creatina e treinos de alta intensidade."
 },
 
 
 {
-title:"Treinamento esportivo",
-href:"/clusters/modalidade",
-entity:"Contexto esportivo",
+title:"Creatina para Futebol",
+
+href:"/creatina-gummy-para-futebol",
+
+entity:"Sport Application",
+
 description:
-"Relação entre creatina, modalidades esportivas e desempenho físico."
+"Uso da creatina relacionado à performance, explosão e treinamento esportivo."
 },
 
 
 {
-title:"Performance física",
-href:"/clusters/publico",
-entity:"Objetivo",
-description:
-"Conteúdos sobre força, resistência e evolução nos treinos."
-},
+title:"Revisão Científica",
 
-
-{
-title:"Revisão científica",
 href:"/institucional/revisao-cientifica",
-entity:"Autoridade",
-description:
-"Base científica utilizada para conteúdos sobre creatina e suplementação."
-}
 
+entity:"Research",
+
+description:
+"Referências e informações científicas relacionadas à creatina e suplementação."
+}
 
 ];
 
@@ -82,7 +89,7 @@ return (
 
 <h2 className="text-3xl font-bold">
 
-Autoridade temática: Creatina Gummy
+Autoridade em Creatina Gummy
 
 </h2>
 
@@ -90,16 +97,15 @@ Autoridade temática: Creatina Gummy
 
 <p className="mt-4">
 
-Explore conteúdos conectados por entidades, conceitos e temas relacionados
-à creatina em goma, suplementação esportiva e performance.
+Explore conteúdos conectados por temas, entidades e aplicações
+da creatina em goma.
 
 </p>
 
 
 
 
-
-<div className="grid gap-6 mt-8 md:grid-cols-2">
+<div className="grid md:grid-cols-2 gap-6 mt-8">
 
 
 
@@ -112,8 +118,8 @@ key={topic.href}
 
 className="border rounded-xl p-6"
 
-
 >
+
 
 
 <Link href={topic.href}>
@@ -148,7 +154,6 @@ className="border rounded-xl p-6"
 </article>
 
 
-
 ))}
 
 
@@ -156,9 +161,7 @@ className="border rounded-xl p-6"
 </div>
 
 
-
 </section>
-
 
 );
 
