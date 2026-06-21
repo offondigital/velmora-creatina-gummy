@@ -1,20 +1,16 @@
-interface FaqSchemaProps {
-
-faq:any[];
-
-page?:any;
-
-}
+import SchemaValidator from "./SchemaValidator";
 
 
 
 export default function FaqSchema({
 
-faq,
+faq
 
-page
+}:{
 
-}:FaqSchemaProps){
+faq:any[];
+
+}){
 
 
 
@@ -31,6 +27,7 @@ return null;
 const schema = {
 
 
+
 "@context":"https://schema.org",
 
 
@@ -39,34 +36,8 @@ const schema = {
 
 
 
-"@id":
-
-`https://creatinagummy.com.br/${page?.slug || ""}#faq`,
-
-
-
-
-"about":{
-
-
-"@type":"Product",
-
-
-"name":"Creatina Gummy",
-
-
-"url":
-
-"https://creatinagummy.com.br/produto/creatina-gummy"
-
-
-},
-
-
-
 
 "mainEntity":
-
 
 faq.map((item:any)=>(
 
@@ -74,11 +45,12 @@ faq.map((item:any)=>(
 
 {
 
-
 "@type":"Question",
 
 
-"name":item.question,
+"name":
+
+item.question,
 
 
 
@@ -88,13 +60,18 @@ faq.map((item:any)=>(
 "@type":"Answer",
 
 
-"text":item.answer
+"text":
+
+item.answer
+
 
 
 }
 
 
+
 }
+
 
 
 ))
@@ -107,31 +84,12 @@ faq.map((item:any)=>(
 
 
 
-
 return (
 
-
-<script
-
-type="application/ld+json"
-
-
-dangerouslySetInnerHTML={{
-
-
-__html:
-
-JSON.stringify(schema)
-
-
-}}
-
-
-/>
-
-
+<SchemaValidator schema={schema}/>
 
 );
+
 
 
 }

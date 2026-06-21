@@ -1,8 +1,4 @@
-interface ArticleSchemaProps {
-
-page:any;
-
-}
+import SchemaValidator from "./SchemaValidator";
 
 
 
@@ -10,17 +6,24 @@ export default function ArticleSchema({
 
 page
 
-}:ArticleSchemaProps){
+}:{
+
+page:any;
+
+}){
 
 
 
 const schema = {
 
 
+
 "@context":"https://schema.org",
 
 
+
 "@type":"Article",
+
 
 
 
@@ -30,15 +33,37 @@ const schema = {
 
 
 
+
+
 "headline":
 
 page.title,
 
 
 
+
+
 "description":
 
 page.metaDescription,
+
+
+
+
+
+"about":{
+
+
+"@type":"Thing",
+
+
+"name":
+
+"Creatina Gummy"
+
+
+
+},
 
 
 
@@ -58,20 +83,6 @@ page.metaDescription,
 
 
 
-"reviewedBy":{
-
-
-"@id":
-
-"https://creatinagummy.com.br/#reviewer"
-
-
-},
-
-
-
-
-
 "publisher":{
 
 
@@ -80,107 +91,8 @@ page.metaDescription,
 "https://creatinagummy.com.br/#organization"
 
 
-},
-
-
-
-
-
-"datePublished":
-
-page.updatedAt,
-
-
-
-"dateModified":
-
-page.updatedAt,
-
-
-
-
-
-
-"mainEntityOfPage":{
-
-
-"@type":"WebPage",
-
-
-"@id":
-
-`https://creatinagummy.com.br/${page.slug}#webpage`
-
-
-},
-
-
-
-
-
-
-"about":{
-
-
-"@type":"Thing",
-
-
-"name":
-
-page.keyword || "Creatina Gummy"
-
-
-},
-
-
-
-
-
-
-"mentions":[
-
-
-
-{
-
-
-"@type":"Thing",
-
-
-"name":"Creatina"
-
-
-},
-
-
-
-{
-
-
-"@type":"Thing",
-
-
-"name":"Creatina em goma"
-
-
-},
-
-
-
-{
-
-
-"@type":"Thing",
-
-
-"name":"Suplementação esportiva"
-
-
 }
 
-
-
-]
 
 
 
@@ -191,31 +103,12 @@ page.keyword || "Creatina Gummy"
 
 
 
-
 return (
 
-
-<script
-
-
-type="application/ld+json"
-
-
-dangerouslySetInnerHTML={{
-
-
-__html:
-
-JSON.stringify(schema)
-
-
-}}
-
-
-/>
-
+<SchemaValidator schema={schema}/>
 
 );
+
 
 
 }

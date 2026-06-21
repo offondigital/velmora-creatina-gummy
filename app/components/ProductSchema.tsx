@@ -1,8 +1,14 @@
+import SchemaValidator from "./SchemaValidator";
+
+
+
 interface ProductSchemaProps {
 
 product:any;
 
 }
+
+
 
 
 
@@ -17,16 +23,19 @@ product
 const schema = {
 
 
+
 "@context":"https://schema.org",
+
 
 
 "@type":"Product",
 
 
 
+
 "@id":
 
-"https://creatinagummy.com.br/produto/creatina-gummy#product",
+`https://creatinagummy.com.br/produto/${product.slug}#product`,
 
 
 
@@ -34,7 +43,7 @@ const schema = {
 
 "name":
 
-product?.name || "Creatina Gummy",
+product.name,
 
 
 
@@ -42,9 +51,7 @@ product?.name || "Creatina Gummy",
 
 "description":
 
-product?.description ||
-
-"Creatina em goma com creatina, praticidade e sabor para rotina de suplementação esportiva.",
+product.description,
 
 
 
@@ -56,106 +63,12 @@ product?.description ||
 "@type":"Brand",
 
 
-"@id":
-
-"https://creatinagummy.com.br/#brand",
-
-
 "name":
 
-"Creatina Gummy"
+product.brand || "Creatina Gummy"
 
 
 },
-
-
-
-
-
-"manufacturer":{
-
-
-"@type":"Organization",
-
-
-"@id":
-
-"https://creatinagummy.com.br/#organization",
-
-
-"name":
-
-"Creatina Gummy"
-
-
-},
-
-
-
-
-
-
-"category":
-
-"Suplemento alimentar esportivo",
-
-
-
-
-
-
-
-"about":[
-
-
-
-{
-
-
-"@type":"Thing",
-
-
-"name":
-
-"Creatina"
-
-
-},
-
-
-
-{
-
-
-"@type":"Thing",
-
-
-"name":
-
-"Creatina em goma"
-
-
-},
-
-
-
-{
-
-
-"@type":"Thing",
-
-
-"name":
-
-"Performance física"
-
-
-}
-
-
-
-],
-
 
 
 
@@ -163,13 +76,9 @@ product?.description ||
 
 "image":[
 
-
-"https://creatinagummy.com.br/images/creatina-gummy.webp"
-
+`https://creatinagummy.com.br${product.image}`
 
 ],
-
-
 
 
 
@@ -183,7 +92,7 @@ product?.description ||
 
 "url":
 
-"https://creatinagummy.com.br/produto/creatina-gummy",
+product.buyUrl,
 
 
 
@@ -195,121 +104,17 @@ product?.description ||
 
 "price":
 
-"99.90",
+product.price,
 
 
 
 "availability":
 
-"https://schema.org/InStock",
+"https://schema.org/InStock"
 
-
-
-"itemCondition":
-
-"https://schema.org/NewCondition",
-
-
-
-"seller":{
-
-
-"@id":
-
-"https://creatinagummy.com.br/#organization"
 
 
 }
-
-
-},
-
-
-
-
-
-
-
-
-"aggregateRating":{
-
-
-"@type":"AggregateRating",
-
-
-"ratingValue":
-
-"5",
-
-
-"reviewCount":
-
-"25"
-
-
-},
-
-
-
-
-
-
-
-"review":[
-
-
-{
-
-
-"@type":"Review",
-
-
-
-"author":{
-
-
-"@type":"Person",
-
-
-"name":
-
-"Cliente Creatina Gummy"
-
-
-},
-
-
-
-"reviewRating":{
-
-
-"@type":"Rating",
-
-
-"ratingValue":
-
-"5",
-
-
-"bestRating":
-
-"5"
-
-
-},
-
-
-
-"reviewBody":
-
-"Produto prático, sabor agradável e fácil de incluir na rotina de suplementação."
-
-}
-
-
-]
-
-
 
 
 
@@ -319,36 +124,12 @@ product?.description ||
 
 
 
-
-
 return (
 
-
-<script
-
-
-type="application/ld+json"
-
-
-dangerouslySetInnerHTML={{
-
-
-
-__html:
-
-JSON.stringify(schema)
-
-
-
-}}
-
-
-
-/>
-
-
+<SchemaValidator schema={schema}/>
 
 );
+
 
 
 }

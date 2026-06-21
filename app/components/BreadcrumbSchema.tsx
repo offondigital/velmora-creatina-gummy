@@ -1,8 +1,4 @@
-interface BreadcrumbSchemaProps {
-
-items:any[];
-
-}
+import SchemaValidator from "./SchemaValidator";
 
 
 
@@ -10,7 +6,11 @@ export default function BreadcrumbSchema({
 
 items
 
-}:BreadcrumbSchemaProps){
+}:{
+
+items:any[];
+
+}){
 
 
 
@@ -23,33 +23,23 @@ return null;
 
 
 
+
 const schema = {
 
 
-"@context":
 
-"https://schema.org",
-
-
-
-"@type":
-
-"BreadcrumbList",
+"@context":"https://schema.org",
 
 
 
-"@id":
-
-"https://creatinagummy.com.br/#breadcrumb",
+"@type":"BreadcrumbList",
 
 
 
 
 "itemListElement":
 
-
-
-items.map((item:any,index:number)=>(
+items.map((item,index)=>(
 
 
 
@@ -72,15 +62,9 @@ item.name,
 
 
 
-"item":{
-
-
-"@id":
+"item":
 
 item.url
-
-
-}
 
 
 
@@ -92,7 +76,6 @@ item.url
 
 
 
-
 };
 
 
@@ -101,31 +84,7 @@ item.url
 
 return (
 
-
-<script
-
-
-type="application/ld+json"
-
-
-
-dangerouslySetInnerHTML={{
-
-
-
-__html:
-
-JSON.stringify(schema)
-
-
-
-}}
-
-
-
-/>
-
-
+<SchemaValidator schema={schema}/>
 
 );
 

@@ -1,7 +1,11 @@
+import SchemaValidator from "./SchemaValidator";
+
 import reviewer from "@/data/reviewers.json";
 
 
+
 export default function ReviewerSchema(){
+
 
 
 const data = reviewer[0];
@@ -9,6 +13,7 @@ const data = reviewer[0];
 
 
 const schema = {
+
 
 
 "@context":"https://schema.org",
@@ -35,37 +40,11 @@ data.name,
 
 
 
-"jobTitle":
-
-data.jobTitle,
-
-
-
 
 "description":
 
 data.description,
 
-
-
-
-"affiliation":{
-
-
-"@type":"Organization",
-
-
-"@id":
-
-"https://creatinagummy.com.br/#organization",
-
-
-"name":
-
-"Creatina Gummy"
-
-
-},
 
 
 
@@ -77,48 +56,11 @@ data.description,
 
 "Creatina em goma",
 
-"Suplementação esportiva",
-
-"Performance física",
-
-"Treinamento esportivo"
-
-],
+"Suplementação esportiva"
 
 
 
-
-"hasCredential":[
-
-
-"Revisão de conteúdo esportivo",
-
-"Conhecimento em suplementação"
-
-],
-
-
-
-
-"reviewer":{
-
-
-"@type":"Thing",
-
-
-"name":
-
-"Conteúdos revisados pela Creatina Gummy"
-
-
-},
-
-
-
-
-"sameAs":
-
-data.sameAs
+]
 
 
 
@@ -127,30 +69,13 @@ data.sameAs
 
 
 
+
 return (
 
-
-<script
-
-
-type="application/ld+json"
-
-
-dangerouslySetInnerHTML={{
-
-
-__html:
-
-JSON.stringify(schema)
-
-
-}}
-
-
-/>
-
+<SchemaValidator schema={schema}/>
 
 );
+
 
 
 }
