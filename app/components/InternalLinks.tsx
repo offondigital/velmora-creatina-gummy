@@ -3,16 +3,15 @@ import Link from "next/link";
 
 type InternalLinksProps = {
 
+currentSlug?:string;
 
-currentSlug?: string;
-
+entity?:string;
 
 };
 
 
 
 const links = [
-
 
 
 {
@@ -24,32 +23,13 @@ href:"/creatina-gummy",
 title:"Creatina Gummy",
 
 
-description:
-
-"Conheça a creatina em goma com praticidade para sua rotina de suplementação."
-
-},
-
-
-
-
-
-{
-
-
-href:"/beneficios/creatina-gummy-beneficios",
-
-
-title:"Benefícios da Creatina Gummy",
+entity:"Produto principal",
 
 
 description:
-
-"Veja como a creatina pode auxiliar desempenho, força e rotina esportiva."
+"Creatina em goma desenvolvida para praticidade, performance e rotina de suplementação."
 
 },
-
-
 
 
 
@@ -62,12 +42,33 @@ href:"/produto/creatina-gummy",
 title:"Produto Creatina Gummy",
 
 
-description:
+entity:"Produto",
 
-"Conheça detalhes do produto, composição e formato gummy."
+
+description:
+"Conheça composição, características e informações do suplemento em formato gummy."
 
 },
 
+
+
+
+{
+
+
+href:"/beneficios/creatina-gummy-beneficios",
+
+
+title:"Benefícios da Creatina",
+
+
+entity:"Benefício esportivo",
+
+
+description:
+"Conteúdo educativo sobre creatina, força, desempenho e rotina de treino."
+
+},
 
 
 
@@ -82,9 +83,32 @@ href:"/clusters/modalidade",
 title:"Creatina por modalidade esportiva",
 
 
-description:
+entity:"Modalidade esportiva",
 
-"Conteúdos para corrida, crossfit, futebol e diferentes objetivos."
+
+description:
+"Conteúdos relacionados a corrida, crossfit, futebol e performance."
+
+},
+
+
+
+
+
+{
+
+
+href:"/clusters/objetivo",
+
+
+title:"Objetivos com creatina",
+
+
+entity:"Intenção de busca",
+
+
+description:
+"Guias sobre força, resistência, recuperação e performance física."
 
 },
 
@@ -98,12 +122,14 @@ description:
 href:"/institucional/revisao-cientifica",
 
 
-title:"Revisão científica",
+title:"Revisão científica da creatina",
+
+
+entity:"E-E-A-T",
 
 
 description:
-
-"Veja a base científica relacionada à creatina e suplementação."
+"Base científica e referências sobre suplementação esportiva."
 
 }
 
@@ -118,7 +144,9 @@ description:
 
 export default function InternalLinks({
 
-currentSlug
+currentSlug,
+
+entity="Creatina Gummy"
 
 }:InternalLinksProps){
 
@@ -130,40 +158,58 @@ return (
 
 
 
-<section>
+<section className="mt-16">
 
 
+<h2 className="text-3xl font-bold">
 
-<h2>
-
-Conteúdos relacionados
+Conteúdos relacionados a {entity}
 
 </h2>
 
 
 
 
+<p className="mt-4">
 
-<div>
+Explore conteúdos conectados semanticamente dentro do universo da Creatina Gummy.
+
+</p>
+
+
+
+
+
+<div className="grid gap-6 mt-8">
 
 
 
 {links
 
-.filter((link)=>link.href !== `/${currentSlug}`)
+.filter(
+
+(link)=>link.href !== `/${currentSlug}`
+
+)
 
 .map((link)=>(
 
 
 
+<article
 
-<article key={link.href}>
+key={link.href}
+
+className="border rounded-2xl p-6"
+
+>
+
 
 
 <Link href={link.href}>
 
 
-<h3>
+<h3 className="text-xl font-bold">
 
 {link.title}
 
@@ -171,11 +217,19 @@ Conteúdos relacionados
 
 
 
-<p>
+<p className="mt-2">
 
 {link.description}
 
 </p>
+
+
+
+<span className="text-sm">
+
+Entidade: {link.entity}
+
+</span>
 
 
 
@@ -192,6 +246,7 @@ Conteúdos relacionados
 
 
 </div>
+
 
 
 

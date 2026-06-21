@@ -14,13 +14,11 @@ items
 
 
 
-if(!items || items.length === 0){
+if(!items || items.length===0){
 
 return null;
 
 }
-
-
 
 
 
@@ -34,17 +32,22 @@ const schema = {
 
 
 
-
-
 "@type":
 
 "BreadcrumbList",
 
 
 
+"@id":
+
+"https://creatinagummy.com.br/#breadcrumb",
+
+
 
 
 "itemListElement":
+
+
 
 items.map((item:any,index:number)=>(
 
@@ -53,15 +56,13 @@ items.map((item:any,index:number)=>(
 {
 
 
-"@type":
-
-"ListItem",
+"@type":"ListItem",
 
 
 
 "position":
 
-index + 1,
+index+1,
 
 
 
@@ -71,11 +72,17 @@ item.name,
 
 
 
+"item":{
 
 
-"item":
+"@id":
 
 item.url
+
+
+}
+
+
 
 }
 
@@ -86,10 +93,7 @@ item.url
 
 
 
-
 };
-
-
 
 
 
@@ -102,6 +106,7 @@ return (
 
 
 type="application/ld+json"
+
 
 
 dangerouslySetInnerHTML={{
@@ -123,6 +128,7 @@ JSON.stringify(schema)
 
 
 );
+
 
 
 }

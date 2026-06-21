@@ -17,27 +17,43 @@ related:string[];
 }){
 
 
+
 return (
 
 
-<section className="mt-14 border rounded-3xl p-8">
+<section
+
+className="mt-14 border rounded-3xl p-8"
+
+itemScope
+
+itemType="https://schema.org/Thing"
+
+>
 
 
 <h2 className="text-3xl font-bold">
 
-Sobre este conteúdo
+Contexto da entidade
 
 </h2>
 
 
 
+
 <p className="mt-4">
 
-Este conteúdo aborda a entidade:
+Este conteúdo está relacionado à entidade:
 
-<strong> {entity}</strong>
+<strong itemProp="name">
+
+{" "}{entity}
+
+</strong>
+
 
 </p>
+
 
 
 
@@ -45,48 +61,70 @@ Este conteúdo aborda a entidade:
 
 Categoria:
 
-<strong> {category}</strong>
+<strong>
+
+{" "}{category}
+
+</strong>
+
 
 </p>
 
 
 
-<div className="mt-5">
 
 
-<p className="font-bold">
+<div className="mt-6">
 
-Relacionado a:
 
-</p>
+<h3 className="font-bold">
+
+Entidades relacionadas
+
+</h3>
+
 
 
 <ul className="mt-3 space-y-2">
 
 
+
 {related.map((item)=>(
 
 
-<li key={item}>
+<li
+
+key={item}
+
+itemProp="relatedLink"
+
+>
 
 ✓ {item}
 
 </li>
 
 
+
 ))}
+
+
 
 
 </ul>
 
 
+
 </div>
+
+
 
 
 </section>
 
 
 );
+
 
 
 }
