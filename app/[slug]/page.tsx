@@ -1,16 +1,14 @@
-import type { Metadata } from "next";
+import CanonicalSchema from "@/app/components/CanonicalSchema";
 
-import Link from "next/link";
+import AnswerBox from "@/app/components/AnswerBox";
 
-import { createMetadata } from "@/app/lib/metadata";
-
-import ArticleSchema from "@/app/components/ArticleSchema";
-import BreadcrumbSchema from "@/app/components/BreadcrumbSchema";
-import FaqSchema from "@/app/components/FaqSchema";
 import AeoSchema from "@/app/components/AeoSchema";
-import InternalLinks from "@/app/components/InternalLinks";
+
 import EntityContext from "@/app/components/EntityContext";
-import TopicAuthority from "@/app/components/TopicAuthority";
+
+import InternalLinks from "@/app/components/InternalLinks";
+
+import BreadcrumbSchema from "@/app/components/BreadcrumbSchema";
 
 
 
@@ -23,106 +21,16 @@ const pages = require("../../data/pages.json");
 export async function generateStaticParams(){
 
 
-return pages.map((page:any)=>(
+return pages.map((page:any)=>({
 
-
-{
 
 slug:page.slug
 
-}
 
-
-));
-
-
-}
-
-
-
-
-
-
-
-
-export async function generateMetadata({
-
-params
-
-}:{
-
-params:Promise<{slug:string}>
-
-}):Promise<Metadata>{
-
-
-
-const {slug}=await params;
-
-
-
-const page = pages.find(
-
-(p:any)=>p.slug===slug
-
-);
-
-
-
-
-
-return createMetadata({
-
-
-
-title:
-
-page?.title || "Creatina Gummy",
-
-
-
-
-
-description:
-
-page?.metaDescription ||
-
-page?.description ||
-
-"Conteúdos sobre creatina em goma, suplementação esportiva e performance.",
-
-
-
-
-
-slug,
-
-
-
-
-
-image:
-
-page?.image,
-
-
-
-
-
-type:
-
-"article"
-
-
-
-});
-
+}));
 
 
 }
-
-
-
 
 
 
@@ -131,21 +39,20 @@ type:
 
 export default async function Page({
 
+
 params
+
 
 }:{
 
 params:Promise<{slug:string}>
 
+
 }){
 
 
 
-
-
 const {slug}=await params;
-
-
 
 
 
@@ -171,48 +78,6 @@ return null;
 
 
 
-
-
-const breadcrumb = [
-
-
-
-{
-
-name:"Início",
-
-
-url:"https://creatinagummy.com.br"
-
-},
-
-
-
-{
-
-name:
-
-page.title,
-
-
-url:
-
-`https://creatinagummy.com.br/${slug}`
-
-}
-
-
-
-];
-
-
-
-
-
-
-
-
-
 return (
 
 
@@ -221,7 +86,22 @@ return (
 
 
 
-<ArticleSchema page={page}/>
+<CanonicalSchema
+
+
+path={`/${slug}`}
+
+
+title={page.title}
+
+
+description={page.metaDescription}
+
+
+/>
+
+
+
 
 
 
@@ -229,11 +109,31 @@ return (
 
 
 
-<FaqSchema faq={page.faq}/>
 
 
+<BreadcrumbSchema
 
-<BreadcrumbSchema items={breadcrumb}/>
+items={[
+
+{
+
+name:"Home",
+
+url:"https://creatinagummy.com.br"
+
+},
+
+{
+
+name:page.title,
+
+url:`https://creatinagummy.com.br/${slug}`
+
+}
+
+]}
+
+/>
 
 
 
@@ -247,11 +147,11 @@ return (
 
 
 
-
-
 <h1 className="text-5xl font-bold">
 
+
 {page.title}
+
 
 </h1>
 
@@ -259,11 +159,11 @@ return (
 
 
 
-
-
 <p className="mt-6 text-xl">
 
-{page.description}
+
+{page.metaDescription}
+
 
 </p>
 
@@ -273,106 +173,16 @@ return (
 
 
 
+<AnswerBox
 
 
-<section className="mt-14">
+title={page.answerTitle || "Resposta rápida"}
 
 
-<h2 className="text-3xl font-bold">
+answer={page.answer || page.metaDescription}
 
-Sobre este conteúdo
 
-</h2>
-
-
-
-<p className="mt-5">
-
-{page.content}
-
-</p>
-
-
-
-</section>
-
-
-
-
-
-
-
-
-
-{page.faq && page.faq.length > 0 && (
-
-
-
-<section className="mt-14">
-
-
-<h2 className="text-3xl font-bold">
-
-Perguntas frequentes
-
-</h2>
-
-
-
-
-
-<div className="mt-6 space-y-6">
-
-
-{page.faq.map((item:any)=>(
-
-
-
-<article
-
-key={item.question}
-
-className="border rounded-xl p-6"
-
->
-
-
-<h3 className="font-bold text-xl">
-
-{item.question}
-
-</h3>
-
-
-
-<p className="mt-3">
-
-{item.answer}
-
-</p>
-
-
-
-</article>
-
-
-
-))}
-
-
-</div>
-
-
-
-
-
-</section>
-
-
-
-)}
-
-
+/>
 
 
 
@@ -383,10 +193,10 @@ className="border rounded-xl p-6"
 <EntityContext
 
 
-entity={page.entity || "Creatina Gummy"}
+entity={page.entity}
 
 
-category={page.category || "Suplementação esportiva"}
+category={page.category}
 
 
 related={page.related || []}
@@ -400,67 +210,60 @@ related={page.related || []}
 
 
 
-
-
-<TopicAuthority />
-
-
-
-
-
-
-
-
-
-<InternalLinks currentSlug={slug}/>
-
-
-
-
-
-
-
-
-
-<section className="mt-16 bg-gray-100 rounded-3xl p-8">
+<section className="mt-14">
 
 
 <h2 className="text-3xl font-bold">
 
-Conheça a Creatina Gummy
+
+Perguntas frequentes
+
 
 </h2>
 
 
 
 
-<p className="mt-4">
-
-Creatina em goma desenvolvida para praticidade,
-performance e rotina de suplementação.
-
-</p>
+{page.faq?.map((item:any)=>(
 
 
 
+<div
 
+key={item.question}
 
-<Link
+className="mt-6"
 
-
-href="/produto/creatina-gummy"
-
-
-className="inline-block mt-6 bg-purple-600 text-white px-8 py-4 rounded-xl font-bold"
 
 
 >
 
 
-Ver produto
+<h3 className="font-bold">
 
 
-</Link>
+{item.question}
+
+
+</h3>
+
+
+
+<p className="mt-2">
+
+
+{item.answer}
+
+
+</p>
+
+
+
+</div>
+
+
+
+))}
 
 
 
@@ -468,6 +271,17 @@ Ver produto
 
 </section>
 
+
+
+
+
+
+
+<InternalLinks
+
+currentSlug={slug}
+
+/>
 
 
 
@@ -483,7 +297,6 @@ Ver produto
 
 
 );
-
 
 
 }
