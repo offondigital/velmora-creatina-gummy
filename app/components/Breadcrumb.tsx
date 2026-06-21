@@ -1,41 +1,51 @@
-type BreadcrumbProps = {
+"use client";
 
-items:{
-name:string;
-url:string;
-}[];
-
-};
+import Link from "next/link";
 
 
 export default function Breadcrumb({
 items
-}:BreadcrumbProps){
+}:{
+items:{
+label:string;
+href:string;
+}[]
+}){
 
 
 return (
 
-<nav aria-label="breadcrumb">
+<nav
+aria-label="breadcrumb"
+className="text-sm text-gray-500 mb-8"
+>
 
 
-<ol className="flex gap-2 text-sm">
+<ol className="flex gap-2 flex-wrap">
 
 
 {items.map((item,index)=>(
 
 
-<li key={item.url}>
+<li key={item.href} className="flex gap-2">
 
 
-<a href={item.url}>
+<Link
+href={item.href}
+className="hover:underline"
+>
 
-{item.name}
+{item.label}
 
-</a>
+</Link>
 
 
-{index < items.length-1 && (
-<span> / </span>
+{index < items.length -1 && (
+
+<span>
+/
+</span>
+
 )}
 
 
@@ -49,6 +59,7 @@ return (
 
 
 </nav>
+
 
 );
 
