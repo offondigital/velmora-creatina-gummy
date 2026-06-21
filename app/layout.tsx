@@ -5,6 +5,7 @@ import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import OrganizationSchema from "./components/OrganizationSchema";
+import GlobalEntityGraph from "./components/GlobalEntityGraph";
 
 const geistSans = Geist({
 
@@ -229,11 +230,16 @@ return (
 <html lang="pt-BR">
 
 
-<body
+
+className={`${geistSans.variable} ${geistMono.variable}`}
+
+><body
 
 className={`${geistSans.variable} ${geistMono.variable}`}
 
 >
+
+<GlobalEntityGraph />
 
 <OrganizationSchema />
 
