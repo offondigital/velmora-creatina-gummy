@@ -233,7 +233,7 @@ return (
 
 className={`${geistSans.variable} ${geistMono.variable}`}
 
-><body
+<body
 
 className={`${geistSans.variable} ${geistMono.variable}`}
 
