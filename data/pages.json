@@ -1,89 +1,64 @@
 [
   {
-    "slug": "beneficios/creatina-gummy-beneficios",
-    "title": "Benefícios da Creatina Gummy",
-    "metaDescription": "Conheça os benefícios da Creatina Gummy, creatina em goma para praticidade, desempenho esportivo e rotina de suplementação.",
-    "entity": "Creatina Gummy",
-    "category": "Suplementação esportiva",
-    "faq": [
+    "slug":"melhor-creatina-gummy",
+    "title":"Melhor Creatina Gummy: como escolher a creatina em goma ideal",
+    "metaDescription":"Descubra como escolher a melhor creatina gummy para performance, praticidade e rotina esportiva.",
+    "entity":"Creatina Gummy",
+    "category":"Suplementação esportiva",
+    "faq":[
       {
-        "question": "A Creatina Gummy funciona?",
-        "answer": "A Creatina Gummy fornece creatina em formato de goma, facilitando o consumo diário dentro de uma rotina de suplementação."
+        "question":"Qual a melhor creatina gummy?",
+        "answer":"A melhor creatina gummy deve oferecer creatina de qualidade, boa concentração por porção e praticidade para consumo diário."
       },
       {
-        "question": "Creatina em goma é prática?",
-        "answer": "Sim. O formato gummy oferece uma alternativa prática para pessoas que preferem evitar pó ou cápsulas."
-      },
-      {
-        "question": "Para quem é indicada a Creatina Gummy?",
-        "answer": "É indicada para pessoas que praticam atividades físicas e buscam praticidade na suplementação com creatina."
+        "question":"Creatina gummy funciona?",
+        "answer":"Sim. A creatina em goma utiliza creatina como ingrediente ativo para auxiliar desempenho físico e força muscular."
       }
-    ],
-    "relatedEntities": [
-      "Creatina",
-      "Performance esportiva",
-      "Treinamento físico",
-      "Suplementação"
     ]
   },
 
 
   {
-    "slug": "creatina-gummy-para-corrida",
-    "title": "Creatina Gummy para Corrida",
-    "metaDescription": "Veja como a Creatina Gummy se encaixa na rotina de corredores que buscam praticidade na suplementação.",
-    "entity": "Creatina Gummy",
-    "category": "Corrida",
-    "faq": [
+    "slug":"creatina-gummy-feminina",
+    "title":"Creatina Gummy Feminina: benefícios para mulheres",
+    "metaDescription":"Conheça os benefícios da creatina gummy feminina para treino, performance e rotina saudável.",
+    "entity":"Creatina Gummy",
+    "category":"Suplementação feminina",
+    "faq":[
       {
-        "question": "Creatina pode fazer parte da rotina de corredores?",
-        "answer": "A creatina é um suplemento utilizado por praticantes de diferentes modalidades esportivas, incluindo corrida."
+        "question":"Mulheres podem tomar creatina gummy?",
+        "answer":"Sim. Mulheres podem utilizar creatina como parte da rotina de suplementação esportiva."
       }
-    ],
-    "relatedEntities": [
-      "Corrida",
-      "Resistência física",
-      "Performance"
     ]
   },
 
 
   {
-    "slug": "creatina-gummy-para-crossfit",
-    "title": "Creatina Gummy para Crossfit",
-    "metaDescription": "Conteúdo sobre creatina em goma para praticantes de crossfit e treinos intensos.",
-    "entity": "Creatina Gummy",
-    "category": "Crossfit",
-    "faq": [
+    "slug":"creatina-gummy-musculacao",
+    "title":"Creatina Gummy para Musculação: força e performance",
+    "metaDescription":"Veja como a creatina gummy pode fazer parte da rotina de quem pratica musculação.",
+    "entity":"Creatina Gummy",
+    "category":"Musculação",
+    "faq":[
       {
-        "question": "Creatina é usada em treinos intensos?",
-        "answer": "A creatina é amplamente utilizada por praticantes de atividades físicas que buscam suporte à performance."
+        "question":"Creatina ajuda na musculação?",
+        "answer":"A creatina é um dos suplementos mais estudados para suporte à performance em exercícios de alta intensidade."
       }
-    ],
-    "relatedEntities": [
-      "Crossfit",
-      "Força",
-      "Treinamento intenso"
     ]
   },
 
 
   {
-    "slug": "creatina-gummy-para-futebol",
-    "title": "Creatina Gummy para Futebol",
-    "metaDescription": "Informações sobre creatina em goma para atletas e praticantes de futebol.",
-    "entity": "Creatina Gummy",
-    "category": "Futebol",
-    "faq": [
+    "slug":"creatina-gummy-ou-monohidratada",
+    "title":"Creatina Gummy ou Monohidratada: qual escolher?",
+    "metaDescription":"Compare creatina gummy e creatina monohidratada e entenda diferenças de formato e praticidade.",
+    "entity":"Creatina Gummy",
+    "category":"Comparação de suplementos",
+    "faq":[
       {
-        "question": "Creatina pode ser usada por jogadores de futebol?",
-        "answer": "A creatina faz parte da rotina de suplementação de muitos praticantes de esportes de alta intensidade."
+        "question":"Qual diferença entre creatina gummy e monohidratada?",
+        "answer":"A principal diferença está no formato e experiência de consumo. Ambas utilizam creatina como ativo."
       }
-    ],
-    "relatedEntities": [
-      "Futebol",
-      "Performance esportiva",
-      "Energia muscular"
     ]
   }
 ]
