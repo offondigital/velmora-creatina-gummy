@@ -14,7 +14,9 @@ import GlobalEntityGraph from "./components/GlobalEntityGraph";
 import TopicAuthoritySchema from "./components/TopicAuthoritySchema";
 import KnowledgeGraphSchema from "./components/KnowledgeGraphSchema";
 import SEOHealthCheck from "./components/SEOHealthCheck";
+import RouteAudit from "./components/RouteAudit";
 import SchemaValidator from "./components/SchemaValidator";
+
 
 
 
@@ -47,14 +49,19 @@ subsets:["latin"],
 
 
 
+
 export const metadata: Metadata = {
 
 
 metadataBase:
 
 new URL(
+
 "https://creatinagummy.com.br"
+
 ),
+
+
 
 
 
@@ -67,12 +74,14 @@ default:
 "Creatina Gummy | Creatina em goma",
 
 
+
 template:
 
 "%s | Creatina Gummy"
 
 
 },
+
 
 
 
@@ -104,8 +113,8 @@ keywords:[
 "suplemento de creatina"
 
 
-
 ],
+
 
 
 
@@ -125,16 +134,21 @@ follow:true
 
 
 
+
 openGraph:{
 
 
 type:"website",
 
 
-url:"https://creatinagummy.com.br",
+url:
+
+"https://creatinagummy.com.br",
 
 
-title:"Creatina Gummy | Creatina em goma",
+title:
+
+"Creatina Gummy | Creatina em goma",
 
 
 description:
@@ -158,10 +172,14 @@ siteName:
 twitter:{
 
 
-card:"summary_large_image",
+card:
+
+"summary_large_image",
 
 
-title:"Creatina Gummy | Creatina em goma",
+title:
+
+"Creatina Gummy | Creatina em goma",
 
 
 description:
@@ -169,7 +187,6 @@ description:
 "Creatina gummy para praticidade e performance."
 
 }
-
 
 
 
@@ -196,7 +213,6 @@ const globalSchema = {
 
 
 
-
 {
 
 
@@ -205,11 +221,9 @@ const globalSchema = {
 "WebSite",
 
 
-
 "@id":
 
 "https://creatinagummy.com.br/#website",
-
 
 
 "url":
@@ -217,11 +231,9 @@ const globalSchema = {
 "https://creatinagummy.com.br",
 
 
-
 "name":
 
 "Creatina Gummy",
-
 
 
 "publisher":{
@@ -231,11 +243,13 @@ const globalSchema = {
 
 "https://creatinagummy.com.br/#organization"
 
+
 }
 
 
 
 },
+
 
 
 
@@ -249,11 +263,9 @@ const globalSchema = {
 "Organization",
 
 
-
 "@id":
 
 "https://creatinagummy.com.br/#organization",
-
 
 
 "name":
@@ -261,18 +273,14 @@ const globalSchema = {
 "Creatina Gummy",
 
 
-
 "url":
 
 "https://creatinagummy.com.br",
 
 
-
-
 "description":
 
 "Marca especializada em creatina em goma e conteúdos educativos sobre suplementação esportiva."
-
 
 
 }
@@ -301,7 +309,7 @@ children,
 
 children:React.ReactNode;
 
-}>){
+}>) {
 
 
 
@@ -309,13 +317,10 @@ return (
 
 
 
-
 <html lang="pt-BR">
 
 
-
 <body
-
 
 
 className={`${geistSans.variable} ${geistMono.variable}`}
@@ -323,6 +328,7 @@ className={`${geistSans.variable} ${geistMono.variable}`}
 
 
 >
+
 
 
 
@@ -339,6 +345,8 @@ className={`${geistSans.variable} ${geistMono.variable}`}
 
 
 <KnowledgeGraphSchema />
+
+
 
 
 
@@ -368,11 +376,15 @@ JSON.stringify(globalSchema)
 
 
 
+
+
 <SchemaValidator
 
 schema={globalSchema}
 
 />
+
+
 
 
 
@@ -384,7 +396,11 @@ schema={globalSchema}
 
 
 
+
+
 {children}
+
+
 
 
 
@@ -396,7 +412,18 @@ schema={globalSchema}
 
 
 
+
+
+<RouteAudit />
+
+
+
+
+
+
+
 <Footer />
+
 
 
 
@@ -405,12 +432,12 @@ schema={globalSchema}
 
 
 
-
 </html>
 
 
 
 );
+
 
 
 }
