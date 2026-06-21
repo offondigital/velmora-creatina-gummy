@@ -24,6 +24,12 @@ const schema = {
 
 
 
+"@id":
+
+`https://creatinagummy.com.br/${page.slug}#article`,
+
+
+
 "headline":
 
 page.title,
@@ -37,18 +43,13 @@ page.metaDescription,
 
 
 
+
 "author":{
 
 
-"@type":"Person",
-
 "@id":
 
-"https://creatinagummy.com.br/#author-creatina-gummy",
-
-"name":
-
-page.author || "Equipe Creatina Gummy"
+"https://creatinagummy.com.br/#author"
 
 
 },
@@ -56,18 +57,13 @@ page.author || "Equipe Creatina Gummy"
 
 
 
+
 "reviewedBy":{
 
 
-"@type":"Person",
-
 "@id":
 
-"https://creatinagummy.com.br/#reviewer-creatina-gummy",
-
-"name":
-
-page.reviewedBy || "Equipe Creatina Gummy"
+"https://creatinagummy.com.br/#reviewer"
 
 
 },
@@ -79,15 +75,9 @@ page.reviewedBy || "Equipe Creatina Gummy"
 "publisher":{
 
 
-"@type":"Organization",
-
 "@id":
 
-"https://creatinagummy.com.br/#organization",
-
-"name":
-
-"Creatina Gummy"
+"https://creatinagummy.com.br/#organization"
 
 
 },
@@ -110,6 +100,7 @@ page.updatedAt,
 
 
 
+
 "mainEntityOfPage":{
 
 
@@ -118,10 +109,12 @@ page.updatedAt,
 
 "@id":
 
-`https://creatinagummy.com.br/${page.slug}`
+`https://creatinagummy.com.br/${page.slug}#webpage`
 
 
 },
+
+
 
 
 
@@ -134,14 +127,68 @@ page.updatedAt,
 
 "name":
 
-"Creatina Gummy"
+page.keyword || "Creatina Gummy"
+
+
+},
+
+
+
+
+
+
+"mentions":[
+
+
+
+{
+
+
+"@type":"Thing",
+
+
+"name":"Creatina"
+
+
+},
+
+
+
+{
+
+
+"@type":"Thing",
+
+
+"name":"Creatina em goma"
+
+
+},
+
+
+
+{
+
+
+"@type":"Thing",
+
+
+"name":"Suplementação esportiva"
 
 
 }
 
 
 
+]
+
+
+
+
 };
+
+
+
 
 
 
@@ -150,7 +197,9 @@ return (
 
 <script
 
+
 type="application/ld+json"
+
 
 dangerouslySetInnerHTML={{
 
