@@ -1,264 +1,36 @@
-import type { Metadata } from "next";
+import CanonicalSchema from "../components/CanonicalSchema";
+import BreadcrumbSchema from "../components/BreadcrumbSchema";
+import FaqSchema from "../components/FaqSchema";
+import AeoSchema from "../components/AeoSchema";
+import SchemaValidator from "../components/SchemaValidator";
 
+import AnswerBox from "../components/AnswerBox";
+import EntityContext from "../components/EntityContext";
 
-import CanonicalSchema from "@/app/components/CanonicalSchema";
-
-import AnswerBox from "@/app/components/AnswerBox";
-
-import AeoSchema from "@/app/components/AeoSchema";
-
-import EntityContext from "@/app/components/EntityContext";
-
-import InternalLinks from "@/app/components/InternalLinks";
-
-import BreadcrumbSchema from "@/app/components/BreadcrumbSchema";
-
-
-
-const pages = require("../../data/pages.json");
-
-
-
+import pages from "../../data/seoPages.json";
 
 
 export async function generateStaticParams(){
 
-
-return pages.map((page:any)=>(
-
-
-{
+return pages.map((page:any)=>({
 
 slug:page.slug
 
-}
-
-
-));
-
+}));
 
 }
-
-
-
-
-
-
-
-export async function generateMetadata({
-
-params
-
-}:{
-
-params:Promise<{slug:string}>
-
-}):Promise<Metadata>{
-
-
-
-const {slug}=await params;
-
-
-
-const page = pages.find(
-
-(p:any)=>p.slug===slug
-
-);
-
-
-
-
-
-if(!page){
-
-
-
-return {
-
-title:"Creatina Gummy"
-
-};
-
-
-
-}
-
-
-
-
-
-
-
-return {
-
-
-
-title:page.title,
-
-
-
-
-
-description:
-
-page.metaDescription,
-
-
-
-
-
-
-keywords:[
-
-
-page.entity,
-
-
-page.category,
-
-
-"creatina gummy",
-
-
-"creatina em goma",
-
-
-"suplementação esportiva",
-
-
-"performance física"
-
-
-],
-
-
-
-
-
-
-
-alternates:{
-
-
-
-canonical:
-
-`https://creatinagummy.com.br/${slug}`
-
-
-
-},
-
-
-
-
-
-
-
-openGraph:{
-
-
-
-title:
-
-page.title,
-
-
-
-description:
-
-page.metaDescription,
-
-
-
-url:
-
-`https://creatinagummy.com.br/${slug}`,
-
-
-
-siteName:
-
-"Creatina Gummy",
-
-
-
-locale:
-
-"pt_BR",
-
-
-
-type:
-
-"article"
-
-
-
-
-
-},
-
-
-
-
-
-
-
-twitter:{
-
-
-
-card:
-
-"summary_large_image",
-
-
-
-title:
-
-page.title,
-
-
-
-description:
-
-page.metaDescription
-
-
-
-
-
-}
-
-
-
-};
-
-
-
-}
-
-
-
-
-
-
 
 
 
 export default async function Page({
 
-
-params
-
+params,
 
 }:{
 
-params:Promise<{slug:string}>
-
+params:{
+slug:string
+}
 
 }){
 
@@ -268,14 +40,11 @@ const {slug}=await params;
 
 
 
+const page:any = pages.find(
 
-const page = pages.find(
-
-(p:any)=>p.slug===slug
+(item:any)=>item.slug===slug
 
 );
-
-
 
 
 
@@ -289,43 +58,81 @@ return null;
 
 
 
+const breadcrumb = [
+
+
+{
+
+name:"Home",
+
+url:"https://velmora-creatina-gummy.vercel.app"
+
+},
+
+
+{
+
+name:page.title,
+
+url:
+
+`https://velmora-creatina-gummy.vercel.app/${page.slug}`
+
+}
+
+
+];
+
+
+
+
+
+
+
+const schema = {
+
+
+"@context":"https://schema.org",
+
+
+"@type":"WebPage",
+
+
+"name":page.title,
+
+
+"description":page.metaDescription,
+
+
+"url":
+
+`https://velmora-creatina-gummy.vercel.app/${page.slug}`
+
+
+
+};
+
+
+
+
+
+
 
 
 return (
 
-
-
 <>
-
 
 
 <CanonicalSchema
 
-
-
-path={`/${slug}`}
-
-
+path={page.slug}
 
 title={page.title}
 
-
-
 description={page.metaDescription}
 
-
-
 />
-
-
-
-
-
-
-
-<AeoSchema page={page}/>
-
-
 
 
 
@@ -333,40 +140,37 @@ description={page.metaDescription}
 
 <BreadcrumbSchema
 
+items={breadcrumb}
 
-
-items={[
-
-
-{
-
-
-name:"Home",
-
-
-url:"https://creatinagummy.com.br"
-
-
-},
+/>
 
 
 
-{
 
 
-name:page.title,
+<FaqSchema
 
+faq={page.faq}
 
-url:`https://creatinagummy.com.br/${slug}`
-
-
-}
+/>
 
 
 
-]}
 
 
+<AeoSchema
+
+page={page}
+
+/>
+
+
+
+
+
+<SchemaValidator
+
+schema={schema}
 
 />
 
@@ -378,7 +182,7 @@ url:`https://creatinagummy.com.br/${slug}`
 
 
 
-<main className="max-w-5xl mx-auto px-6 py-16">
+<main className="max-w-5xl mx-auto px-6 py-12">
 
 
 
@@ -391,6 +195,7 @@ url:`https://creatinagummy.com.br/${slug}`
 
 
 </h1>
+
 
 
 
@@ -411,18 +216,25 @@ url:`https://creatinagummy.com.br/${slug}`
 
 
 
+
+
 <AnswerBox
 
 
-
-title={page.answerTitle || "Resposta rápida"}
-
+title="Resposta rápida"
 
 
-answer={page.answer || page.metaDescription}
+answer={
+
+page.answer ||
+
+"Creatina Gummy é uma forma prática de consumir creatina em goma, unindo suplementação e facilidade na rotina."
+
+}
 
 
 />
+
 
 
 
@@ -434,16 +246,23 @@ answer={page.answer || page.metaDescription}
 <EntityContext
 
 
-
-entity={page.entity}
-
+entity="Creatina Gummy"
 
 
-category={page.category}
+category="Suplementação esportiva"
 
 
+related={[
 
-related={page.related || []}
+"Creatina em goma",
+
+"Performance física",
+
+"Força muscular",
+
+"Treino esportivo"
+
+]}
 
 
 />
@@ -455,7 +274,10 @@ related={page.related || []}
 
 
 
+
 <section className="mt-14">
+
+
 
 
 
@@ -471,30 +293,36 @@ Perguntas frequentes
 
 
 
-{page.faq?.map((item:any)=>(
+
+
+
+<div className="mt-6 space-y-6">
+
+
+
+
+
+{
+
+page.faq?.map((item:any)=>(
 
 
 
 <div
 
-
 key={item.question}
-
-
-className="mt-6"
-
 
 >
 
 
-
-<h3 className="font-bold">
+<h3 className="font-bold text-xl">
 
 
 {item.question}
 
 
 </h3>
+
 
 
 
@@ -510,12 +338,21 @@ className="mt-6"
 
 
 
+
 </div>
 
 
 
+))
 
-))}
+}
+
+
+
+
+
+
+</div>
 
 
 
@@ -531,28 +368,13 @@ className="mt-6"
 
 
 
-
-<InternalLinks
-
-
-
-currentSlug={slug}
-
-
-/>
-
-
-
-
-
-
-
 </main>
 
 
 
-</>
 
+
+</>
 
 
 );
