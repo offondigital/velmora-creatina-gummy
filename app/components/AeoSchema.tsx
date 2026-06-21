@@ -9,13 +9,132 @@ page:any;
 }){
 
 
+
 const schema = {
+
 
 
 "@context":"https://schema.org",
 
 
+
 "@graph":[
+
+
+
+
+
+{
+
+
+"@type":"WebPage",
+
+
+
+"@id":
+
+`https://creatinagummy.com.br/${page.slug}#webpage`,
+
+
+
+
+"url":
+
+`https://creatinagummy.com.br/${page.slug}`,
+
+
+
+"name":
+
+page.title,
+
+
+
+"description":
+
+page.metaDescription,
+
+
+
+
+
+"about":{
+
+
+"@type":"Product",
+
+
+"@id":
+
+"https://creatinagummy.com.br/produto/creatina-gummy#product",
+
+
+"name":
+
+"Creatina Gummy"
+
+
+},
+
+
+
+
+
+"mentions":[
+
+
+
+{
+
+
+"@type":"Thing",
+
+"name":"Creatina em goma"
+
+
+},
+
+
+{
+
+
+"@type":"Thing",
+
+"name":"Suplementação esportiva"
+
+
+}
+
+
+
+],
+
+
+
+
+
+"isPartOf":{
+
+
+"@type":"WebSite",
+
+
+"@id":
+
+"https://creatinagummy.com.br/#website"
+
+
+}
+
+
+
+
+},
+
+
+
+
+
 
 
 
@@ -25,9 +144,17 @@ const schema = {
 "@type":"FAQPage",
 
 
+"@id":
+
+`https://creatinagummy.com.br/${page.slug}#faq`,
+
+
+
 "mainEntity":
 
-page.faq.map((item:any)=>(
+
+(page.faq || []).map((item:any)=>(
+
 
 
 {
@@ -37,6 +164,7 @@ page.faq.map((item:any)=>(
 
 
 "name":item.question,
+
 
 
 "acceptedAnswer":{
@@ -54,10 +182,14 @@ page.faq.map((item:any)=>(
 }
 
 
+
 ))
 
 
+
 },
+
+
 
 
 
@@ -70,12 +202,22 @@ page.faq.map((item:any)=>(
 "@type":"Product",
 
 
+"@id":
+
+"https://creatinagummy.com.br/produto/creatina-gummy#product",
+
+
+
+
 "name":"Creatina Gummy",
+
+
 
 
 "description":
 
-"Creatina em goma para praticidade, performance e rotina de suplementação.",
+"Creatina em goma desenvolvida para praticidade, performance esportiva e rotina de suplementação.",
+
 
 
 
@@ -91,44 +233,19 @@ page.faq.map((item:any)=>(
 }
 
 
-},
-
-
-
-
-
-
-
-{
-
-
-"@type":"Article",
-
-
-"headline":page.title,
-
-
-"description":page.metaDescription,
-
-
-
-"about":{
-
-
-"@type":"Thing",
-
-
-"name":"Creatina Gummy"
 
 
 }
 
 
-}
+
+
 
 
 
 ]
+
+
 
 
 };
@@ -143,14 +260,15 @@ return (
 
 <script
 
-
 type="application/ld+json"
 
 
 dangerouslySetInnerHTML={{
 
 
-__html:JSON.stringify(schema)
+__html:
+
+JSON.stringify(schema)
 
 
 }}
