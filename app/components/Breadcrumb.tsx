@@ -1,93 +1,42 @@
-import Link from "next/link";
-
-
-interface BreadcrumbProps {
+type BreadcrumbProps = {
 
 items:{
 name:string;
 url:string;
 }[];
 
-}
-
+};
 
 
 export default function Breadcrumb({
-
 items
-
 }:BreadcrumbProps){
-
 
 
 return (
 
-<nav
-
-aria-label="breadcrumb"
-
-className="text-sm text-gray-600 mb-8"
-
->
+<nav aria-label="breadcrumb">
 
 
-<ol className="flex gap-2 flex-wrap">
-
-
-<li>
-
-<Link href="/">
-
-Home
-
-</Link>
-
-</li>
-
+<ol className="flex gap-2 text-sm">
 
 
 {items.map((item,index)=>(
 
 
-<li
-
-key={item.url}
-
-className="flex gap-2"
-
->
+<li key={item.url}>
 
 
-<span>
-
-&gt;
-
-</span>
-
-
-
-{index === items.length - 1 ? (
-
-
-<span className="font-semibold">
+<a href={item.url}>
 
 {item.name}
 
-</span>
+</a>
 
 
-):(
-
-
-<Link href={item.url}>
-
-{item.name}
-
-</Link>
-
-
+{index < items.length-1 && (
+<span> / </span>
 )}
-
 
 
 </li>
@@ -96,12 +45,10 @@ className="flex gap-2"
 ))}
 
 
-
 </ol>
 
 
 </nav>
-
 
 );
 
