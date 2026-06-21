@@ -1,18 +1,10 @@
-import reviewers from "@/data/reviewers.json";
+import reviewer from "@/data/reviewers.json";
 
 
-export default function ReviewerSchema({
-
-page
-
-}:{
-
-page:any
-
-}){
+export default function ReviewerSchema(){
 
 
-const reviewer = reviewers[0];
+const data = reviewer[0];
 
 
 
@@ -22,25 +14,118 @@ const schema = {
 "@context":"https://schema.org",
 
 
+
 "@type":"Person",
 
 
-"@id":"https://creatinagummy.com.br/#reviewer",
+
+"@id":
+
+"https://creatinagummy.com.br/#reviewer",
 
 
-"name":reviewer.name,
 
 
-"jobTitle":reviewer.jobTitle,
 
 
-"description":reviewer.description,
+"name":
+
+data.name,
 
 
-"knowsAbout":reviewer.knowsAbout,
 
 
-"sameAs":reviewer.sameAs
+
+"jobTitle":
+
+data.jobTitle,
+
+
+
+
+
+
+"description":
+
+data.description,
+
+
+
+
+
+
+
+"affiliation":{
+
+
+"@type":"Organization",
+
+
+"@id":
+
+"https://creatinagummy.com.br/#organization",
+
+
+"name":
+
+"Creatina Gummy"
+
+
+},
+
+
+
+
+
+
+
+"knowsAbout":[
+
+
+"Creatina",
+
+"Creatina em goma",
+
+"Suplementação esportiva",
+
+"Performance física",
+
+"Treinamento esportivo"
+
+
+],
+
+
+
+
+
+
+
+
+"expertise":[
+
+
+"Revisão de conteúdos sobre suplementação",
+
+"Educação esportiva",
+
+"Performance e treinamento"
+
+
+
+],
+
+
+
+
+
+
+
+"sameAs":
+
+data.sameAs
+
+
 
 
 
@@ -48,19 +133,35 @@ const schema = {
 
 
 
+
+
+
+
 return (
+
+
 
 <script
 
+
 type="application/ld+json"
+
 
 dangerouslySetInnerHTML={{
 
-__html:JSON.stringify(schema)
+
+
+__html:
+
+JSON.stringify(schema)
+
+
 
 }}
 
+
 />
+
 
 );
 
