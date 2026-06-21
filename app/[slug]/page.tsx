@@ -1,3 +1,6 @@
+import type { Metadata } from "next";
+
+
 import CanonicalSchema from "@/app/components/CanonicalSchema";
 
 import AnswerBox from "@/app/components/AnswerBox";
@@ -21,16 +24,225 @@ const pages = require("../../data/pages.json");
 export async function generateStaticParams(){
 
 
-return pages.map((page:any)=>({
+return pages.map((page:any)=>(
 
+
+{
 
 slug:page.slug
 
+}
 
-}));
+
+));
 
 
 }
+
+
+
+
+
+
+
+export async function generateMetadata({
+
+params
+
+}:{
+
+params:Promise<{slug:string}>
+
+}):Promise<Metadata>{
+
+
+
+const {slug}=await params;
+
+
+
+const page = pages.find(
+
+(p:any)=>p.slug===slug
+
+);
+
+
+
+
+
+if(!page){
+
+
+
+return {
+
+title:"Creatina Gummy"
+
+};
+
+
+
+}
+
+
+
+
+
+
+
+return {
+
+
+
+title:page.title,
+
+
+
+
+
+description:
+
+page.metaDescription,
+
+
+
+
+
+
+keywords:[
+
+
+page.entity,
+
+
+page.category,
+
+
+"creatina gummy",
+
+
+"creatina em goma",
+
+
+"suplementação esportiva",
+
+
+"performance física"
+
+
+],
+
+
+
+
+
+
+
+alternates:{
+
+
+
+canonical:
+
+`https://creatinagummy.com.br/${slug}`
+
+
+
+},
+
+
+
+
+
+
+
+openGraph:{
+
+
+
+title:
+
+page.title,
+
+
+
+description:
+
+page.metaDescription,
+
+
+
+url:
+
+`https://creatinagummy.com.br/${slug}`,
+
+
+
+siteName:
+
+"Creatina Gummy",
+
+
+
+locale:
+
+"pt_BR",
+
+
+
+type:
+
+"article"
+
+
+
+
+
+},
+
+
+
+
+
+
+
+twitter:{
+
+
+
+card:
+
+"summary_large_image",
+
+
+
+title:
+
+page.title,
+
+
+
+description:
+
+page.metaDescription
+
+
+
+
+
+}
+
+
+
+};
+
+
+
+}
+
+
+
 
 
 
@@ -53,6 +265,7 @@ params:Promise<{slug:string}>
 
 
 const {slug}=await params;
+
 
 
 
@@ -89,16 +302,21 @@ return (
 <CanonicalSchema
 
 
+
 path={`/${slug}`}
+
 
 
 title={page.title}
 
 
+
 description={page.metaDescription}
 
 
+
 />
+
 
 
 
@@ -111,29 +329,48 @@ description={page.metaDescription}
 
 
 
+
+
 <BreadcrumbSchema
+
+
 
 items={[
 
+
 {
+
 
 name:"Home",
 
+
 url:"https://creatinagummy.com.br"
+
 
 },
 
+
+
 {
+
 
 name:page.title,
 
+
 url:`https://creatinagummy.com.br/${slug}`
+
 
 }
 
+
+
 ]}
 
+
+
 />
+
+
 
 
 
@@ -159,6 +396,7 @@ url:`https://creatinagummy.com.br/${slug}`
 
 
 
+
 <p className="mt-6 text-xl">
 
 
@@ -176,7 +414,9 @@ url:`https://creatinagummy.com.br/${slug}`
 <AnswerBox
 
 
+
 title={page.answerTitle || "Resposta rápida"}
+
 
 
 answer={page.answer || page.metaDescription}
@@ -190,13 +430,17 @@ answer={page.answer || page.metaDescription}
 
 
 
+
 <EntityContext
+
 
 
 entity={page.entity}
 
 
+
 category={page.category}
+
 
 
 related={page.related || []}
@@ -210,7 +454,9 @@ related={page.related || []}
 
 
 
+
 <section className="mt-14">
+
 
 
 <h2 className="text-3xl font-bold">
@@ -224,19 +470,22 @@ Perguntas frequentes
 
 
 
+
 {page.faq?.map((item:any)=>(
 
 
 
 <div
 
+
 key={item.question}
+
 
 className="mt-6"
 
 
-
 >
+
 
 
 <h3 className="font-bold">
@@ -246,6 +495,7 @@ className="mt-6"
 
 
 </h3>
+
 
 
 
@@ -259,11 +509,14 @@ className="mt-6"
 
 
 
+
 </div>
 
 
 
+
 ))}
+
 
 
 
@@ -277,11 +530,17 @@ className="mt-6"
 
 
 
+
+
 <InternalLinks
+
+
 
 currentSlug={slug}
 
+
 />
+
 
 
 
