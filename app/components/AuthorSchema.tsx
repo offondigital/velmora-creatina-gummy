@@ -1,18 +1,10 @@
-import authors from "@/data/authors.json";
+import author from "@/data/authors.json";
 
 
-export default function AuthorSchema({
-
-page
-
-}:{
-
-page:any
-
-}){
+export default function AuthorSchema(){
 
 
-const author = authors[0];
+const data = author[0];
 
 
 
@@ -22,25 +14,39 @@ const schema = {
 "@context":"https://schema.org",
 
 
+
 "@type":"Person",
 
 
-"@id":"https://creatinagummy.com.br/#author",
+
+"@id":
+
+"https://creatinagummy.com.br/#author",
 
 
-"name":author.name,
 
 
-"jobTitle":author.jobTitle,
+"name":
+
+data.name,
 
 
-"description":author.description,
 
 
-"knowsAbout":author.knowsAbout,
+"jobTitle":
+
+data.jobTitle,
 
 
-"sameAs":author.sameAs,
+
+
+
+"description":
+
+data.description,
+
+
+
 
 
 
@@ -50,13 +56,57 @@ const schema = {
 "@type":"Organization",
 
 
-"name":"Creatina Gummy",
+"@id":
+
+"https://creatinagummy.com.br/#organization",
 
 
-"url":"https://creatinagummy.com.br"
+"name":
+
+"Creatina Gummy"
 
 
-}
+},
+
+
+
+
+
+
+"knowsAbout":
+
+data.knowsAbout,
+
+
+
+
+
+
+
+"expertise":[
+
+
+"Creatina em goma",
+
+"Suplementação esportiva",
+
+"Performance física",
+
+"Treinamento esportivo"
+
+
+],
+
+
+
+
+
+
+"sameAs":
+
+data.sameAs
+
+
 
 
 
@@ -66,17 +116,26 @@ const schema = {
 
 return (
 
+
 <script
+
 
 type="application/ld+json"
 
+
 dangerouslySetInnerHTML={{
 
-__html:JSON.stringify(schema)
+
+__html:
+
+JSON.stringify(schema)
+
 
 }}
 
+
 />
+
 
 );
 
