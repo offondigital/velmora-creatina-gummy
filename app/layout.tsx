@@ -1,23 +1,32 @@
 import type { Metadata } from "next";
 
+
 import { Geist, Geist_Mono } from "next/font/google";
+
 
 import "./globals.css";
 
 
+
 import Header from "./components/Header";
+
 import Footer from "./components/Footer";
 
 
+
 import OrganizationSchema from "./components/OrganizationSchema";
-import GlobalEntityGraph from "./components/GlobalEntityGraph";
+
 import TopicAuthoritySchema from "./components/TopicAuthoritySchema";
-import KnowledgeGraphSchema from "./components/KnowledgeGraphSchema";
-import SEOHealthCheck from "./components/SEOHealthCheck";
-import RouteAudit from "./components/RouteAudit";
+
+import GlobalEntityGraph from "./components/GlobalEntityGraph";
+
 import SchemaValidator from "./components/SchemaValidator";
 
+import SEOHealthCheck from "./components/SEOHealthCheck";
 
+import RouteAudit from "./components/RouteAudit";
+
+import EntityContextSchema from "./components/EntityContextSchema";
 
 
 
@@ -29,7 +38,6 @@ variable:"--font-geist-sans",
 subsets:["latin"],
 
 });
-
 
 
 
@@ -47,22 +55,14 @@ subsets:["latin"],
 
 
 
+export const metadata:Metadata = {
 
 
+metadataBase:new URL(
 
-export const metadata: Metadata = {
-
-
-metadataBase:
-
-new URL(
-
-"https://creatinagummy.com.br"
+"https://velmora-creatina-gummy.vercel.app"
 
 ),
-
-
-
 
 
 
@@ -74,7 +74,6 @@ default:
 "Creatina Gummy | Creatina em goma",
 
 
-
 template:
 
 "%s | Creatina Gummy"
@@ -84,15 +83,10 @@ template:
 
 
 
-
-
-
 description:
 
 
-"Creatina Gummy: creatina em goma para praticidade, performance esportiva e suplementação.",
-
-
+"Creatina Gummy: creatina em goma para praticidade, performance esportiva e suplementação moderna.",
 
 
 
@@ -104,19 +98,18 @@ keywords:[
 
 "creatina em goma",
 
+"melhor creatina gummy",
+
+"creatina gummy feminina",
+
+"creatina gummy musculação",
+
 "creatina para treino",
-
-"creatina para corrida",
-
-"creatina para crossfit",
 
 "suplemento de creatina"
 
 
 ],
-
-
-
 
 
 
@@ -128,64 +121,6 @@ index:true,
 follow:true
 
 
-},
-
-
-
-
-
-
-openGraph:{
-
-
-type:"website",
-
-
-url:
-
-"https://creatinagummy.com.br",
-
-
-title:
-
-"Creatina Gummy | Creatina em goma",
-
-
-description:
-
-"Creatina em goma para performance esportiva e rotina de suplementação.",
-
-
-siteName:
-
-"Creatina Gummy"
-
-
-
-},
-
-
-
-
-
-
-twitter:{
-
-
-card:
-
-"summary_large_image",
-
-
-title:
-
-"Creatina Gummy | Creatina em goma",
-
-
-description:
-
-"Creatina gummy para praticidade e performance."
-
 }
 
 
@@ -198,102 +133,35 @@ description:
 
 
 
+const schema = {
 
 
-const globalSchema = {
+"@context":"https://schema.org",
 
 
-"@context":
-
-"https://schema.org",
+"@type":"Organization",
 
 
-
-"@graph":[
-
-
-
-{
-
-
-"@type":
-
-"WebSite",
-
-
-"@id":
-
-"https://creatinagummy.com.br/#website",
+"name":"Creatina Gummy",
 
 
 "url":
 
-"https://creatinagummy.com.br",
+"https://velmora-creatina-gummy.vercel.app",
 
-
-"name":
-
-"Creatina Gummy",
-
-
-"publisher":{
-
-
-"@id":
-
-"https://creatinagummy.com.br/#organization"
-
-
-}
-
-
-
-},
-
-
-
-
-
-
-{
-
-
-"@type":
-
-"Organization",
-
-
-"@id":
-
-"https://creatinagummy.com.br/#organization",
-
-
-"name":
-
-"Creatina Gummy",
-
-
-"url":
-
-"https://creatinagummy.com.br",
 
 
 "description":
 
-"Marca especializada em creatina em goma e conteúdos educativos sobre suplementação esportiva."
-
-
-}
+"Marca especializada em creatina em goma e suplementação esportiva.",
 
 
 
+"sameAs":[]
 
 
-]
 
 };
-
-
 
 
 
@@ -309,12 +177,11 @@ children,
 
 children:React.ReactNode;
 
-}>) {
+}>){
 
 
 
 return (
-
 
 
 <html lang="pt-BR">
@@ -326,65 +193,31 @@ return (
 className={`${geistSans.variable} ${geistMono.variable}`}
 
 
-
 >
-
 
 
 
 <OrganizationSchema />
 
 
-
 <GlobalEntityGraph />
-
 
 
 <TopicAuthoritySchema />
 
 
-
-<KnowledgeGraphSchema />
-
+<EntityContextSchema />
 
 
 
+<SchemaValidator schema={schema}/>
 
 
 
-<script
+<SEOHealthCheck />
 
 
-type="application/ld+json"
-
-
-dangerouslySetInnerHTML={{
-
-
-__html:
-
-JSON.stringify(globalSchema)
-
-
-}}
-
-
-
-/>
-
-
-
-
-
-
-
-<SchemaValidator
-
-schema={globalSchema}
-
-/>
-
-
+<RouteAudit />
 
 
 
@@ -394,31 +227,7 @@ schema={globalSchema}
 
 
 
-
-
-
-
 {children}
-
-
-
-
-
-
-
-<SEOHealthCheck />
-
-
-
-
-
-
-
-<RouteAudit />
-
-
-
-
 
 
 
@@ -431,13 +240,10 @@ schema={globalSchema}
 </body>
 
 
-
 </html>
 
 
-
 );
-
 
 
 }
