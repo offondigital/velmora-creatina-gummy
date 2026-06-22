@@ -1,61 +1,47 @@
-"use client";
-
-import Link from "next/link";
-
-
 export default function Breadcrumb({
+
 items
+
 }:{
+
 items:{
-label:string;
-href:string;
+name:string;
+url:string;
 }[]
+
 }){
 
 
 return (
 
-<nav
-aria-label="breadcrumb"
-className="text-sm text-gray-500 mb-8"
->
-
-
-<ol className="flex gap-2 flex-wrap">
+<nav className="text-sm mb-8">
 
 
 {items.map((item,index)=>(
 
 
-<li key={item.href} className="flex gap-2">
+<span key={item.url}>
 
 
-<Link
-href={item.href}
-className="hover:underline"
+<a href={item.url}
+
+className="underline"
+
+
 >
 
-{item.label}
+{item.name}
 
-</Link>
+</a>
 
 
-{index < items.length -1 && (
+{index < items.length-1 && " / "}
 
-<span>
-/
+
 </span>
-
-)}
-
-
-</li>
 
 
 ))}
-
-
-</ol>
 
 
 </nav>
