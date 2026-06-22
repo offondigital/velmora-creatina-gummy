@@ -1,3 +1,5 @@
+import RelatedContent from "../components/RelatedContent";
+
 import CanonicalSchema from "../components/CanonicalSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
 import FaqSchema from "../components/FaqSchema";
@@ -7,24 +9,82 @@ import SchemaValidator from "../components/SchemaValidator";
 import AnswerBox from "../components/AnswerBox";
 import EntityContext from "../components/EntityContext";
 
-import pages from "../../data/seoPages.json";
+
+
+const pages = require("../../data/pages.json");
+
 
 
 export async function generateStaticParams(){
 
-return pages.map((page:any)=>({
+
+return pages.map((page:any)=>(
+
+{
 
 slug:page.slug
 
-}));
+}
+
+));
+
 
 }
 
 
 
+
+
+export async function generateMetadata({
+
+params
+
+}:{
+
+params:{
+slug:string
+}
+
+}){
+
+
+const page = pages.find(
+
+(p:any)=>p.slug === params.slug
+
+);
+
+
+
+return {
+
+
+title:page?.title || "Creatina Gummy",
+
+
+description:
+
+page?.metaDescription ||
+
+"Creatina Gummy: creatina em goma para performance esportiva.",
+
+
+
+};
+
+
+
+}
+
+
+
+
+
+
+
 export default async function Page({
 
-params,
+params
 
 }:{
 
@@ -36,21 +96,21 @@ slug:string
 
 
 
-const {slug}=await params;
+const page = pages.find(
 
-
-
-const page:any = pages.find(
-
-(item:any)=>item.slug===slug
+(p:any)=>p.slug === params.slug
 
 );
 
 
 
+
+
 if(!page){
 
+
 return null;
+
 
 }
 
@@ -58,14 +118,16 @@ return null;
 
 
 
-const breadcrumb = [
+
+
+const breadcrumb=[
 
 
 {
 
 name:"Home",
 
-url:"https://velmora-creatina-gummy.vercel.app"
+url:"/"
 
 },
 
@@ -74,11 +136,10 @@ url:"https://velmora-creatina-gummy.vercel.app"
 
 name:page.title,
 
-url:
-
-`https://velmora-creatina-gummy.vercel.app/${page.slug}`
+url:`/${page.slug}`
 
 }
+
 
 
 ];
@@ -88,25 +149,47 @@ url:
 
 
 
-
-const schema = {
-
-
-"@context":"https://schema.org",
+const schema={
 
 
-"@type":"WebPage",
+"@context":
+
+"https://schema.org",
 
 
-"name":page.title,
+"@type":
+
+"Article",
 
 
-"description":page.metaDescription,
+
+headline:
+
+page.title,
 
 
-"url":
 
-`https://velmora-creatina-gummy.vercel.app/${page.slug}`
+description:
+
+page.metaDescription,
+
+
+
+mainEntity:{
+
+
+"@type":
+
+"Product",
+
+
+"name":
+
+"Creatina Gummy"
+
+
+
+}
 
 
 
@@ -121,7 +204,9 @@ const schema = {
 
 return (
 
+
 <>
+
 
 
 <CanonicalSchema
@@ -136,15 +221,11 @@ description={page.metaDescription}
 
 
 
-
-
 <BreadcrumbSchema
 
 items={breadcrumb}
 
 />
-
-
 
 
 
@@ -156,15 +237,11 @@ faq={page.faq}
 
 
 
-
-
 <AeoSchema
 
 page={page}
 
 />
-
-
 
 
 
@@ -178,11 +255,8 @@ schema={schema}
 
 
 
-
-
-
-
 <main className="max-w-5xl mx-auto px-6 py-12">
+
 
 
 
@@ -226,9 +300,12 @@ title="Resposta rápida"
 
 answer={
 
+
 page.answer ||
 
+
 "Creatina Gummy é uma forma prática de consumir creatina em goma, unindo suplementação e facilidade na rotina."
+
 
 }
 
@@ -254,13 +331,18 @@ category="Suplementação esportiva"
 
 related={[
 
+
 "Creatina em goma",
+
 
 "Performance física",
 
+
 "Força muscular",
 
+
 "Treino esportivo"
+
 
 ]}
 
@@ -278,9 +360,6 @@ related={[
 <section className="mt-14">
 
 
-
-
-
 <h2 className="text-3xl font-bold">
 
 
@@ -293,18 +372,11 @@ Perguntas frequentes
 
 
 
-
-
-
 <div className="mt-6 space-y-6">
 
 
 
-
-
-{
-
-page.faq?.map((item:any)=>(
+{page.faq?.map((item:any)=>(
 
 
 
@@ -313,6 +385,7 @@ page.faq?.map((item:any)=>(
 key={item.question}
 
 >
+
 
 
 <h3 className="font-bold text-xl">
@@ -337,25 +410,17 @@ key={item.question}
 
 
 
-
-
 </div>
 
 
 
-))
-
-}
-
+))}
 
 
 
 
 
 </div>
-
-
-
 
 
 
@@ -368,13 +433,86 @@ key={item.question}
 
 
 
+
+<RelatedContent
+
+
+items={[
+
+
+
+{
+
+
+title:"Benefícios da Creatina Gummy",
+
+
+description:
+
+"Veja como a creatina em goma pode auxiliar força, resistência e performance.",
+
+
+url:"/creatina-gummy-beneficios"
+
+
+
+},
+
+
+
+{
+
+
+title:"Creatina Gummy para musculação",
+
+
+description:
+
+"Entenda como usar creatina gummy na rotina de treino.",
+
+
+url:"/creatina-gummy-musculacao"
+
+
+
+},
+
+
+
+{
+
+
+title:"Creatina Gummy feminina",
+
+
+description:
+
+"Conteúdo sobre creatina gummy para mulheres e performance.",
+
+
+url:"/creatina-gummy-feminina"
+
+
+
+}
+
+
+
+]}
+
+/>
+
+
+
+
+
+
 </main>
 
 
 
-
-
 </>
+
 
 
 );
